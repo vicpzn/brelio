@@ -1,8 +1,50 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+@import url("var.css");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Roboto;
 }
 
-a {
-  color: #00B7FF;
+#navbar {
+  position: fixed;
+  z-index: 10;
+  width: 100vw;
+  height: 60px;
+  background: var(--purple);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#navbar p {
+  color: white;
+  font-size: 26px;
+  text-transform: uppercase;
+  margin-left: 10px;
+}
+
+#sign-links {
+  margin-right: 10px;
+}
+
+#sign-links a {
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+}
+
+#sign-links a:nth-child(2) {
+  background: white;
+  color: var(--purple);
+}
+
+#sign-links a:nth-child(2):hover {
+  color: white;
+  background: var(--purple);
 }
