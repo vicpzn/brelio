@@ -6,4 +6,8 @@ router.get("/", function (req, res, next) {
   res.render("index", { title: "Welcome to the Superstore" });
 });
 
+router.get("/home", function (req, res, next) {
+  res.render("landing_page");
+});
+
 module.exports = router;
