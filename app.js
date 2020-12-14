@@ -8,10 +8,10 @@ var app = express();
 var path = require("path");
 const hbs = require("hbs");
 var cookieParser = require("cookie-parser");
-// const flash = require("connect-flash");
-// const mongoose = require("mongoose");
-// const session = require("express-session");
-// const MongoStore = require("connect-mongo")(session);
+const flash = require("connect-flash");
+const mongoose = require("mongoose");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
@@ -36,22 +36,27 @@ app.use("/", authRouter);
 app.use("/", crmRouter);
 
 // SESSION SETUP
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET,
-//     cookie: { maxAge: 60000 },
-//     store: new MongoStore({
-//       mongooseConnection: mongoose.connection,
-//       ttl: 24 * 60 * 60,
-//     }),
-//     saveUninitialized: true,
-//     resave: true,
-//   })
-// );
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    cookie: { maxAge: 60000 },
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 24 * 60 * 60,
+    }),
+    saveUninitialized: true,
+    resave: true,
+  })
+);
 
-// app.locals.site_url = process.env.SITE_URL; // we don't have a SITE_URL in .env
+app.locals.site_url = process.env.SITE_URL; // we don't have a SITE_URL in .env
 
-// app.use(flash());
+app.use(flash());
+
+// CUSTOM MIDDLEWARES
+
+app.use(require("./middlewares/exposeLoginStatus"));
+app.use(require("./middlewares/exposeFlashMessage"));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
