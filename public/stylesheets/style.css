@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
 @import url("var.css");
+@import url("landing-page.css");
 
 * {
   box-sizing: border-box;
