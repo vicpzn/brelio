@@ -6,21 +6,21 @@ const ClientModel = require("../models/Clients");
 // router.use(protectAdminRoute);
 
 router.get("/dashboard", (req, res) => {
-  res.send("hey");
+  res.send("dashboard");
 });
 
 router.get("/account-management", (req, res) => {
-  res.send("hey");
+  res.send("account-management");
 });
 
 router.get("/account-management/:id", (req, res) => {
-  res.send("hey");
+  res.send("account management id");
 });
 
 router.post("/add-prospect", async (req, res, next) => {
   try {
     await ClientModel.create(req.body);
-    res.send("hey");
+    res.redirect("/dashboard");
   } catch (err) {
     next(err);
   }
