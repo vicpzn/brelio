@@ -1,15 +1,16 @@
 var express = require("express");
 var router = express.Router();
+const ClientModel = require("../models/Clients");
 // const protectAdminRoute = require("./../middlewares/protectPrivateRoute");
 
 // router.use(protectAdminRoute);
 
 router.get("/dashboard", (req, res) => {
-  res.send("hey");
+  res.send("dashboard");
 });
 
 router.get("/account-management", (req, res) => {
-  res.send("hey");
+  res.send("account-management");
 });
 
 router.get("/account-management/:id", async (req, res, next) => {
@@ -22,6 +23,15 @@ router.get("/account-management/:id", async (req, res, next) => {
 
 router.get("/user/:id", (req, res) => {
   res.render("user_page");
+});
+
+router.post("/add-prospect", async (req, res, next) => {
+  try {
+    await ClientModel.create(req.body);
+    res.redirect("/dashboard");
+  } catch (err) {
+    next(err);
+  }
 });
 
 module.exports = router;
