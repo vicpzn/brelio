@@ -6,11 +6,7 @@ const ClientModel = require("../models/Clients");
 // router.use(protectAdminRoute);
 
 router.get("/dashboard", (req, res) => {
-<<<<<<< HEAD
   res.render("dashboard");
-=======
-  res.send("dashboard");
->>>>>>> e173a8f2b94513ccf0b94c6b9d585cf22fca8144
 });
 
 router.get("/account-management", async (req, res, next) => {
