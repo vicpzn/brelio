@@ -3,12 +3,18 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
+    role: { type: String, enum: ["admin", "manager", "user"], default: "user" },
     firstname: String,
     lastname: String,
     email: String,
     password: String,
     phonenumber: String,
     company: String,
+    avatar: {
+      type: String,
+      default:
+        "https://www.pinclipart.com/picdir/middle/157-1578186_user-profile-default-image-png-clipart.png",
+    },
   },
   { timestamps: true }
 );

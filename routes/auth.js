@@ -4,11 +4,11 @@ const UserModel = require("../models/User");
 const bcrypt = require("bcrypt");
 
 router.get("/signup", (req, res) => {
-  res.render("signup");
+  res.render("signup", { title: "Sign up" });
 });
 
 router.get("/signin", (req, res) => {
-  res.render("signin");
+  res.render("signin", { title: "Log in" });
 });
 
 router.post("/signin", async (req, res, next) => {

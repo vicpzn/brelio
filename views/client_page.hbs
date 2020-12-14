@@ -1,0 +1,87 @@
+<div>
+    {{> crm_nav}}
+</div>
+
+<div id="client-page">
+    <div id="client-infos">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Firstname</td>
+                    <td>{{firstname}}</td>
+                </tr>
+                <tr>
+                    <td>Lastname</td>
+                    <td>{{lastname}}</td>
+                </tr>
+                <tr>
+                    <td>Email address</td>
+                    <td>{{email}}</td>
+                </tr>
+                <tr>
+                    <td>Phone number</td>
+                    <td>{{phonenumber}}</td>
+                </tr>   
+                <tr>
+                    <td>Address</td>
+                    <td>{{streetnumber}} {{street}}</td>
+                </tr>                                
+                <tr>
+                    <td>Zipcode</td>
+                    <td>{{zipcode}}</td>
+                </tr>                
+                <tr>
+                    <td>City</td>
+                    <td>{{city}}</td>
+                </tr>                
+                <tr>
+                    <td>Country</td>
+                    <td>{{country}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="tasks">
+        <table>
+            <tr>
+                <th>Tasks</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>{{formatDate task_deadline}}</td>
+                <td>{{task_associated}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="file-upload">
+        <label for="files" class="label">
+            Upload a file
+            <i class="icon fas fa-cloud-upload-alt fa-2x"></i>
+        </label>
+        <input class="is-hidden" type="file" id="files" name="files">
+        <button class="btn">Send</button>
+    </div>
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Comments</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>{{comments}}</td>
+            </tr>
+            <tr>
+                <td><input type="text-area"></td>
+            </tr>
+            <tr>
+                <td><button>Send</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <a href="/account-management/delete/:id">Delete</a>
+</div>

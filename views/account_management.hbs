@@ -1,0 +1,32 @@
+{{> crm_nav}}
+
+<h1>Account Management</h1>
+
+
+<table>
+    <thead>
+        <tr>Prospect</tr>
+        <tr>Taskname</tr>
+        <tr>Priority</tr>
+        <tr>Actions</tr>
+    </thead>
+    <tbody>
+        {{#each clients}}
+        <tr>
+            <td>
+                <p>{{this.firstname}} {{this.lastname}}</p>
+            </td>
+            <td>
+                <p>{{this.task_associated}} {{formatDate this.task_deadline}}</p>
+            </td>
+            <td>
+                <p>{{this.priority}}</p>
+            </td>
+            <td>
+                <a href="/account-management/{{this._id}}">More info</a>
+                <a href="/account-management/delete/{{this._id}}">Delete</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

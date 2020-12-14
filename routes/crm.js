@@ -1,19 +1,58 @@
 var express = require("express");
 var router = express.Router();
+const ClientModel = require("../models/Clients");
 // const protectAdminRoute = require("./../middlewares/protectPrivateRoute");
 
 // router.use(protectAdminRoute);
 
 router.get("/dashboard", (req, res) => {
+<<<<<<< HEAD
   res.render("dashboard");
+=======
+  res.send("dashboard");
+>>>>>>> e173a8f2b94513ccf0b94c6b9d585cf22fca8144
 });
 
-router.get("/account-management", (req, res) => {
-  res.send("hey");
+router.get("/account-management", async (req, res, next) => {
+  try {
+    const clients = await ClientModel.find();
+    res.render("account_management", {
+      title: "Account Management",
+      clients,
+    });
+  } catch (err) {
+    next(err);
+  }
 });
 
-router.get("/account-management/:id", (req, res) => {
-  res.send("hey");
+router.get("/account-management/:id", async (req, res, next) => {
+  try {
+    res.render("client_page", await ClientModel.findById(req.params.id));
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/account-management/delete/:id", async (req, res, next) => {
+  try {
+    await ClientModel.findByIdAndDelete(req.params.id);
+    res.redirect("/account-management");
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/user/:id", (req, res) => {
+  res.render("user_page");
+});
+
+router.post("/add-prospect", async (req, res, next) => {
+  try {
+    await ClientModel.create(req.body);
+    res.redirect("/dashboard");
+  } catch (err) {
+    next(err);
+  }
 });
 
 router.get("/search", async (req, res, next) => {
