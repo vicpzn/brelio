@@ -1,13 +1,14 @@
-{{> landing-nav}}
+{{> landing_nav}}
 
 <form method="post" action="/signup" id="form_user">
     <div class="wrapper">
         <label for="firstname" class="label">Name</label>
-        <input name="name" id="firstname" type="text" class="input" placeholder="Name" required value="name">
+        <input name="firstname" id="firstname" type="text" class="input" placeholder="Name" required value="name">
     </div>
     <div class="wrapper">
         <label for="lastname" class="label">Lastname</label>
-        <input name="lastname" id="lastname" type="text" class="input" placeholder="Lastname" required value="lastname">
+        <input name="lastname" id="lastname" type="text" class="input" placeholder="Last name" required
+            value="lastname">
     </div>
     <div class="wrapper">
         <label for="email" class="label">Email</label>
@@ -23,8 +24,9 @@
         <input name="company" id="company" type="text" class="input" placeholder="Company" required value="company">
     </div>
     <div class="wrapper">
-        <label for="zipcode" class="label">Zipcode</label>
-        <input name="zipcode" id="zipcode" type="text" class="input" placeholder="Zipcode" required value="zipcode">
+        <label for="password" class="label">Password</label>
+        <input name="password" id="password" type="password" class="input" placeholder="Password" required
+            value="password">
     </div>
     <button class="btn">Sign up</button>
 </form>
