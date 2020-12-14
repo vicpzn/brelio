@@ -1,0 +1,32 @@
+{{> landing-nav}}
+
+<form method="post" action="/signup" id="form_user">
+    <div class="wrapper">
+        <label for="firstname" class="label">Name</label>
+        <input name="name" id="firstname" type="text" class="input" placeholder="Name" required value="name">
+    </div>
+    <div class="wrapper">
+        <label for="lastname" class="label">Lastname</label>
+        <input name="lastname" id="lastname" type="text" class="input" placeholder="Lastname" required value="lastname">
+    </div>
+    <div class="wrapper">
+        <label for="email" class="label">Email</label>
+        <input name="email" id="email" type="email" class="input" placeholder="Email" required value="email">
+    </div>
+    <div class="wrapper">
+        <label for="phonenumber" class="label">Phone number</label>
+        <input name="phonenumber" id="phonenumber" type="number" class="input" placeholder="Phone number" required
+            value="phonenumber">
+    </div>
+    <div class="wrapper">
+        <label for="company" class="label">Company</label>
+        <input name="company" id="company" type="text" class="input" placeholder="Company" required value="company">
+    </div>
+    <div class="wrapper">
+        <label for="zipcode" class="label">Zipcode</label>
+        <input name="zipcode" id="zipcode" type="text" class="input" placeholder="Zipcode" required value="zipcode">
+    </div>
+    <button class="btn">Sign up</button>
+</form>
+<p class="link">Already registered? <a href="/signin" class="btn">Click here</a></p>
+</section>

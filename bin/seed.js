@@ -1,6 +1,6 @@
 require("dotenv").config();
 require("../config/mongodb");
-const TestModel = require("./../models/test");
+const TestModel = require("./../models/Test");
 
 const test = [
   { name: "Foo", activity: "Bar" },

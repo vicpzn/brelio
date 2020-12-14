@@ -4,16 +4,17 @@ require("./helpers/hbs");
 
 var createError = require("http-errors");
 var express = require("express");
+var app = express();
 var path = require("path");
 const hbs = require("hbs");
 var cookieParser = require("cookie-parser");
+
 var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var authRouter = require("./routes/auth");
-
-var app = express();
+var crmRouter = require("./routes/crm");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
