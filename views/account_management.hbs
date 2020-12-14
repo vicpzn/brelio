@@ -1,0 +1,12 @@
+<h1>Account Management</h1>
+
+
+<table>
+    <thead>
+        <tr>Prospect</tr>
+    </thead>
+    <tbody></tbody>
+</table>
+{{#each clients}}
+<p>{{this.firstname}} {{this.lastname}} {{this.task_associated}} {{formatDate this.task_deadline}} {{this.priority}}</p>
+{{/each}}
