@@ -8,7 +8,10 @@ var app = express();
 var path = require("path");
 const hbs = require("hbs");
 var cookieParser = require("cookie-parser");
-
+// const flash = require("connect-flash");
+// const mongoose = require("mongoose");
+// const session = require("express-session");
+// const MongoStore = require("connect-mongo")(session);
 var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
@@ -19,7 +22,6 @@ var crmRouter = require("./routes/crm");
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
-// app.use(express.static("public"));
 hbs.registerPartials(__dirname + "/views/partials");
 
 app.use(logger("dev"));
@@ -32,6 +34,24 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/", authRouter);
 app.use("/", crmRouter);
+
+// SESSION SETUP
+// app.use(
+//   session({
+//     secret: process.env.SESSION_SECRET,
+//     cookie: { maxAge: 60000 },
+//     store: new MongoStore({
+//       mongooseConnection: mongoose.connection,
+//       ttl: 24 * 60 * 60,
+//     }),
+//     saveUninitialized: true,
+//     resave: true,
+//   })
+// );
+
+// app.locals.site_url = process.env.SITE_URL; // we don't have a SITE_URL in .env
+
+// app.use(flash());
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
