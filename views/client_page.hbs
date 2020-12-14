@@ -44,15 +44,44 @@
 
     <div id="tasks">
         <table>
-            <th>Tasks</th>
+            <tr>
+                <th>Tasks</th>
+            </tr>
             <tr>
                 <td><input type="checkbox"></td>
-                <td>{{task_deadline}}</td>
+                <td>{{formatDate task_deadline}}</td>
                 <td>{{task_associated}}</td>
             </tr>
         </table>
     </div>
-    <div></div>
-    <div></div>
 
+    <div id="file-upload">
+        <label for="files" class="label">
+            Upload a file
+            <i class="icon fas fa-cloud-upload-alt fa-2x"></i>
+        </label>
+        <input class="is-hidden" type="file" id="files" name="files">
+        <button class="btn">Send</button>
+    </div>
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Comments</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>{{comments}}</td>
+            </tr>
+            <tr>
+                <td><input type="text-area"></td>
+            </tr>
+            <tr>
+                <td><button>Send</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <a href="/account-management/delete/:id">Delete</a>
 </div>
