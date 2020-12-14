@@ -9,8 +9,16 @@ router.get("/dashboard", (req, res) => {
   res.send("dashboard");
 });
 
-router.get("/account-management", (req, res) => {
-  res.send("account-management");
+router.get("/account-management", async (req, res, next) => {
+  try {
+    const clients = await ClientModel.find();
+    res.render("account_management", {
+      title: "Account Management",
+      clients,
+    });
+  } catch (err) {
+    next(err);
+  }
 });
 
 router.get("/account-management/:id", async (req, res, next) => {
