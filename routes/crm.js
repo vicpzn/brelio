@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-const protectAdminRoute = require("./../middlewares/protectAdminRoute");
+const protectAdminRoute = require("./../middlewares/protectPrivateRoute");
 
 router.get("/dashboard", (req, res) => {
   res.send("hey");
