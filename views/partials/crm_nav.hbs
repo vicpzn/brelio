@@ -1,7 +1,12 @@
-  <nav id="navbar">
-    <p>The Superstore</p>
-    <div id="sign-links">
-      <a href="/signin">Sign In</a>
-      <a href="/signup">Sign Up</a>
-    </div>
-  </nav>
+<nav id="navbar">
+  <p>The Superstore</p>
+  <div id="sign-links">
+    {{#unless isLoggedIn}}
+    <a href="/signin">Sign in</a>
+    {{/unless}}
+    {{#if isLoggedIn}}
+    <a href="/logout">Log out</a>
+    {{/if}}
+    <a href="/signup">Sign up</a>
+  </div>
+</nav>
