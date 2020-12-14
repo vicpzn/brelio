@@ -7,7 +7,7 @@ router.get("/signup", function (req, res) {
 });
 
 router.get("/signin", function (req, res) {
-  res.send("signin");
+  res.render("signin");
 });
 
 module.exports = router;
