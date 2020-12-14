@@ -29,6 +29,15 @@ router.get("/account-management/:id", async (req, res, next) => {
   }
 });
 
+router.get("/account-management/delete/:id", async (req, res, next) => {
+  try {
+    await ClientModel.findByIdAndDelete(req.params.id);
+    res.redirect("/account-management");
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get("/user/:id", (req, res) => {
   res.render("user_page");
 });
