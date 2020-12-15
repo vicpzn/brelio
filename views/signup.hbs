@@ -1,10 +1,15 @@
 {{> landing_nav}}
 
-{{!-- {{#if msg}}
-<p class="message {{msg.status}}">{{msg.text}}</p>
-{{/if}} --}}
-
 <div id="sign-up-container">
+    {{#if warning_msg}}
+    <p class="message {{msg.status}}">{{warning_msg}}</p>
+    {{/if}}
+    {{#if success_msg}}
+    <p class="message {{msg.status}}">{{success_msg}}</p>
+    {{/if}}
+    {{#if error_msg}}
+    <p class="message {{msg.status}}">{{error_msg}}</p>
+    {{/if}}
     <h1>Start your demo</h1>
     <p>Leave us your contact in order to offer you a 14-day free trial</p>
 
