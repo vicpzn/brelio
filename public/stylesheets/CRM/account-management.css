@@ -1,0 +1,22 @@
+table#account-table {
+  border: 1px solid black;
+}
+
+table#account-table th,
+table#account-table td {
+  text-align: center;
+}
+
+.fa-edit,
+.fa-trash,
+.fa-plus {
+  text-decoration: none;
+  color: var(--purple);
+}
+
+#container-account-management {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
