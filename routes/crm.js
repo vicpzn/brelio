@@ -62,7 +62,8 @@ router.post("/account-management/add", async (req, res, next) => {
 
 router.get("/account-management/:id", async (req, res, next) => {
   try {
-    res.render("client_page", await ClientModel.findById(req.params.id));
+    let client = await ClientModel.findById(req.params.id);
+    res.render("client_page", { client, script: "client-page.js" });
   } catch (err) {
     next(err);
   }
