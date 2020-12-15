@@ -7,6 +7,10 @@
         <table>
             <tbody>
                 <tr>
+                    <td>Client id</td>
+                    <td id="client-id">{{id}}</td>
+                </tr>
+                <tr>
                     <td>Firstname</td>
                     <td>{{firstname}}</td>
                 </tr>
@@ -64,24 +68,25 @@
         <button class="btn">Send</button>
     </div>
 
-    <div>
+    <div id="comments-table">
         <table>
             <thead>
                 <tr>
                     <th>Comments</th>
                 </tr>
             </thead>
-            <tr>
-                <td>{{comments}}</td>
-            </tr>
-            <tr>
-                <td><input type="text-area"></td>
-            </tr>
-            <tr>
-                <td><button>Send</button></td>
-            </tr>
+            <tbody>
+                {{#each comments}}
+                <tr>
+                    <td>{{this}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
         </table>
+        <input type="text-area" name="comments" id="write-comment">
+        <button id="comments-btn">Send</button>
+
     </div>
 
-    <a href="/account-management/delete/:id">Delete</a>
+    <a href="/account-management/delete/{{_id}}">Delete</a>
 </div>

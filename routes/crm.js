@@ -6,7 +6,7 @@ const ClientModel = require("../models/Clients");
 // router.use(protectAdminRoute);
 
 router.get("/dashboard", (req, res) => {
-  res.render("dashboard");
+  res.render("dashboard", { title: "Dashboard" });
 });
 
 router.get("/account-management", async (req, res, next) => {
@@ -18,6 +18,30 @@ router.get("/account-management", async (req, res, next) => {
     });
   } catch (err) {
     next(err);
+  }
+});
+
+router.get("/api/clients", async (req, res) => {
+  try {
+    res.json(await ClientModel.find());
+  } catch (err) {
+    res.json(err);
+  }
+});
+
+router.get("/api/clients/:id", async (req, res) => {
+  try {
+    res.json(await ClientModel.findById(req.params.id));
+  } catch (err) {
+    res.json(err);
+  }
+});
+
+router.patch("/api/edit/clients/:id", async (req, res) => {
+  try {
+    res.json(await ClientModel.findByIdAndUpdate(req.params.id, req.body));
+  } catch (err) {
+    res.json(err);
   }
 });
 
