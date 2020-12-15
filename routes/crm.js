@@ -1,6 +1,8 @@
 var express = require("express");
+const UserModel = require("../models/User");
 var router = express.Router();
 const ClientModel = require("../models/Clients");
+const uploader = require("./../config/cloudinary");
 // const protectAdminRoute = require("./../middlewares/protectPrivateRoute");
 
 // router.use(protectAdminRoute);
@@ -76,9 +78,46 @@ router.get("/account-management/delete/:id", async (req, res, next) => {
   }
 });
 
-router.get("/user/:id", (req, res) => {
-  res.render("user_page");
+router.get("/users", async (req, res, next) => {
+  try {
+    const users = await UserModel.find();
+    res.render("list_users", { users, title: "List of users" });
+  } catch (err) {
+    next(err);
+  }
 });
+
+router.get("/users/edit/:id", async (req, res, next) => {
+  try {
+    res.render("edit_user", await UserModel.findById(req.params.id));
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/users/delete/:id", async (req, res, next) => {
+  try {
+    await UserModel.findByIdAndDelete(req.params.id);
+    res.redirect("/users");
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post(
+  "/users/edit/:id",
+  uploader.single("avatar"),
+  async (req, res, next) => {
+    try {
+      const profileToUpdate = { ...req.body };
+      if (req.file) profileToUpdate.avatar = req.file.path;
+      await UserModel.findByIdAndUpdate(req.params.id, profileToUpdate);
+      res.redirect("/users");
+    } catch (err) {
+      next(err);
+    }
+  }
+);
 
 router.post("/add-prospect", async (req, res, next) => {
   try {

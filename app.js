@@ -30,11 +30,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
-app.use("/", authRouter);
-app.use("/", crmRouter);
-
 // SESSION SETUP
 app.use(
   session({
@@ -49,14 +44,17 @@ app.use(
   })
 );
 
-app.locals.site_url = process.env.SITE_URL; // we don't have a SITE_URL in .env
-
 app.use(flash());
-
-// CUSTOM MIDDLEWARES
 
 app.use(require("./middlewares/exposeLoginStatus"));
 app.use(require("./middlewares/exposeFlashMessage"));
+
+// app.locals.site_url = process.env.SITE_URL; // we don't have a SITE_URL in .env
+
+app.use("/", indexRouter);
+app.use("/users", usersRouter);
+app.use("/", authRouter);
+app.use("/", crmRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

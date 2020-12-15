@@ -12,8 +12,7 @@ const userSchema = new Schema(
     company: String,
     avatar: {
       type: String,
-      default:
-        "https://www.pinclipart.com/picdir/middle/157-1578186_user-profile-default-image-png-clipart.png",
+      default: "/media/images/default-profile.png",
     },
   },
   { timestamps: true }
