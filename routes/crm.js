@@ -3,6 +3,7 @@ const UserModel = require("../models/User");
 var router = express.Router();
 const ClientModel = require("../models/Clients");
 const uploader = require("./../config/cloudinary");
+const bcrypt = require("bcrypt");
 // const protectAdminRoute = require("./../middlewares/protectPrivateRoute");
 
 // router.use(protectAdminRoute);
@@ -87,6 +88,42 @@ router.get("/users", async (req, res, next) => {
   }
 });
 
+router.get("/users/create", async (req, res, next) => {
+  try {
+    const users = await UserModel.find();
+    res.render("create_user", { users, title: "Create a new user" });
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post(
+  "/users/create",
+  uploader.single("avatar"),
+  async (req, res, next) => {
+    try {
+      const newUser = { ...req.body };
+      const foundUser = await UserModel.findOne({ email: newUser.email });
+      if (req.file) newUser.avatar = req.file.path;
+      if (foundUser) {
+        req.flash(
+          "warning",
+          "Email already registered. Please try with another address."
+        );
+        res.redirect("/users/create");
+      } else {
+        const hashedPassword = bcrypt.hashSync(newUser.password, 10);
+        newUser.password = hashedPassword;
+        await UserModel.create(newUser);
+        req.flash("success", "Successfully registered.");
+        res.redirect("/users/");
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
 router.get("/users/edit/:id", async (req, res, next) => {
   try {
     res.render("edit_user", await UserModel.findById(req.params.id));
@@ -123,6 +160,14 @@ router.post("/add-prospect", async (req, res, next) => {
   try {
     await ClientModel.create(req.body);
     res.redirect("/dashboard");
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/dashboard/settings/", (req, res, next) => {
+  try {
+    res.render("settings");
   } catch (err) {
     next(err);
   }
