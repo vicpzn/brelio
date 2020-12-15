@@ -19,7 +19,7 @@ const clientSchema = new Schema(
       type: Number,
       default: 1,
     },
-    comments: { type: [String], default: "" },
+    comments: { type: Array, default: "" },
   },
   { timestamps: true }
 );

@@ -2,17 +2,22 @@
   padding-top: 70px;
 }
 
+.fas {
+  cursor: pointer;
+}
+
 .fa-pencil-alt {
   color: var(--lavender);
-  cursor: pointer;
 }
 
 .fa-check {
   color: rgb(96, 224, 171);
-  cursor: pointer;
 }
 
 .fa-times {
   color: rgb(240, 113, 124);
-  cursor: pointer;
+}
+
+#trash-comment {
+  color: var(--lavender);
 }
