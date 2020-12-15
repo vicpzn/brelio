@@ -1,32 +1,40 @@
-{{> crm_nav}}
+{{> burger_menu}}
+<div id="container-account-management">
+    <h1>Account Management</h1>
 
-<h1>Account Management</h1>
+    <table id="account-table">
+        <thead>
+            <tr>
+                <th>Prospect</th>
+                <th>Task</th>
+                <th>Task Deadline</th>
+                <th>Priority</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each clients}}
+            <tr>
+                <td>
+                    <p>{{this.firstname}} {{this.lastname}}</p>
+                </td>
+                <td>
+                    <p>{{this.task_associated}}</p>
+                </td>
+                <td>
+                    <p>{{formatDate this.task_deadline}}</p>
+                </td>
+                <td>
+                    <p>{{this.priority}}</p>
+                </td>
+                <td>
+                    <a class="fas fa-edit" href="/account-management/{{this._id}}"></a>
+                    <a class="fas fa-trash" href="/account-management/delete/{{this._id}}"></a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
 
-
-<table>
-    <thead>
-        <tr>Prospect</tr>
-        <tr>Taskname</tr>
-        <tr>Priority</tr>
-        <tr>Actions</tr>
-    </thead>
-    <tbody>
-        {{#each clients}}
-        <tr>
-            <td>
-                <p>{{this.firstname}} {{this.lastname}}</p>
-            </td>
-            <td>
-                <p>{{this.task_associated}} {{formatDate this.task_deadline}}</p>
-            </td>
-            <td>
-                <p>{{this.priority}}</p>
-            </td>
-            <td>
-                <a href="/account-management/{{this._id}}">More info</a>
-                <a href="/account-management/delete/{{this._id}}">Delete</a>
-            </td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
+    <a class="fas fa-plus" href="/account-management/add">Add a new prospect</a>
+</div>

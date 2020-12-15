@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const clientSchema = new Schema(
+const companySchema = new Schema(
   {
     name: String,
     address: String,
@@ -12,6 +12,6 @@ const clientSchema = new Schema(
   { timestamps: true }
 );
 
-const ClientModel = mongoose.model("client", clientSchema);
+const CompanyModel = mongoose.model("company", companySchema);
 
-module.exports = ClientModel;
+module.exports = CompanyModel;

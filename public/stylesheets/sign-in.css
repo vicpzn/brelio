@@ -1,0 +1,53 @@
+#sign-in-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 500px;
+  height: 280px;
+  padding: 50px 30px;
+  border: 1px solid var(--purple);
+}
+
+#sign-in-container {
+  position: fixed;
+  top: calc(100% / 2 - 140px);
+  left: calc(100% / 2 - 250px);
+}
+
+#sign-in-container h1 {
+  margin-bottom: 10px;
+}
+
+#wrapper-sign-in {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+#wrapper-sign-in input {
+  padding: 10px;
+  border: 1px solid var(--purple);
+  /* box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06); */
+  border-radius: 5px;
+}
+
+#btn-sign-in {
+  margin: 10px 0;
+  width: 100%;
+  height: 45px;
+  background: var(--purple);
+  color: white;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: 1px solid white;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}
+
+#btn-sign-in:hover {
+  background: white;
+  color: var(--purple);
+  border: 1px solid var(--purple);
+  cursor: pointer;
+}

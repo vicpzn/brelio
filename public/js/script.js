@@ -24,3 +24,5 @@ burger.addEventListener("click", () => {
     burger.style.display = "none";
   }
 });
+slide.addEventListener("click", openSlideMenu);
+close.addEventListener("click", closeSlideMenu);
