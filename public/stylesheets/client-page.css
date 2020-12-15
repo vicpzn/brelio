@@ -1,3 +1,18 @@
 #client-page {
   padding-top: 70px;
 }
+
+.fa-pencil-alt {
+  color: var(--lavender);
+  cursor: pointer;
+}
+
+.fa-check {
+  color: rgb(96, 224, 171);
+  cursor: pointer;
+}
+
+.fa-times {
+  color: rgb(240, 113, 124);
+  cursor: pointer;
+}
