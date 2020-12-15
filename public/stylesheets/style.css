@@ -3,6 +3,8 @@
 @import url("landing-page.css");
 @import url("burger-menu.css");
 @import url("client-page.css");
+@import url("sign-up.css");
+@import url("sign-in.css");
 
 * {
   box-sizing: border-box;

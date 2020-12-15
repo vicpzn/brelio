@@ -45,6 +45,19 @@ router.patch("/api/edit/clients/:id", async (req, res) => {
   }
 });
 
+router.get("/account-management/add", (req, res) => {
+  res.render("new-account", { title: "Add a new prospect" });
+});
+
+router.post("/account-management/add", async (req, res, next) => {
+  try {
+    await ClientModel.create(req.body);
+    res.redirect("/account-management");
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get("/account-management/:id", async (req, res, next) => {
   try {
     res.render("client_page", await ClientModel.findById(req.params.id));

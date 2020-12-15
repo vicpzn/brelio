@@ -14,9 +14,12 @@ const clientSchema = new Schema(
     city: String,
     country: String,
     task_associated: [String],
-    task_deadline: Date,
-    priority: Number,
-    comments: [String],
+    task_deadline: { type: Date, default: Date.now },
+    priority: {
+      type: Number,
+      default: 1,
+    },
+    comments: { type: [String], default: "" },
   },
   { timestamps: true }
 );
