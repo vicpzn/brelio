@@ -2,7 +2,6 @@
 const slide = document.querySelector(".slide");
 const close = document.querySelector(".close");
 const burger = document.getElementById("burger");
-console.log(burger);
 
 function openSlideMenu() {
   document.getElementById("menu").style.width = "100px";
@@ -24,5 +23,3 @@ burger.addEventListener("click", () => {
     burger.style.display = "none";
   }
 });
-slide.addEventListener("click", openSlideMenu);
-close.addEventListener("click", closeSlideMenu);
