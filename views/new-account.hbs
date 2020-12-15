@@ -1,0 +1,41 @@
+{{> burger_menu}}
+
+<form method="post" action="/account-management/add" id="form_user">
+    <div class="wrapper">
+        <input name="firstname" type="text" class="input" placeholder="First Name" required>
+    </div>
+    <div class="wrapper">
+        <input name="lastname" type="text" class="input" placeholder="Last Name" required>
+    </div>
+    <div class="wrapper">
+        <input name="email" type="email" class="input" placeholder="john@brelio.com" required>
+    </div>
+    <div class="wrapper">
+        <input name="phonenumber" type="tel" class="input" placeholder="Phone Number" required>
+    </div>
+    <div class="wrapper">
+        <input name="company" type="text" class="input" placeholder="Company" required>
+    </div>
+    <div class="wrapper">
+        <input name="streetnumber" type="text" class="input" placeholder="Street Number" required>
+    </div>
+    <div class="wrapper">
+        <input name="street" type="text" class="input" placeholder="Street" required>
+    </div>
+    <div class="wrapper">
+        <input name="zipcode" type="text" class="input" placeholder="Zipcode" required>
+    </div>
+    <div class="wrapper">
+        <input name="city" type="text" class="input" placeholder="City" required>
+    </div>
+    <div class="wrapper">
+        <input name="country" type="text" class="input" placeholder="Country" required>
+    </div>
+    <div class="wrapper">
+        <input name="task_associated" type="text" class="input" placeholder="Task">
+    </div>
+    <div class="wrapper">
+        <input name="task_deadline" type="date" class="input" placeholder="Date" required>
+    </div>
+    <button class="btn">Create a new prospect</button>
+</form>
