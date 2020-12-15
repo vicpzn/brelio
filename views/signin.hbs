@@ -4,16 +4,14 @@
 <p class="message {{msg.status}}">{{msg.text}}</p>
 {{/if}} --}}
 
-<form method="post" action="/signin" id="form_user">
-    <div class="wrapper">
-        <label for="email" class="label">Email</label>
-        <input name="email" id="email" type="email" class="input" placeholder="john@brelio.com" required>
-    </div>
-    <div class="wrapper">
-        <label for="password" class="label">Password</label>
-        <input name="password" id="password" type="password" class="input" placeholder="Password" required>
-    </div>
-    <button class="btn">Log in</button>
-</form>
-<p class="link">Not registered yet? <a href="/signup" class="btn">Sign up</a></p>
-</section>
+<div id="sign-in-container">
+    <h1>Log into your brelio account</h1>
+    <form method="post" action="/signin" id="form_user">
+        <div id="wrapper-sign-in">
+            <input name="email" id="email" type="email" class="input" placeholder="john@brelio.com" required>
+            <input name="password" id="password" type="password" class="input" placeholder="Password" required>
+        </div>
+        <button id="btn-sign-in">Log in</button>
+    </form>
+    <p class="link">Not registered yet? <a href="/signup" class="btn">Sign up</a></p>
+</div>
