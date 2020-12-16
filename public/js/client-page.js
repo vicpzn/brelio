@@ -59,8 +59,8 @@ function trashComment() {
   console.log(trashes);
   trashes.forEach((trash) =>
     trash.addEventListener("click", async () => {
-      let removedComment = trash.parentNode;
-      let commentContent = removedComment.querySelector(".comment span");
+      let selectedComment = trash.parentNode;
+      let commentContent = selectedComment.querySelector(".comment span");
       let trashedComment = commentContent.textContent;
       try {
         await axios.patch(`http://localhost:4848/api/edit/clients/${id}`, {
@@ -73,6 +73,96 @@ function trashComment() {
     })
   );
 }
+
+//Task
+const writeTask = document.querySelector("#write-task");
+const taskDate = document.querySelector("#date-task");
+const taskPriority = document.querySelector("#priority");
+const taskBtn = document.querySelector("#add-task button");
+let tasksList = document.querySelector("#tasks tbody");
+
+function displayTasks(array) {
+  tasksList.innerHTML = "";
+  array.forEach((element) => {
+    let tr = document.createElement("tr");
+    tasksList.appendChild(tr);
+
+    let tdCheck = document.createElement("td");
+    tdCheck.classList.add("checkbox");
+    tr.appendChild(tdCheck);
+
+    let tdTask = document.createElement("td");
+    tdTask.classList.add("task-content");
+    tdTask.textContent = element;
+    tr.appendChild(tdTask);
+
+    let tdPriority = document.createElement("td");
+    tdPriority.classList.add("task-priority");
+    tr.appendChild(tdPriority);
+
+    let tdDelete = document.createElement("td");
+    tdDelete.classList.add("erase-task");
+    tr.appendChild(tdDelete);
+
+    let i = document.createElement("i");
+    i.classList.add("fas");
+    i.classList.add("fa-times");
+    i.classList.add("erase-task");
+    td.appendChild(i);
+  });
+}
+
+async function fetchTasks() {
+  try {
+    const client = await axios.get(`/api/clients/${id}`);
+    const tasks = client.data.tasks;
+    displayTasks(tasks);
+    trashTask();
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+function sendTask() {
+  taskBtn.addEventListener("click", async () => {
+    const taskContent = writeTask.value;
+    const deadline = taskDate.value;
+    const priority = taskPriority.value;
+    console.log(taskContent);
+    writeTask.value = "";
+    try {
+      await axios.post(`http://localhost:4848/api/tasks/:id`, {
+        clients: `${id}`,
+        task_associated: `${taskContent}`,
+        task_deadline: `${deadline}`,
+        priority: `${priority}`,
+      });
+      fetchComments();
+    } catch (err) {
+      console.error(err);
+    }
+  });
+}
+
+// function trashComment() {
+//   let trashes = document.querySelectorAll(".trash-comment");
+//   console.log(trashes);
+//   trashes.forEach((trash) =>
+//     trash.addEventListener("click", async () => {
+//       let selectedComment = trash.parentNode;
+//       let commentContent = selectedComment.querySelector(".comment span");
+//       let trashedComment = commentContent.textContent;
+//       try {
+//         await axios.patch(`http://localhost:4848/api/edit/clients/${id}`, {
+//           $pull: { comments: `${trashedComment}` },
+//         });
+//         fetchComments();
+//       } catch (err) {
+//         console.error(err);
+//       }
+//     })
+//   );
+// }
 
 //firstname
 let firstnameArea = document.querySelector("#firstname");
