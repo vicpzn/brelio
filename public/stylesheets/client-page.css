@@ -17,3 +17,13 @@
 .fa-times {
   color: rgb(240, 113, 124);
 }
+
+#client-page {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#client-infos {
+  width: 35vw;
+  height: 35vh;
+}

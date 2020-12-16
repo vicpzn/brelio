@@ -9,7 +9,7 @@ const bcrypt = require("bcrypt");
 
 router.get("/clients", async (req, res) => {
   try {
-    res.json(await ClientModel.find());
+    res.json(await ClientModel.find().populate("task"));
   } catch (err) {
     res.json(err);
   }
@@ -18,6 +18,14 @@ router.get("/clients", async (req, res) => {
 router.get("/tasks", async (req, res) => {
   try {
     res.json(await TaskModel.find());
+  } catch (err) {
+    res.json(err);
+  }
+});
+
+router.get("/tasks/:id", async (req, res) => {
+  try {
+    res.json(await TaskModel.findById(req.paramas.id));
   } catch (err) {
     res.json(err);
   }
