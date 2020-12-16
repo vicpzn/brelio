@@ -2,13 +2,10 @@ var express = require("express");
 const UserModel = require("../models/User");
 var router = express.Router();
 const ClientModel = require("../models/Clients");
-<<<<<<< HEAD
 const CompanyModel = require("../models/Company");
 
-=======
 const uploader = require("./../config/cloudinary");
 const bcrypt = require("bcrypt");
->>>>>>> bd23ba1a1442ccf663860c1e022c8fa6582e0f43
 // const protectAdminRoute = require("./../middlewares/protectPrivateRoute");
 
 // router.use(protectAdminRoute);
@@ -174,16 +171,18 @@ router.post("/add-prospect", async (req, res, next) => {
   }
 });
 
-<<<<<<< HEAD
 router.post("/dashboard/register", async (req, res, next) => {
   try {
     await CompanyModel.create(req.body);
     res.redirect("/dashboard");
-=======
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get("/dashboard/settings/", (req, res, next) => {
   try {
     res.render("settings");
->>>>>>> bd23ba1a1442ccf663860c1e022c8fa6582e0f43
   } catch (err) {
     next(err);
   }
