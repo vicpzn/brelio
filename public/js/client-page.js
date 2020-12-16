@@ -8,7 +8,7 @@ const id = clientId.textContent;
 function displayComments(array) {
   commentsList.innerHTML = "";
   array.forEach((element) => {
-    commentsList.innerHTML += `<tr><td>${element} <i class="fas fa-trash" id="trash-comment"></td></tr>`;
+    commentsList.innerHTML += `<tr><td>${element} <i class="fas fa-trash trash-comment"></td></tr>`;
   });
   trashComment();
 }
@@ -41,7 +41,7 @@ function sendComment() {
 
 function trashComment() {
   document
-    .querySelector(".trash-comment")
+    .querySelectorAll(".trash-comment")
     .addEventListener("click", async () => {
       let removedComment = document.querySelectorAll(".comment");
       console.log(removedComment);
