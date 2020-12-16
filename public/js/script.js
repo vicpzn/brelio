@@ -2,6 +2,7 @@
 const slide = document.querySelector(".slide");
 const close = document.querySelector(".close");
 const burger = document.getElementById("burger");
+const cross = document.getElementById("cross");
 
 function openSlideMenu() {
   document.getElementById("menu").style.width = "100px";
@@ -13,13 +14,14 @@ function closeSlideMenu() {
   document.getElementById("content").style.marginLeft = "0";
 }
 
-// slide.addEventListener("click", openSlideMenu);
-// close.addEventListener("click", closeSlideMenu);
+slide.addEventListener("click", openSlideMenu);
+close.addEventListener("click", closeSlideMenu);
 
-// burger.addEventListener("click", () => {
-//   if (burger.style.display === "none") {
-//     burger.style.display = "block";
-//   } else {
-//     burger.style.display = "none";
-//   }
-// });
+burger.addEventListener("click", () => {
+  // console.log("toto", burger.style.display);
+  if (burger.style.display === "none") {
+    burger.style.display = "block";
+  } else {
+    burger.style.display = "none";
+  }
+});
