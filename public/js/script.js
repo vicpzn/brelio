@@ -13,13 +13,13 @@ function closeSlideMenu() {
   document.getElementById("content").style.marginLeft = "0";
 }
 
-// slide.addEventListener("click", openSlideMenu);
-// close.addEventListener("click", closeSlideMenu);
+slide.addEventListener("click", openSlideMenu);
+close.addEventListener("click", closeSlideMenu);
 
-// burger.addEventListener("click", () => {
-//   if (burger.style.display === "none") {
-//     burger.style.display = "block";
-//   } else {
-//     burger.style.display = "none";
-//   }
-// });
+burger.addEventListener("click", () => {
+  if (burger.style.display === "none") {
+    burger.style.display = "block";
+  } else {
+    burger.style.display = "none";
+  }
+});
