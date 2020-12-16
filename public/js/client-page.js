@@ -8,9 +8,23 @@ const id = clientId.textContent;
 function displayComments(array) {
   commentsList.innerHTML = "";
   array.forEach((element) => {
-    commentsList.innerHTML += `<tr><td><p>${element}</p> <i class="fas fa-trash trash-comment"></td></tr>`;
+    let tr = document.createElement("tr");
+    commentsList.appendChild(tr);
+
+    let td = document.createElement("td");
+    td.classList.add("comment");
+    tr.appendChild(td);
+
+    let span = document.createElement("span");
+    span.textContent = element;
+    td.appendChild(span);
+
+    let i = document.createElement("i");
+    i.classList.add("fas");
+    i.classList.add("fa-trash");
+    i.classList.add("trash-comment");
+    td.appendChild(i);
   });
-  trashComment();
 }
 
 async function fetchComments() {
@@ -18,6 +32,7 @@ async function fetchComments() {
     const client = await axios.get(`/api/clients/${id}`);
     const comments = client.data.comments;
     displayComments(comments);
+    trashComment();
   } catch (err) {
     console.error(err);
   }
@@ -40,14 +55,16 @@ function sendComment() {
 }
 
 function trashComment() {
-  const trashes = document.querySelectorAll(".trash-comment");
+  let trashes = document.querySelectorAll(".trash-comment");
+  console.log(trashes);
   trashes.forEach((trash) =>
     trash.addEventListener("click", async () => {
       let removedComment = trash.parentNode;
-      removedComment.remove();
+      let commentContent = removedComment.querySelector(".comment span");
+      let trashedComment = commentContent.textContent;
       try {
         await axios.patch(`http://localhost:4848/api/edit/clients/${id}`, {
-          $pull: { comments: `${removedComment}` },
+          $pull: { comments: `${trashedComment}` },
         });
         fetchComments();
       } catch (err) {

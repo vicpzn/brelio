@@ -1,8 +1,6 @@
 var express = require("express");
-const UserModel = require("../models/User");
 var router = express.Router();
 const ClientModel = require("../models/Clients");
-const CompanyModel = require("../models/Company");
 const uploader = require("./../config/cloudinary");
 const bcrypt = require("bcrypt");
 

@@ -1,40 +1,40 @@
 {{> burger_menu}}
 
 <div class="container">
-    <form action="/dashboard/register" method="post" class="form" enctype="multipart/form-data">
+    <form action="/dashboard/register/{{_id}}" method="post" class="form" enctype="multipart/form-data">
 
-        <h3 class="title">Register your company</h3>
+        <h3 class="title">Edit your company</h3>
 
         <div class="item">
             <label for="streetnumber" class="label">Street Number</label>
             <input name="streetnumber" id="streetnumber" type="text" class="input" placeholder="Street Number"
-                value="streetnumber">
+                value="{{streetnumber}}">
         </div>
 
         <div class="item">
             <label for="street" class="label">Street</label>
-            <input name="street" id="street" type="text" class="input" placeholder="Street" value="street">
+            <input name="street" id="street" type="text" class="input" placeholder="Street" value="{{street}}">
         </div>
 
         <div class="item">
             <label for="zipcode" class="label">Zipcode</label>
-            <input name="zipcode" id="zipcode" type="text" class="input" placeholder="Zipcode" value="zipcode">
+            <input name="zipcode" id="zipcode" type="text" class="input" placeholder="Zipcode" value="{{zipcode}}">
         </div>
 
         <div class="item">
             <label for="city" class="label">City</label>
-            <input name="city" id="city" type="text" class="input" placeholder="City" value="city">
+            <input name="city" id="city" type="text" class="input" placeholder="City" value="{{city}}">
         </div>
 
         <div class="item">
             <label for="country" class="label">Country</label>
-            <input name="country" id="country" type="text" class="input" placeholder="Country" value="country">
+            <input name="country" id="country" type="text" class="input" placeholder="Country" value="{{country}}">
         </div>
 
         <div class="item">
             <label for="phonenumber" class="label">Phone Number</label>
             <input name="phonenumber" id="phonenumber" type="text" class="input" placeholder="Phone Number"
-                value="phonenumber">
+                value="{{phonenumber}}">
         </div>
 
         <div class="item">
