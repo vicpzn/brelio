@@ -8,7 +8,7 @@ const id = clientId.textContent;
 function displayComments(array) {
   commentsList.innerHTML = "";
   array.forEach((element) => {
-    commentsList.innerHTML += `<tr><td>${element} <i class="fas fa-trash" id="trash-comment"></td></tr>`;
+    commentsList.innerHTML += `<tr><td><p>${element}</p> <i class="fas fa-trash trash-comment"></td></tr>`;
   });
   trashComment();
 }
@@ -40,20 +40,21 @@ function sendComment() {
 }
 
 function trashComment() {
-  document
-    .querySelector(".trash-comment")
-    .addEventListener("click", async () => {
-      let removedComment = document.querySelectorAll(".comment");
-      console.log(removedComment);
+  const trashes = document.querySelectorAll(".trash-comment");
+  trashes.forEach((trash) =>
+    trash.addEventListener("click", async () => {
+      let removedComment = trash.parentNode;
+      removedComment.remove();
       try {
         await axios.patch(`http://localhost:4848/api/edit/clients/${id}`, {
           $pull: { comments: `${removedComment}` },
         });
-        fetchFComments();
+        fetchComments();
       } catch (err) {
         console.error(err);
       }
-    });
+    })
+  );
 }
 
 //firstname
@@ -587,3 +588,4 @@ openCityEditor();
 openCountryEditor();
 
 sendComment();
+trashComment();
