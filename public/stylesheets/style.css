@@ -5,7 +5,9 @@
 @import url("client-page.css");
 @import url("sign-up.css");
 @import url("sign-in.css");
-@import url("CRM/account-management.css");
+@import url("crm/account-management.css");
+@import url("crm/settings.css");
+@import url("crm/dashboard.css");
 
 * {
   box-sizing: border-box;

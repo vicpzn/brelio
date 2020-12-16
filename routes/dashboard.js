@@ -2,13 +2,30 @@ var express = require("express");
 var router = express.Router();
 const CompanyModel = require("../models/Company");
 const UserModel = require("../models/User");
+const ClientModel = require("../models/Clients");
 const uploader = require("./../config/cloudinary");
 const bcrypt = require("bcrypt");
 
 // ROUTER DASHBOARD
 
-router.get("/", (req, res) => {
-  res.render("dashboard", { title: "Dashboard" });
+router.get("/", async (req, res, next) => {
+  try {
+    const currentUser = await UserModel.findById("5fd77c662cb143287e9b194d");
+    const currentCompany = await CompanyModel.findById(
+      "5fda1cbbee52ee2136ab9740"
+    );
+    const lastProspects = await ClientModel.find()
+      .sort({ createdAt: -1 })
+      .limit(5);
+    res.render("dashboard", {
+      lastProspects,
+      currentUser,
+      currentCompany,
+      title: "Dashboard",
+    });
+  } catch (err) {
+    next(err);
+  }
 });
 
 // REGISTER A COMPANY
@@ -20,7 +37,16 @@ router.get("/register", (req, res) => {
 router.get("/settings/", async (req, res, next) => {
   try {
     const members = await UserModel.find().sort({ createdAt: -1 }).limit(5);
-    res.render("settings", { members, title: "Settings" });
+    const currentUser = await UserModel.findById("5fd77c662cb143287e9b194d");
+    const currentCompany = await CompanyModel.findById(
+      "5fda1cbbee52ee2136ab9740"
+    );
+    res.render("settings", {
+      currentCompany,
+      currentUser,
+      members,
+      title: "Settings",
+    });
   } catch (err) {
     next(err);
   }
@@ -28,10 +54,11 @@ router.get("/settings/", async (req, res, next) => {
 
 router.get("/register/:id", async (req, res, next) => {
   try {
-    res.render(
-      "register_company_edit",
-      await CompanyModel.findById(req.params.id)
-    );
+    const company = await CompanyModel.findById(req.params.id);
+    res.render("register_company_edit", {
+      company,
+      title: "Edit your company",
+    });
   } catch (err) {
     next(err);
   }
@@ -41,7 +68,7 @@ router.post("/register", uploader.single("logo"), async (req, res, next) => {
   try {
     const companyToRegister = { ...req.body };
     if (req.file) companyToRegister.logo = req.file.path;
-    await CompanyModel.create(req.body, companyToRegister);
+    await CompanyModel.create(companyToRegister);
     res.redirect("/dashboard");
   } catch (err) {
     next(err);

@@ -38,7 +38,7 @@ router.post("/create", uploader.single("avatar"), async (req, res, next) => {
       newUser.password = hashedPassword;
       await UserModel.create(newUser);
       req.flash("success", "Successfully registered.");
-      res.redirect("/users/");
+      res.redirect("/users/all");
     }
   } catch (error) {
     next(error);
@@ -57,7 +57,7 @@ router.get("/edit/:id", async (req, res, next) => {
 router.get("/delete/:id", async (req, res, next) => {
   try {
     await UserModel.findByIdAndDelete(req.params.id);
-    res.redirect("/users");
+    res.redirect("/users/all");
   } catch (err) {
     next(err);
   }
@@ -68,7 +68,7 @@ router.post("/edit/:id", uploader.single("avatar"), async (req, res, next) => {
     const profileToUpdate = { ...req.body };
     if (req.file) profileToUpdate.avatar = req.file.path;
     await UserModel.findByIdAndUpdate(req.params.id, profileToUpdate);
-    res.redirect("/users");
+    res.redirect("/users/all");
   } catch (err) {
     next(err);
   }

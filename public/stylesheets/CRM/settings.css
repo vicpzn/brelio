@@ -1,0 +1,71 @@
+#team-manage,
+#company-manage {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 10px;
+  -webkit-box-shadow: 0px 4px 45px -12px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 4px 45px -12px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 4px 45px -12px rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#team-manage a,
+#company-manage a {
+  text-decoration: none;
+  color: var(--purple);
+}
+
+#team-manage h2,
+#company-manage h2 {
+  margin: 10px 0;
+}
+
+#team-manage {
+  margin-top: 30px;
+  text-align: center;
+}
+
+#team-manage td {
+  padding: 10px;
+}
+
+#team-manage table {
+  border: 1px solid var(--purple);
+  border-radius: 10px;
+}
+
+#manage-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#company-manage a,
+#manage-btn a {
+  border: 2px solid var(--purple);
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 10px;
+  color: white;
+  background: var(--purple);
+}
+
+#manage-btn i {
+  color: white;
+}
+
+#your-company {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#your-company img {
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  margin-right: 10px;
+}

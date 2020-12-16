@@ -1,3 +1,48 @@
 {{> burger_menu}}
 
-<h1>THE SUPERSTORE</h1>
+<h1>{{currentCompany.name}}</h1>
+<p>Welcome {{currentUser.firstname}}</p>
+
+<div id="wrapper-dashboard">
+    <div id="company-manage">
+        <h2>Your last prospects</h2>
+        {{#each lastProspects}}
+        <p>{{this.firstname}} {{this.lastname}}</p>
+        {{/each}}
+        <a href="/account-management"><i class="fas fa-building"></i> Click here to access your prospects</a>
+    </div>
+
+    <div id="company-manage">
+        <h2>Tasks</h2>
+    </div>
+
+    <div id="company-manage">
+        <h2>Quick add</h2>
+    </div>
+
+
+
+    <div id="company-manage">
+        <h2>Graph</h2>
+        <canvas id="pie-chart" width="400" height="400"></canvas>
+        <script>
+            new Chart(document.getElementById("pie-chart"), {
+                type: 'bar',
+                data: {
+                    labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+                    datasets: [{
+                        label: "Population (millions)",
+                        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                        data: [2478, 5267, 734, 784, 433]
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Predicted world population (millions) in 2050'
+                    }
+                }
+            });
+        </script>
+    </div>
+</div>
