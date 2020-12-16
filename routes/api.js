@@ -41,7 +41,7 @@ router.post("/tasks", async (req, res) => {
 
 router.get("/clients/:id", async (req, res) => {
   try {
-    res.json(await ClientModel.findById(req.params.id));
+    res.json(await ClientModel.findById(req.params.id).populate("task"));
   } catch (err) {
     res.json(err);
   }

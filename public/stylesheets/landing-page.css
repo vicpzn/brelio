@@ -10,9 +10,19 @@
   box-shadow: 0px 5px 15px -10px rgba(0, 0, 0, 0.75);
 }
 
+#logo-div p {
+  position: relative;
+  font-weight: 600;
+  font-size: 2vw;
+}
+
 #landing-nav img,
 footer img {
-  height: 60px;
+  height: 45px;
+}
+
+#landing-nav img {
+  margin-left: 3vw;
 }
 
 #landing-nav * {
@@ -21,28 +31,31 @@ footer img {
   align-items: center;
 }
 
-#logo-div p {
-  font-size: 40px;
+#landing-nav-links {
+  position: absolute;
+  left: 15vw;
 }
 
 #landing-nav-links a {
-  margin: 10px;
+  margin: 10px 15px;
+  font-size: 1.5vw;
   text-decoration: none;
   color: var(--grey);
 }
 
 .sign-links {
-  margin-right: 10px;
+  margin-right: 3vw;
 }
 
 .sign-links a {
   border-radius: 5px;
-  padding: 10px 20px;
+  padding: 7px 20px;
   text-decoration: none;
   color: white;
+  font-size: 1.2vw;
   text-transform: uppercase;
   border: 2px solid var(--purple);
-  margin-left: 5px;
+  margin-left: 2vw;
 }
 
 .sign-links a:nth-child(1) {
@@ -57,18 +70,21 @@ footer img {
 
 #presentation {
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  height: 60vh;
+  margin: 0 10%;
 }
 
 #presentation h1 {
-  margin-bottom: 10px;
+  margin-bottom: 5vh;
+  font-size: 3vw;
 }
 
 #description a {
+  margin-top: 5vh;
   border-radius: 5px;
   padding: 10px 20px;
+  font-size: 1.3vw;
   text-decoration: none;
   color: white;
   background: var(--purple);
@@ -83,8 +99,12 @@ footer img {
   width: 50%;
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
+}
+
+#crm-img {
+  align-items: center;
+  height: auto;
 }
 
 #crm-img img {
@@ -93,6 +113,11 @@ footer img {
 
 #description {
   margin-left: 20px;
+  align-items: flex-start;
+}
+
+#description p {
+  font-size: 1.5vw;
 }
 
 #trust {
@@ -104,7 +129,7 @@ footer img {
 }
 
 #trust h2 {
-  font-size: 30px;
+  font-size: 3vw;
   margin-bottom: 50px;
 }
 
@@ -117,7 +142,7 @@ footer img {
 #clients img {
   height: 15vh;
   opacity: 0.5;
-  margin: 0px 10px;
+  margin: 0 5vw;
 }
 
 #clients img:hover {
@@ -146,6 +171,13 @@ footer a {
   flex-direction: column;
 }
 
+#logo-footer {
+  display: flex;
+  align-items: center;
+  font-size: 1.4vw;
+  margin-bottom: 1vh;
+}
+
 /* About page styling */
 #container {
   width: 100%;
@@ -153,10 +185,10 @@ footer a {
 }
 
 #gallery-wrapper {
-width: 100%;
-max-width: 340px;
-margin: 0 auto;
-height: auto;
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+  height: auto;
 }
 
 .gallery {
@@ -170,14 +202,13 @@ height: auto;
 }
 
 .gallery-item:not(:last-of-type) {
-margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .gallery-img {
   max-width: 100%;
   border-radius: 5px;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-
 }
 
 .item-about {
@@ -196,25 +227,24 @@ margin-bottom: 40px;
 
 /* responsive styles for the about page */
 @media screen and (min-width: 769px) {
+  #gallery-wrapper {
+    max-width: 1240px;
+  }
 
-#gallery-wrapper {
-  max-width: 1240px;
-}
+  .gallery {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-.gallery {
-flex-direction: row;
-flex-wrap: wrap;
-justify-content: center;
-}
+  .gallery-item {
+    padding: 20px;
+  }
 
-.gallery-item {
-  padding: 20px;
-}
-
-.gallery-img {
-  min-width: 350px;
-  max-width: 350px;
-}
+  .gallery-img {
+    min-width: 350px;
+    max-width: 350px;
+  }
 }
 
 /* Prices page styling */
@@ -248,18 +278,20 @@ justify-content: center;
   margin-top: 0;
   padding: 0 1em 2em;
 
-/* > 640px, 2 items/row
+  /* > 640px, 2 items/row
     @media screen and (min-width: 42em) and ( max-width: 60em ) {
       width: 50%;
       .no-flexbox &:nth-child(2n+1) { clear: both; }
     }
 
 /* > 960px, 3 items/row */
-    @media screen and (min-width: 60em) {
-      width: 33.3333%;
-      .no-flexbox &:nth-child(3n+1) { clear: both; }
+  @media screen and (min-width: 60em) {
+    width: 33.3333%;
+    .no-flexbox &:nth-child(3n + 1) {
+      clear: both;
     }
   }
+}
 
 .card {
   display: flex;
@@ -273,13 +305,13 @@ justify-content: center;
 }
 
 .card_image {
-    width: 100%;
-    border-radius: 5px;
+  width: 100%;
+  border-radius: 5px;
 }
 
 .card_content {
   display: flex;
-   flex: 1 0 auto;
+  flex: 1 0 auto;
   flex-direction: column;
   margin-top: 0;
   padding: 1.5em;
@@ -304,16 +336,15 @@ justify-content: center;
 
 .btn-price {
   width: 360px;
-    border-radius: 5px;
-    padding: 10px 20px;
-    text-decoration: none;
-    color: white;
-    background: var(--purple);
-    text-transform: uppercase;
-    border: 2px solid var(--purple);
-    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-    display: inline-block;
-
+  border-radius: 5px;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: white;
+  background: var(--purple);
+  text-transform: uppercase;
+  border: 2px solid var(--purple);
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  display: inline-block;
 }
 
 #container {

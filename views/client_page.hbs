@@ -55,25 +55,19 @@
         <table>
             <thead>
                 <tr>
-                    <th>Tasks</th>
-                    <th>Deadline</th>
-                    <th>Priority</th>
+                    <th colspan ="3">Tasks</th>
                 </tr>
             </thead>
             <tbody>
+                {{#each client.task}}
                 <tr>
-                    {{#each client.task}}
                     <td class="checkbox"><input type="checkbox"></td>
-                    <td class="task-content">{{this.task_associated}}</td>
-                    {{/each}}
-                    {{#each client.task_deadline}}
-                    <td class="task-date">{{formatDate this.task_deadline}}</td>
-                    {{/each}}
-                    {{#each client.priority}}
-                    <td class="task-priority">{{this.priority}}</td>
+                    <td class="task-content">{{ this.task_associated }}</td>
+                    <td class="task-date">{{ formatDate this.task_deadline }}</td>
+                    <td class="task-priority">{{ this.priority }}</td>
                     <td><i class="fas fa-times erase-task"></i></td>
-                    {{/each}}
                 </tr>
+                {{/each}}
             </tbody>
         </table>
         <div id="add-task">
@@ -111,7 +105,7 @@
                 {{#each client.comments}}
                 <tr>
                     <td class="comment">
-                        <span>{{this}}</span><i class="fas fa-trash trash-comment"></i>
+                        <span>{{this}}</span><i class="fas fa-times trash-comment"></i>
                     </td>
                 </tr>
                 {{/each}}
@@ -122,5 +116,5 @@
 
     </div>
 
-    <div id="delete"><a href="/account-management/delete/{{client._id}}">Delete</a></div>
+    <div id="delete"><a href="/account-management/delete/{{client._id}}"><i class="fas fa-trash" id="client-trash"></i>Delete this client page</a></div>
 </div>

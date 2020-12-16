@@ -21,7 +21,7 @@ function displayComments(array) {
 
     let i = document.createElement("i");
     i.classList.add("fas");
-    i.classList.add("fa-trash");
+    i.classList.add("fa-times");
     i.classList.add("trash-comment");
     td.appendChild(i);
   });
