@@ -14,13 +14,15 @@
   top: 0;
   left: 0;
   background-color: var(--lavender);
-  padding-top: 10px;
-  transition: 0.7s;
+}
+
+.nav img {
+  margin-top: 10px;
 }
 
 .nav a {
   display: block;
-  padding: 20px 25px;
+  padding: 20px 0px;
   color: white;
   font-size: 35px;
 }
@@ -35,10 +37,10 @@
   margin-left: 80px;
 }
 
-/* .container-one {
-  padding-bottom: 20px;
-}
-
+.container-one,
 .container-two {
-  padding-top: 30px;
-} */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
