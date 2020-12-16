@@ -12,9 +12,9 @@ const bcrypt = require("bcrypt");
 router.get("/", async (req, res, next) => {
   try {
     const currentUser = await UserModel.findById("5fd77c662cb143287e9b194d");
-    const currentCompany = await CompanyModel.findById(
-      "5fda1cbbee52ee2136ab9740"
-    );
+    const currentCompany = await CompanyModel.find({
+      _id: currentUser.company,
+    });
     const lastTasks = await TaskModel.find()
       .sort({ task_deadline: -1 })
       .limit(5);
@@ -36,20 +36,24 @@ router.get("/", async (req, res, next) => {
 // REGISTER A COMPANY
 
 router.get("/register", (req, res) => {
-  res.render("register_company");
+  res.render("register_company", { title: "New company" });
 });
 
 router.get("/settings/", async (req, res, next) => {
   try {
-    const members = await UserModel.find().sort({ createdAt: -1 }).limit(5);
     const currentUser = await UserModel.findById("5fd77c662cb143287e9b194d");
-    const currentCompany = await CompanyModel.findById(
-      "5fda1cbbee52ee2136ab9740"
-    );
+    const membersTeam = await UserModel.find({
+      company: currentUser.company,
+    })
+      .sort({ createdAt: -1 })
+      .limit(5);
+    const currentCompany = await CompanyModel.find({
+      _id: currentUser.company,
+    });
     res.render("settings", {
       currentCompany,
       currentUser,
-      members,
+      membersTeam,
       title: "Settings",
     });
   } catch (err) {

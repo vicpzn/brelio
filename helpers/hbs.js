@@ -69,3 +69,15 @@ hbs.registerHelper("compare", function (lvalue, rvalue, options) {
 hbs.registerHelper("formatDate", function (date) {
   return moment(date).format("DD-MM-YYYY");
 });
+
+hbs.registerHelper("userStatus", function (role) {
+  if (role === "manager") {
+    return `<a href="/dashboard/settings" title="Settings">
+    <i class="fas fa-cog"></i>
+</a>`;
+  } else if (role === "admin") {
+    return `<a href="/dashboard/settings/admin" title="Settings Admin">
+    <i class="fas fa-users-cog"></i>
+</a>`;
+  }
+});

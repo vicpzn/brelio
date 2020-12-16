@@ -13,7 +13,7 @@ const userSchema = new Schema(
     email: String,
     password: String,
     phonenumber: String,
-    company: String,
+    company: { type: Schema.Types.ObjectId, ref: "company" },
     avatar: {
       type: String,
       default: "/media/images/default-profile.png",

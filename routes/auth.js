@@ -2,9 +2,15 @@ const express = require("express");
 const router = new express.Router();
 const UserModel = require("../models/User");
 const bcrypt = require("bcrypt");
+const CompanyModel = require("../models/Company");
 
-router.get("/signup", (req, res) => {
-  res.render("signup", { title: "Sign up" });
+router.get("/signup", async (req, res, next) => {
+  try {
+    const companies = await CompanyModel.find();
+    res.render("signup", { companies, title: "Sign up" });
+  } catch (err) {
+    next(err);
+  }
 });
 
 router.get("/signin", (req, res) => {

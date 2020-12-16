@@ -18,22 +18,24 @@
 
 .nav img {
   margin-top: 10px;
+  border-radius: 50%;
 }
 
 .nav a {
   display: block;
   padding: 20px 0px;
   color: white;
-  font-size: 35px;
+  font-size: 30px;
 }
 
 .nav a:hover {
-  color: var(--grey);
-  transition: 0.4s;
+  color: rgb(179, 179, 179);
+  transform: scale(1.1);
+  transition: transform 0.2s;
 }
 
 #content {
-  padding: 20px;
+  padding: 10px 20px;
   margin-left: 80px;
 }
 
