@@ -3,7 +3,11 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
-    role: { type: String, enum: ["admin", "manager", "user"], default: "user" },
+    role: {
+      type: String,
+      enum: ["admin", "manager", "user"],
+      default: "manager",
+    },
     firstname: String,
     lastname: String,
     email: String,

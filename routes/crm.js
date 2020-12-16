@@ -1,12 +1,18 @@
 var express = require("express");
 var router = express.Router();
 const ClientModel = require("../models/Clients");
+const CompanyModel = require("../models/Company");
+
 // const protectAdminRoute = require("./../middlewares/protectPrivateRoute");
 
 // router.use(protectAdminRoute);
 
 router.get("/dashboard", (req, res) => {
   res.render("dashboard", { title: "Dashboard" });
+});
+
+router.get("/dashboard/register", (req, res) => {
+  res.render("register_company");
 });
 
 router.get("/account-management", async (req, res, next) => {
@@ -83,6 +89,15 @@ router.get("/user/:id", (req, res) => {
 router.post("/add-prospect", async (req, res, next) => {
   try {
     await ClientModel.create(req.body);
+    res.redirect("/dashboard");
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post("/dashboard/register", async (req, res, next) => {
+  try {
+    await CompanyModel.create(req.body);
     res.redirect("/dashboard");
   } catch (err) {
     next(err);
