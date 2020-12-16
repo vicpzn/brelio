@@ -21,7 +21,7 @@ router.get("/", async (req, res, next) => {
 });
 
 router.get("/add", (req, res) => {
-  res.render("new-account", { title: "Add a new prospect" });
+  res.render("new_account", { title: "Add a new prospect" });
 });
 
 router.post("/add", async (req, res, next) => {
