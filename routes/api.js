@@ -2,14 +2,14 @@ var express = require("express");
 const UserModel = require("../models/User");
 var router = express.Router();
 const ClientModel = require("../models/Clients");
-const TaskModel = require("../models/Clients");
+const TaskModel = require("../models/Task");
 const CompanyModel = require("../models/Company");
 const uploader = require("./../config/cloudinary");
 const bcrypt = require("bcrypt");
 
 router.get("/clients", async (req, res) => {
   try {
-    res.json(await ClientModel.find());
+    res.json(await ClientModel.find().populate("task"));
   } catch (err) {
     res.json(err);
   }
@@ -18,6 +18,14 @@ router.get("/clients", async (req, res) => {
 router.get("/tasks", async (req, res) => {
   try {
     res.json(await TaskModel.find());
+  } catch (err) {
+    res.json(err);
+  }
+});
+
+router.get("/tasks/:id", async (req, res) => {
+  try {
+    res.json(await TaskModel.findById(req.paramas.id));
   } catch (err) {
     res.json(err);
   }
