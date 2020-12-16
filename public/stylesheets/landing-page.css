@@ -146,24 +146,150 @@ footer a {
   flex-direction: column;
 }
 
-#container-about img {
-height: 200px;
-object-fit: cover;
+/* About page styling */
+#container {
+  width: 100%;
+  height: auto;
+}
+
+#gallery-wrapper {
+width: 100%;
+max-width: 340px;
+margin: 0 auto;
+height: auto;
+}
+
+.gallery {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-item:not(:last-of-type) {
+margin-bottom: 40px;
+}
+
+.gallery-img {
+  max-width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+
 }
 
 .item-about {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+  margin: 0;
+  padding: 8px;
+  background: var(--lavender);
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
 }
 
 .item-about a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
+/* responsive styles for the about page */
+@media screen and (min-width: 769px) {
+
+#gallery-wrapper {
+  max-width: 1240px;
+}
+
+.gallery {
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.gallery-item {
+  padding: 20px;
+}
+
+.gallery-img {
+  min-width: 350px;
+  max-width: 350px;
+}
+}
+
+/* Prices page styling */
+.card_content h2 {
+  line-height: 2;
+  color: var(--lavender);
+}
+
+.card_content p {
+  font-size: 0.875em;
+  color: var(--grey);
+}
+
+.card_image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.cards_item {
+  display: flex;
+  margin-top: 0;
+  padding: 0 1em 2em;
+
+/* > 640px, 2 items/row
+    @media screen and (min-width: 42em) and ( max-width: 60em ) {
+      width: 50%;
+      .no-flexbox &:nth-child(2n+1) { clear: both; }
+    }
+
+/* > 960px, 3 items/row */
+    @media screen and (min-width: 60em) {
+      width: 33.3333%;
+      .no-flexbox &:nth-child(3n+1) { clear: both; }
+    }
+  }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: whitesmoke;
+  border-radius: 5px;
+}
+
+.card img {
+  border-radius: 5px;
+}
+
+.card_image {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.card_content {
+  display: flex;
+   flex: 1 0 auto;
+  flex-direction: column;
+  margin-top: 0;
+  padding: 1.5em;
+}
+
+.card_content ul {
+  line-height: 3;
+}
+
+/* Products & Prices page styling */
 #intro {
   display: flex;
   flex-direction: column;
@@ -176,7 +302,7 @@ object-fit: cover;
   margin: 20px;
 }
 
-.btn {
+.btn-price {
   width: 360px;
     border-radius: 5px;
     padding: 10px 20px;
@@ -203,7 +329,6 @@ object-fit: cover;
   border: 2px solid var(--purple);
   border-radius: 5px;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-
 }
 
 .item h1 {
@@ -212,4 +337,16 @@ object-fit: cover;
 
 .item ul {
   padding: 50px;
+}
+
+.small-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 220px;
+  height: 120px;
+  border: 2px solid var(--purple);
+  border-radius: 5px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
 }
