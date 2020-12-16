@@ -7,7 +7,7 @@
 }
 
 .fa-pencil-alt {
-  color: var(--lavender);
+  color: var(--purple);
 }
 
 .fa-check {
@@ -16,8 +16,4 @@
 
 .fa-times {
   color: rgb(240, 113, 124);
-}
-
-#trash-comment {
-  color: var(--lavender);
 }
