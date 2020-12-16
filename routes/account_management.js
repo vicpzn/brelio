@@ -24,8 +24,15 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/add", (req, res) => {
-  res.render("new_account", { title: "Add a new prospect" });
+router.get("/add", async (req, res, next) => {
+  try {
+    const currentCompany = await CompanyModel.findById(
+      "5fda1cbbee52ee2136ab9740"
+    );
+    res.render("new_account", { currentCompany, title: "Add a new prospect" });
+  } catch (err) {
+    next(err);
+  }
 });
 
 router.post("/add", async (req, res, next) => {

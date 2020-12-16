@@ -1,19 +1,18 @@
 {{> burger_menu}}
+{{> current_user}}
 
-<h1>Settings Panel</h1>
-<p>Welcome {{currentUser.firstname}}!</p>
 <div id="company-manage">
     <h2>Your company</h2>
-    <div id="your-company"><img width="150px" src="{{currentCompany.logo}}" alt="{{currentCompany.name}}">
+    <div id="your-company"><img width="150px" src="{{currentCompany.0.logo}}" alt="{{currentCompany.0.name}}">
         <div>
-            <h3>{{currentCompany.name}}</h3>
-            <address>{{currentCompany.streetnumber}} {{currentCompany.street}}, {{currentCompany.zipcode}},
-                {{currentCompany.city}}, {{currentCompany.country}}</address>
-            <p>{{currentCompany.phonenumber}}</p>
+            <h3>{{currentCompany.0.name}}</h3>
+            <address>{{currentCompany.0.streetnumber}} {{currentCompany.0.street}}, {{currentCompany.0.zipcode}},
+                {{currentCompany.0.city}}, {{currentCompany.0.country}}</address>
+            <p>{{currentCompany.0.phonenumber}}</p>
         </div>
     </div>
 
-    <a href="/dashboard/register/{{currentUser.company}}"><i class="fas fa-building"></i> Click here to edit</a>
+    <a href="/dashboard/register/{{currentCompany.0._id}}"><i class="fas fa-building"></i> Edit company</a>
 </div>
 
 <div id="team-manage">
@@ -32,7 +31,7 @@
             </tr>
         </thead>
         <tbody>
-            {{#each members}}
+            {{#each membersTeam}}
             <tr>
                 <td>
                     <p>{{this.firstname}} {{this.lastname}}</p>

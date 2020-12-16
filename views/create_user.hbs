@@ -1,3 +1,5 @@
+{{> burger_menu}}
+
 <h1>Create a new user</h1>
 
 <form method="post" action="/users/create" enctype="multipart/form-data">
@@ -6,7 +8,9 @@
         <input name="lastname" id="lastname" type="text" class="input" placeholder="Last Name" required>
         <input name="email" id="email" type="email" class="input" placeholder="joe@company.com" required>
         <input name="phonenumber" id="phonenumber" type="tel" class="input" placeholder="Phone Number" required>
-        <input name="company" id="company" type="text" class="input" placeholder="Company" required>
+        <select name="company">
+            <option value="{{currentCompany.0._id}}">{{currentCompany.0.name}}</option>
+        </select>
         <input name="password" id="password" type="password" class="input" placeholder="Password" required>
         <select name="role">
             <option value="user">User</option>

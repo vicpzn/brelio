@@ -1,7 +1,44 @@
-{{#each users}}
-<p>{{this.firstname}} {{this.lastname}} {{this.email}} {{this.company}}</p>
-<a href="/users/edit/{{this._id}}">Edit user</a>
-<a href="/users/delete/{{this._id}}">Remove user</a>
-{{/each}}
+{{> burger_menu}}
+
+<div id="team-manage">
+    <h2>Manage your team</h2>
+    <p>All the users</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Role</th>
+                <th>Date Add</th>
+                <th>Date Update</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each users}}
+            <tr>
+                <td>
+                    <p>{{this.firstname}} {{this.lastname}}</p>
+                </td>
+                <td>
+                    <p>{{this.phonenumber}}</p>
+                </td>
+                <td>
+                    <p>{{this.role}}</p>
+                </td>
+                <td>
+                    <p>{{formatDate this.createdAt}}</p>
+                </td>
+                <td>
+                    <p>{{formatDate this.updatedAt}}</p>
+                </td>
+                <td><a class="fas fa-edit" href="/users/edit/{{this._id}}"></a></td>
+                <td><a class="fas fa-trash" href="/users/delete/{{this._id}}"></a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
 
 <a href="/users/create">Add a new user to your team</a>

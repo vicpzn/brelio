@@ -1,6 +1,21 @@
 #wrapper-dashboard {
-  margin-top: 10px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;
+}
+
+#avatar {
+  width: 50px;
+  border-radius: 50%;
+  margin: 0 20px;
+}
+
+#div-user-dashboard {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#div-user-dashboard h1 {
+  font-size: 20px;
 }

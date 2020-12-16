@@ -1,12 +1,18 @@
 var express = require("express");
 const UserModel = require("../models/User");
+const CompanyModel = require("../models/Company");
 var router = express.Router();
 const uploader = require("./../config/cloudinary");
 const bcrypt = require("bcrypt");
 
 router.get("/all", async (req, res, next) => {
   try {
-    const users = await UserModel.find().sort({ createdAt: -1 });
+    const currentUser = await UserModel.findById("5fd77c662cb143287e9b194d");
+    const users = await UserModel.find({
+      company: currentUser.company,
+    })
+      .sort({ createdAt: -1 })
+      .limit(5);
     res.render("list_users", { users, title: "List of users" });
   } catch (err) {
     next(err);
@@ -15,8 +21,11 @@ router.get("/all", async (req, res, next) => {
 
 router.get("/create", async (req, res, next) => {
   try {
-    const users = await UserModel.find();
-    res.render("create_user", { users, title: "Create a new user" });
+    const currentUser = await UserModel.findById("5fd77c662cb143287e9b194d");
+    const currentCompany = await CompanyModel.find({
+      _id: currentUser.company,
+    });
+    res.render("create_user", { currentCompany, title: "Create a new user" });
   } catch (err) {
     next(err);
   }
@@ -48,7 +57,8 @@ router.post("/create", uploader.single("avatar"), async (req, res, next) => {
 router.get("/edit/:id", async (req, res, next) => {
   try {
     const user = await UserModel.findById(req.params.id);
-    res.render("edit_user", user);
+    const currentUser = await UserModel.findById("5fd77c662cb143287e9b194d");
+    res.render("edit_user", { title: "Edit your profile", user, currentUser });
   } catch (err) {
     next(err);
   }

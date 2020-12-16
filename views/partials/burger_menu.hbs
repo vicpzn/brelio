@@ -1,30 +1,29 @@
 <div id="content">
     <div id="menu" class="nav">
-        <div><img width="50x" src="{{currentCompany.logo}}" alt="{{currentCompany.name}}"></div>
+        <div><img width="50px" src="{{currentCompany.0.logo}}" alt="{{currentCompany.0.name}}"></div>
 
         <div class="container-one">
-            <a href="/dashboard" title="dashboard">
+            <a href="/dashboard" title="Dashboard">
                 <i class="fas fa-chart-pie"></i>
             </a>
-            <a href="/account-management" title="clients">
+            <a href="/account-management" title="Prospects">
                 <i class="fas fa-address-book"></i>
             </a>
-            <a href="#" title="email">
+            <a href="#" title="Email">
                 <i class="fas fa-envelope"></i>
             </a>
-            <a href="#" title="add client">
+            <a href="/account-management/add" title="Add a prospect">
                 <i class="fas fa-user-edit"></i>
             </a>
         </div>
 
         <div class="container-two">
-            <a href="/users/edit/{{currentUser._id}}" title="profile">
+            <a href="/users/edit/{{currentUser._id}}" title="Edit profile">
                 <i class="fas fa-user"></i>
             </a>
-            <a href="/dashboard/settings" title="settings">
-                <i class="fas fa-cog"></i>
-            </a>
-            <a href="/logout" title="logout">
+            {{#userStatus currentUser.role}}
+            {{/userStatus}}
+            <a href="/logout" title="Logout">
                 <i class="fas fa-sign-out-alt"></i>
             </a>
         </div>

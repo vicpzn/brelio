@@ -1,18 +1,17 @@
 {{> burger_menu}}
+{{> current_user}}
 
-
-<h1>Welcome {{currentUser.firstname}}</h1>
 
 <div id="wrapper-dashboard">
     <div id="company-manage">
-        <h2>Your last updated prospects</h2>
+        <h2>Last updated prospects</h2>
         {{#each lastProspects}}
         <p>{{this.firstname}} {{this.lastname}} {{this.company}} <a class="fas fa-envelope"
                 href="mailto:{{this.email}}">Send an
                 email</a>
         </p>
         {{/each}}
-        <a href="/account-management"><i class="fas fa-building"></i> Click here to access your prospects</a>
+        <a href="/account-management"><i class="fas fa-address-book"></i> My prospects</a>
     </div>
 
     <div id="company-manage">
@@ -24,6 +23,7 @@
 
     <div id="company-manage">
         <h2>Quick add</h2>
+        <a class="fas fa-plus" href="/account-management/add">Add a new prospect</a>
     </div>
 
     <div id="company-manage">
@@ -32,17 +32,17 @@
             new Chart(document.getElementById("pie-chart"), {
                 type: 'bar',
                 data: {
-                    labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+                    labels: ["Low", "Medium", "High"],
                     datasets: [{
-                        label: "Population (millions)",
-                        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-                        data: [2478, 5267, 734, 784, 433]
+                        label: "Tasks",
+                        backgroundColor: ["#17C106", "#F48D0A", "#F42A0A"],
+                        data: [2, 5, 3]
                     }]
                 },
                 options: {
                     title: {
                         display: true,
-                        text: 'Predicted world population (millions) in 2050'
+                        text: 'Repartition of tasks'
                     }
                 }
             });

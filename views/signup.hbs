@@ -19,7 +19,11 @@
             <input name="lastname" id="lastname" type="text" class="input" placeholder="Last Name" required>
             <input name="email" id="email" type="email" class="input" placeholder="joe@company.com" required>
             <input name="phonenumber" id="phonenumber" type="tel" class="input" placeholder="Phone Number" required>
-            <input name="company" id="company" type="text" class="input" placeholder="Company" required>
+            <select name="company">
+                {{#each companies}}
+                <option value="{{this._id}}">{{this.name}}</option>
+                {{/each}}
+            </select>
             <input name="password" id="password" type="password" class="input" placeholder="Password" required>
         </div>
         <button id="btn-sign-up">Sign up</button>
