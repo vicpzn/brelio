@@ -27,9 +27,10 @@ router.post("/register", async (req, res, next) => {
   }
 });
 
-router.get("/settings/", (req, res, next) => {
+router.get("/settings/", async (req, res, next) => {
   try {
-    res.render("settings");
+    const members = await UserModel.find().sort({ createdAt: -1 }).limit(5);
+    res.render("settings", { members, title: "Settings" });
   } catch (err) {
     next(err);
   }

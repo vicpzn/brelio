@@ -1,8 +1,53 @@
 {{> burger_menu}}
 
 <h1>Settings Panel</h1>
+<p>Welcome name!</p>
+<div id="company-manage">
+    <h2>Manage the company</h2>
 
-<h2>Manage the company</h2>
+    <a href="/company/edit">Click here to edit your company</a>
+</div>
 
-<h2>Manage your team</h2>
-<a href="/users">click here to manage</a>
+<div id="team-manage">
+    <h2>Manage your team</h2>
+    <p>Last five users added</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Role</th>
+                <th>Date Add</th>
+                <th>Date Update</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each members}}
+            <tr>
+                <td>
+                    <p>{{this.firstname}} {{this.lastname}}</p>
+                </td>
+                <td>
+                    <p>{{this.phonenumber}}</p>
+                </td>
+                <td>
+                    <p>{{this.role}}</p>
+                </td>
+                <td>
+                    <p>{{formatDate this.createdAt}}</p>
+                </td>
+                <td>
+                    <p>{{formatDate this.updatedAt}}</p>
+                </td>
+                <td><a href="/users/edit/{{this._id}}">Edit user</a></td>
+                <td><a href="/users/delete/{{this._id}}">Remove user</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <a href="/users/create">Add a new user to your team</a>
+    <a href="/users/all">Click here to manage all the users</a>
+</div>

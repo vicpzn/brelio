@@ -6,9 +6,9 @@ const CompanyModel = require("../models/Company");
 const uploader = require("./../config/cloudinary");
 const bcrypt = require("bcrypt");
 
-router.get("/", async (req, res, next) => {
+router.get("/all", async (req, res, next) => {
   try {
-    const users = await UserModel.find();
+    const users = await UserModel.find().sort({ createdAt: -1 });
     res.render("list_users", { users, title: "List of users" });
   } catch (err) {
     next(err);
@@ -49,7 +49,8 @@ router.post("/create", uploader.single("avatar"), async (req, res, next) => {
 
 router.get("/edit/:id", async (req, res, next) => {
   try {
-    res.render("edit_user", await UserModel.findById(req.params.id));
+    const user = await UserModel.findById(req.params.id);
+    res.render("edit_user", user);
   } catch (err) {
     next(err);
   }
