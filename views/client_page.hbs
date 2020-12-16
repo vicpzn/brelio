@@ -90,11 +90,13 @@
     </div>
 
     <div id="file-upload">
-        <label for="files" class="label">
+        <div>
+            <label for="files" class="label">
             Upload a file
             <i class="icon fas fa-cloud-upload-alt fa-2x"></i>
         </label>
         <input class="is-hidden" type="file" id="files" name="files">
+        </div>
         <button class="btn">Send</button>
     </div>
 
@@ -120,5 +122,5 @@
 
     </div>
 
-    <a href="/account-management/delete/{{client._id}}">Delete</a>
+    <div id="delete"><a href="/account-management/delete/{{client._id}}">Delete</a></div>
 </div>

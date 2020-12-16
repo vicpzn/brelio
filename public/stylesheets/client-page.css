@@ -1,8 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600&display=swap");
+
 #client-page {
   padding-top: 70px;
+  font-family: Source Sans Pro;
+  font-weight: 200;
 }
 
-.fas {
+.fas,
+button {
   cursor: pointer;
 }
 
@@ -21,9 +26,55 @@
 #client-page {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-end;
 }
 
-#client-infos {
+#client-infos,
+#tasks,
+#file-upload,
+#comments-table {
   width: 35vw;
-  height: 35vh;
+  height: auto;
+  background-color: #5d81ed33;
+  padding: 5vh;
+  border-radius: 15px;
+}
+
+#client-infos,
+#tasks {
+  margin-top: 10vh;
+  margin-bottom: 5vh;
+}
+
+#delete {
+  width: 35vw;
+}
+
+#client-infos tr td:first-child {
+  font-weight: 400;
+  padding-right: 2vw;
+  padding-left: 5vw;
+  text-align: right;
+}
+
+.is-hidden {
+  visibility: hidden;
+}
+
+#file-upload {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#file-upload .label {
+  font-size: 2.5vw;
+}
+
+#file-upload button {
+  display: block;
+  width: 5vw;
+  align-self: center;
+  padding: 1vh 1vw;
 }
