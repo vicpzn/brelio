@@ -45,7 +45,7 @@ function trashComment() {
       removedComment = document.querySelector(".comment");
       console.log(removedComment);
       try {
-        await axios.patch(`http://localhost:4848/api/edit/clients/${id}`, {
+        await axios.delete(`http://localhost:4848/api/edit/clients/${id}`, {
           $pull: { comments: `${removedComment}` },
         });
         fetchFComments();

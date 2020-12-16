@@ -171,18 +171,18 @@ router.post("/add-prospect", async (req, res, next) => {
   }
 });
 
-router.post("/dashboard/register", async (req, res, next) => {
+router.get("/dashboard/settings/", (req, res, next) => {
   try {
-    await CompanyModel.create(req.body);
-    res.redirect("/dashboard");
+    res.render("settings");
   } catch (err) {
     next(err);
   }
 });
 
-router.get("/dashboard/settings/", (req, res, next) => {
+router.post("/dashboard/register", async (req, res, next) => {
   try {
-    res.render("settings");
+    await CompanyModel.create(req.body);
+    res.redirect("/dashboard");
   } catch (err) {
     next(err);
   }
