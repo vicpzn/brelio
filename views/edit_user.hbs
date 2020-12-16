@@ -1,0 +1,23 @@
+<h1>Edit your profile</h1>
+
+<form method="post" action="/users/edit/{{_id}}" enctype="multipart/form-data">
+    <div id="wrapper-sign-up">
+        <input name="firstname" id="firstname" type="text" class="input" placeholder="First Name" value="{{firstname}}"
+            required>
+        <input name="lastname" id="lastname" type="text" class="input" placeholder="Last Name" value="{{lastname}}"
+            required>
+        {{!-- <input name="email" id="email" type="email" class="input" placeholder="joe@company.com" value="{{email}}"
+            required> --}}
+        <input name="phonenumber" id="phonenumber" type="tel" class="input" placeholder="Phone Number"
+            value="{{phonenumber}}" required>
+        <input name="company" id="company" type="text" class="input" placeholder="Company" value="{{company}}" required>
+    </div>
+    <div><img width="150px" src="{{avatar}}" alt="{{firstname}} {{lastname}}">
+        {{!-- <label for="avatar">
+            Choose a new profile picture
+            <i class="icon fas fa-cloud-upload-alt fa-2x"></i>
+        </label> --}}
+        <input type="file" name="avatar">
+    </div>
+    <button id="btn-sign-up">Edit Profile</button>
+</form>

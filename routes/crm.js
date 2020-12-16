@@ -1,8 +1,14 @@
 var express = require("express");
+const UserModel = require("../models/User");
 var router = express.Router();
 const ClientModel = require("../models/Clients");
+<<<<<<< HEAD
 const CompanyModel = require("../models/Company");
 
+=======
+const uploader = require("./../config/cloudinary");
+const bcrypt = require("bcrypt");
+>>>>>>> bd23ba1a1442ccf663860c1e022c8fa6582e0f43
 // const protectAdminRoute = require("./../middlewares/protectPrivateRoute");
 
 // router.use(protectAdminRoute);
@@ -82,9 +88,82 @@ router.get("/account-management/delete/:id", async (req, res, next) => {
   }
 });
 
-router.get("/user/:id", (req, res) => {
-  res.render("user_page");
+router.get("/users", async (req, res, next) => {
+  try {
+    const users = await UserModel.find();
+    res.render("list_users", { users, title: "List of users" });
+  } catch (err) {
+    next(err);
+  }
 });
+
+router.get("/users/create", async (req, res, next) => {
+  try {
+    const users = await UserModel.find();
+    res.render("create_user", { users, title: "Create a new user" });
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post(
+  "/users/create",
+  uploader.single("avatar"),
+  async (req, res, next) => {
+    try {
+      const newUser = { ...req.body };
+      const foundUser = await UserModel.findOne({ email: newUser.email });
+      if (req.file) newUser.avatar = req.file.path;
+      if (foundUser) {
+        req.flash(
+          "warning",
+          "Email already registered. Please try with another address."
+        );
+        res.redirect("/users/create");
+      } else {
+        const hashedPassword = bcrypt.hashSync(newUser.password, 10);
+        newUser.password = hashedPassword;
+        await UserModel.create(newUser);
+        req.flash("success", "Successfully registered.");
+        res.redirect("/users/");
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+router.get("/users/edit/:id", async (req, res, next) => {
+  try {
+    res.render("edit_user", await UserModel.findById(req.params.id));
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/users/delete/:id", async (req, res, next) => {
+  try {
+    await UserModel.findByIdAndDelete(req.params.id);
+    res.redirect("/users");
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post(
+  "/users/edit/:id",
+  uploader.single("avatar"),
+  async (req, res, next) => {
+    try {
+      const profileToUpdate = { ...req.body };
+      if (req.file) profileToUpdate.avatar = req.file.path;
+      await UserModel.findByIdAndUpdate(req.params.id, profileToUpdate);
+      res.redirect("/users");
+    } catch (err) {
+      next(err);
+    }
+  }
+);
 
 router.post("/add-prospect", async (req, res, next) => {
   try {
@@ -95,10 +174,16 @@ router.post("/add-prospect", async (req, res, next) => {
   }
 });
 
+<<<<<<< HEAD
 router.post("/dashboard/register", async (req, res, next) => {
   try {
     await CompanyModel.create(req.body);
     res.redirect("/dashboard");
+=======
+router.get("/dashboard/settings/", (req, res, next) => {
+  try {
+    res.render("settings");
+>>>>>>> bd23ba1a1442ccf663860c1e022c8fa6582e0f43
   } catch (err) {
     next(err);
   }
