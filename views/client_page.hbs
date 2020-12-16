@@ -1,3 +1,5 @@
+{{> burger_menu}}
+
 <div id="client-page">
     <div id="client-infos">
         <table>
@@ -51,15 +53,40 @@
 
     <div id="tasks">
         <table>
-            <tr>
-                <th>Tasks</th>
-            </tr>
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>{{formatDate client.task_deadline}}</td>
-                <td>{{client.task_associated}}</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Tasks</th>
+                    <th>Deadline</th>
+                    <th>Priority</th>
+                </tr> 
+            </thead>
+            <tbody>
+                <tr>
+                    {{#each client.task}}
+                    <td class="checkbox"><input type="checkbox"></td>
+                    <td class="task-content">{{this.task_associated}}</td>
+                    {{/each}}
+                    {{#each client.task_deadline}}
+                    <td class="task-date">{{formatDate this.task_deadline}}</td>
+                    {{/each}}
+                    {{#each client.priority}}
+                    <td class="task-priority">{{this.priority}}</td>
+                    <td><i class="fas fa-times erase-task"></i></td>
+                    {{/each}}
+                </tr>
+            </tbody>
         </table>
+        <div id="add-task">
+            <input name="task_associated" type="text" placeholder="Task" id="write-task">
+            <input name="task_deadline" type="date" placeholder="Date" id="date-task">
+            <label for="priority">Priority</label>
+            <select name="priority" id="priority">
+                <option value="3">Low</option>
+                <option value="2">Medium</option>
+                <option value="1">High</option>
+            </select>
+            <button>Add task</button>
+        </div>
     </div>
 
     <div id="file-upload">

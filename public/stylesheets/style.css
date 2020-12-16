@@ -54,3 +54,10 @@
   color: white;
   background: var(--purple);
 }
+
+.fa-pencil-alt,
+.fa-trash,
+.fa-cloud-upload-alt,
+.fa-eye {
+  color: var(--softgrey);
+}

@@ -13,12 +13,9 @@ const clientSchema = new Schema(
     zipcode: String,
     city: String,
     country: String,
-    task_associated: [String],
-    task_deadline: { type: Date, default: Date.now },
-    priority: {
-      type: Number,
-      default: 1,
-    },
+    task_associated: [{ type: Schema.Types.ObjectId, ref: "task_associated" }],
+    task_deadline: [{ type: Schema.Types.ObjectId, ref: "task_deadline" }],
+    priority: [{ type: Schema.Types.ObjectId, ref: "priority" }],
     comments: [String],
   },
   { timestamps: true }
