@@ -12,8 +12,8 @@ const companySchema = new Schema(
     phonenumber: String,
     firstname: { type: String, default: "john" },
     lastname: { type: String, default: "doe" },
-    users_id: [String], // team members added by the manager
-    logo: { type: String, default: "/media/images/logo.png" },
+    users_id: [String], // team members ids added by the manager
+    logo: { type: String, default: "/media/images/default_logo.png" },
   },
   { timestamps: true }
 );
