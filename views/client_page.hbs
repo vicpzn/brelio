@@ -8,38 +8,42 @@
                 </tr>
                 <tr id="firstname">
                     <td>Firstname</td>
-                    <td id="client-firstname">{{client.firstname}} <i class="fas fa-pencil-alt" id="edit-firstname"></i></td> 
+                    <td id="client-firstname">{{client.firstname}} <i class="fas fa-pencil-alt" id="edit-firstname"></i>
+                    </td>
                 </tr>
                 <tr id="lastname">
                     <td>Lastname</td>
-                    <td id="client-lastname">{{client.lastname}} <i class="fas fa-pencil-alt" id="edit-lastname"></i></td>
+                    <td id="client-lastname">{{client.lastname}} <i class="fas fa-pencil-alt" id="edit-lastname"></i>
+                    </td>
                 </tr>
                 <tr id="email">
                     <td>Email address</td>
-                    <td id="client-email">{{client.email}} <i class="fas fa-pencil-alt" id="edit-email"></i></td> 
+                    <td id="client-email">{{client.email}} <i class="fas fa-pencil-alt" id="edit-email"></i></td>
                 <tr id="phonenumber">
                     <td>Phone number</td>
-                    <td id="client-phonenumber">{{client.phonenumber}} <i class="fas fa-pencil-alt" id="edit-phonenumber"></i></td> 
-                </tr>   
+                    <td id="client-phonenumber">{{client.phonenumber}} <i class="fas fa-pencil-alt"
+                            id="edit-phonenumber"></i></td>
+                </tr>
                 <tr id="streetnumber">
                     <td>Street number</td>
-                    <td id="client-streetnumber">{{client.streetnumber}} <i class="fas fa-pencil-alt" id="edit-streetnumber"></i></td> 
-                </tr>   
+                    <td id="client-streetnumber">{{client.streetnumber}} <i class="fas fa-pencil-alt"
+                            id="edit-streetnumber"></i></td>
+                </tr>
                 <tr id="street">
                     <td>Street</td>
-                    <td id="client-street">{{client.street}} <i class="fas fa-pencil-alt" id="edit-street"></i></td> 
-                </tr>                                    
+                    <td id="client-street">{{client.street}} <i class="fas fa-pencil-alt" id="edit-street"></i></td>
+                </tr>
                 <tr id="zipcode">
                     <td>Zipcode</td>
-                    <td id="client-zipcode">{{client.zipcode}} <i class="fas fa-pencil-alt" id="edit-zipcode"></i></td> 
-                </tr>                
+                    <td id="client-zipcode">{{client.zipcode}} <i class="fas fa-pencil-alt" id="edit-zipcode"></i></td>
+                </tr>
                 <tr id="city">
                     <td>City</td>
-                    <td id="client-city">{{client.city}} <i class="fas fa-pencil-alt" id="edit-city"></i></td> 
-                </tr>                
+                    <td id="client-city">{{client.city}} <i class="fas fa-pencil-alt" id="edit-city"></i></td>
+                </tr>
                 <tr id="country">
                     <td>Country</td>
-                    <td id="client-country">{{client.country}} <i class="fas fa-pencil-alt" id="edit-country"></i></td> 
+                    <td id="client-country">{{client.country}} <i class="fas fa-pencil-alt" id="edit-country"></i></td>
                 </tr>
             </tbody>
         </table>
@@ -77,7 +81,9 @@
             <tbody>
                 {{#each client.comments}}
                 <tr>
-                    <td class="comment">{{this}} <i class="fas fa-trash trash-comment"></i></td>
+                    <td class="comment">
+                        <span>{{this}}</span> <i class="fas fa-trash trash-comment"></i>
+                    </td>
                 </tr>
                 {{/each}}
             </tbody>
