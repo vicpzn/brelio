@@ -3,6 +3,7 @@ var router = express.Router();
 const CompanyModel = require("../models/Company");
 const UserModel = require("../models/User");
 const ClientModel = require("../models/Clients");
+const TaskModel = require("../models/Task");
 const uploader = require("./../config/cloudinary");
 const bcrypt = require("bcrypt");
 
@@ -14,10 +15,14 @@ router.get("/", async (req, res, next) => {
     const currentCompany = await CompanyModel.findById(
       "5fda1cbbee52ee2136ab9740"
     );
+    const lastTasks = await TaskModel.find()
+      .sort({ task_deadline: -1 })
+      .limit(5);
     const lastProspects = await ClientModel.find()
       .sort({ createdAt: -1 })
       .limit(5);
     res.render("dashboard", {
+      lastTasks,
       lastProspects,
       currentUser,
       currentCompany,
