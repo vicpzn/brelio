@@ -23,6 +23,14 @@ router.get("/tasks", async (req, res) => {
   }
 });
 
+router.post("/tasks", async (req, res) => {
+  try {
+    res.json(await TaskModel.create(req.body));
+  } catch (err) {
+    res.json(err);
+  }
+});
+
 router.get("/clients/:id", async (req, res) => {
   try {
     res.json(await ClientModel.findById(req.params.id));

@@ -131,7 +131,7 @@ function sendTask() {
     console.log(taskContent);
     writeTask.value = "";
     try {
-      await axios.post(`http://localhost:4848/api/tasks/:id`, {
+      await axios.post(`http://localhost:4848/api/tasks`, {
         clients: `${id}`,
         task_associated: `${taskContent}`,
         task_deadline: `${deadline}`,
