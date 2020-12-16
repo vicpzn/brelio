@@ -10,6 +10,7 @@ function displayComments(array) {
   array.forEach((element) => {
     commentsList.innerHTML += `<tr><td>${element} <i class="fas fa-trash" id="trash-comment"></td></tr>`;
   });
+  trashComment();
 }
 
 async function fetchComments() {
@@ -40,12 +41,12 @@ function sendComment() {
 
 function trashComment() {
   document
-    .querySelector("#trash-comment")
+    .querySelector(".trash-comment")
     .addEventListener("click", async () => {
-      removedComment = document.querySelector(".comment");
+      let removedComment = document.querySelectorAll(".comment");
       console.log(removedComment);
       try {
-        await axios.delete(`http://localhost:4848/api/edit/clients/${id}`, {
+        await axios.patch(`http://localhost:4848/api/edit/clients/${id}`, {
           $pull: { comments: `${removedComment}` },
         });
         fetchFComments();
@@ -586,4 +587,3 @@ openCityEditor();
 openCountryEditor();
 
 sendComment();
-trashComment();
