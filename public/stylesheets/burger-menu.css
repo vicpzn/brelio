@@ -1,5 +1,9 @@
-body {
-  overflow-x: hidden;
+#menu {
+  width: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
 }
 
 .nav {
@@ -10,8 +14,7 @@ body {
   top: 0;
   left: 0;
   background-color: var(--lavender);
-  overflow-x: hidden;
-  padding-top: 150px;
+  padding-top: 10px;
   transition: 0.7s;
 }
 
@@ -22,38 +25,20 @@ body {
   font-size: 35px;
 }
 
-#cross {
-  color: white;
-}
-
 .nav a:hover {
   color: var(--grey);
   transition: 0.4s;
 }
 
-.nav .close {
-  position: absolute;
-  top: 0;
-  right: 22px;
-  margin-left: 50px;
-}
-
-.slide a {
-  color: var(--lavender);
-  font-size: 35px;
-}
-
 #content {
   padding: 20px;
-  transition: margin-left 0.7s;
-  overflow: hidden;
-  width: 100%;
+  margin-left: 80px;
 }
 
-.container-one {
+/* .container-one {
   padding-bottom: 20px;
 }
 
 .container-two {
   padding-top: 30px;
-}
+} */
