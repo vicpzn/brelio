@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 const ClientModel = require("../models/Clients");
 const TaskModel = require("../models/Task");
+const CompanyModel = require("../models/Company");
 const uploader = require("./../config/cloudinary");
 const bcrypt = require("bcrypt");
 
@@ -10,9 +11,13 @@ const bcrypt = require("bcrypt");
 router.get("/", async (req, res, next) => {
   try {
     const clients = await ClientModel.find();
+    const currentCompany = await CompanyModel.findById(
+      "5fda1cbbee52ee2136ab9740"
+    );
     res.render("account_management", {
       title: "Account Management",
       clients,
+      currentCompany,
     });
   } catch (err) {
     next(err);

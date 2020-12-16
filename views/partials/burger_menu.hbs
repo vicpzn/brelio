@@ -1,15 +1,6 @@
 <div id="content">
-
-    <span class="slide">
-        <a href="#">
-            <i id="burger" class="fas fa-bars"></i>
-        </a>
-    </span>
-
     <div id="menu" class="nav">
-        <a href="#" class="close">
-            <i id="cross" class="fas fa-times"></i>
-        </a>
+        <div><img width="50x" src="{{currentCompany.logo}}" alt="{{currentCompany.name}}"></div>
 
         <div class="container-one">
             <a href="/dashboard" title="dashboard">
@@ -27,7 +18,7 @@
         </div>
 
         <div class="container-two">
-            <a href="#" title="profile">
+            <a href="/users/edit/{{currentUser._id}}" title="profile">
                 <i class="fas fa-user"></i>
             </a>
             <a href="/dashboard/settings" title="settings">
