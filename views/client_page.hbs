@@ -1,14 +1,16 @@
 {{> burger_menu}}
 {{> current_user}}
-{{> searchbar}}
+{{> searchbar}} 
+
+<div id="client-bar">
+<span class="separator">Client id: <span id="client-id">{{client.id}}</span></span>  <span class="separator">Created on {{formatDate client.createdAt}}
+ by {{currentUser.firstname}} {{currentUser.lastname}}</span>  <a href="/account-management/delete/{{client._id}}" id="delete">
+ <i class="fas fa-trash" id="client-trash"></i>Delete this client page</a></span>
+</div>
 <div id="client-page">
     <div id="client-infos">
         <table>
             <tbody>
-                <tr>
-                    <td>Client id</td>
-                    <td id="client-id">{{client.id}}</td>
-                </tr>
                 <tr id="firstname">
                     <td>Firstname</td>
                     <td id="client-firstname">{{client.firstname}} <i class="fas fa-pencil-alt" id="edit-firstname"></i>
@@ -128,7 +130,4 @@
         </div>
 
     </div>
-
-    <div id="delete"><a href="/account-management/delete/{{client._id}}"><i class="fas fa-trash"
-                id="client-trash"></i>Delete this client page</a></div>
 </div>
