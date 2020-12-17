@@ -14,9 +14,13 @@ router.get("/", async (req, res, next) => {
   try {
     const clients = await ClientModel.find({
       creator: req.session.currentUser._id,
-    })
-      .populate("task")
-      .limit(1);
+    }).populate({
+      path: "task",
+      options: {
+        limit: 1,
+        sort: { task_deadline: 1 },
+      },
+    });
     console.log(clients);
     const currentUser = await UserModel.findById(
       req.session.currentUser._id
