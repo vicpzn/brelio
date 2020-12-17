@@ -27,7 +27,6 @@
   justify-content: center;
   align-items: center;
   padding-top: 30px;
-  margin-top: 30px;
 }
 
 .container-register {
@@ -35,7 +34,6 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  width: 100vw;
   height: 100vh;
   padding: 10vh 0;
 }

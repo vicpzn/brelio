@@ -1,35 +1,55 @@
 {{> burger_menu}}
 
-<form method="post" action="/account-management/add" id="form_user">
-    <div class="wrapper">
-        <input name="firstname" type="text" class="input" placeholder="First Name" required>
+<h1 class="title-register">Create a new prospect</h1>
+
+<form method="post" action="/account-management/add">
+
+    <div class="container-register">
+
+        <div class="item-register">
+            <input name="firstname" type="text" placeholder="First Name" required>
+        </div>
+
+        <div class="item-register">
+            <input name="lastname" type="text" placeholder="Last Name" required>
+        </div>
+
+        <div class="item-register">
+            <input name="email" type="email" placeholder="john@brelio.com" required>
+        </div>
+
+        <div class="item-register">
+            <input name="phonenumber" type="tel" placeholder="Phone Number" required>
+        </div>
+
+        <div class="item-register">
+            <input name="company" type="text" placeholder="Company" required>
+        </div>
+
+        <div class="item-register">
+            <input name="streetnumber" type="text" placeholder="Street Number" required>
+        </div>
+
+        <div class="item-register">
+            <input name="street" type="text" placeholder="Street" required>
+        </div>
+
+        <div class="item-register">
+            <input name="zipcode" type="text" placeholder="Zipcode" required>
+        </div>
+
+        <div class="item-register">
+            <input name="city" type="text" placeholder="City" required>
+        </div>
+
+        <div class="item-register">
+            <input name="country" type="text" placeholder="Country" required>
+        </div>
+
+        <div>
+            <button class="btn-register">Create a new prospect</button>
+        </div>
+
+
     </div>
-    <div class="wrapper">
-        <input name="lastname" type="text" class="input" placeholder="Last Name" required>
-    </div>
-    <div class="wrapper">
-        <input name="email" type="email" class="input" placeholder="john@brelio.com" required>
-    </div>
-    <div class="wrapper">
-        <input name="phonenumber" type="tel" class="input" placeholder="Phone Number" required>
-    </div>
-    <div class="wrapper">
-        <input name="company" type="text" class="input" placeholder="Company" required>
-    </div>
-    <div class="wrapper">
-        <input name="streetnumber" type="text" class="input" placeholder="Street Number" required>
-    </div>
-    <div class="wrapper">
-        <input name="street" type="text" class="input" placeholder="Street" required>
-    </div>
-    <div class="wrapper">
-        <input name="zipcode" type="text" class="input" placeholder="Zipcode" required>
-    </div>
-    <div class="wrapper">
-        <input name="city" type="text" class="input" placeholder="City" required>
-    </div>
-    <div class="wrapper">
-        <input name="country" type="text" class="input" placeholder="Country" required>
-    </div>
-    <button class="btn">Create a new prospect</button>
 </form>

@@ -117,6 +117,7 @@ a {
   visibility: hidden;
 }
 
+/* file upload */
 #file-upload {
   display: flex;
   flex-direction: column;

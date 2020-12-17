@@ -1,22 +1,48 @@
 {{> burger_menu}}
 
-<h1>Create a new user</h1>
+<h1 class="title-register">Create a new user</h1>
 
 <form method="post" action="/users/create" enctype="multipart/form-data">
-    <div id="wrapper-sign-up">
-        <input name="firstname" id="firstname" type="text" class="input" placeholder="First Name" required>
-        <input name="lastname" id="lastname" type="text" class="input" placeholder="Last Name" required>
-        <input name="email" id="email" type="email" class="input" placeholder="joe@company.com" required>
-        <input name="phonenumber" id="phonenumber" type="tel" class="input" placeholder="Phone Number" required>
+
+    <div class="container-register">
+
+        <div class="item-register">
+            <input name="firstname" type="text" placeholder="First Name" required>
+        </div>
+
+        <div class="item-register">
+            <input name="lastname" type="text" placeholder="Last Name" required>
+        </div>
+
+        <div class="item-register">
+            <input name="email" type="email" placeholder="joe@company.com" required>
+        </div>
+
+        <div class="item-register">
+            <input name="phonenumber" type="tel" placeholder="Phone Number" required>
+        </div>
+
         <select name="company">
             <option value="{{currentCompany.0._id}}">{{currentCompany.0.name}}</option>
         </select>
-        <input name="password" id="password" type="password" class="input" placeholder="Password" required>
+
+        <div class="item-register">
+            <input name="password" type="password" placeholder="Password" required>
+        </div>
+
         <select name="role">
             <option value="user">User</option>
             <option value="manager">Manager</option>
         </select>
-        <input type="file" name="avatar">
+
+        <div>
+            <input class="custom-file-input" type="file" name="avatar">
+        </div>
+
+        <div class="item-register">
+            <button class="btn-register">Create a new user</button>
+        </div>
+
     </div>
-    <button id="btn-sign-up">Create a new user</button>
+
 </form>

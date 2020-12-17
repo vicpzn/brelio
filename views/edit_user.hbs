@@ -1,21 +1,35 @@
 {{> burger_menu}}
 
-<h1>Edit your profile</h1>
+<h1 class="title-register">Edit your profile</h1>
 
 <form method="post" action="/users/edit/{{user._id}}" enctype="multipart/form-data">
-    <div id="wrapper-sign-up">
-        <input name="firstname" id="firstname" type="text" class="input" placeholder="First Name"
-            value="{{user.firstname}}" required>
-        <input name="lastname" id="lastname" type="text" class="input" placeholder="Last Name" value="{{user.lastname}}"
-            required>
-        <input name="phonenumber" id="phonenumber" type="tel" class="input" placeholder="Phone Number"
-            value="{{user.phonenumber}}" required>
+
+    <div class="container-register">
+
+        <div class="item-register">
+            <input name="firstname" type="text" placeholder="First Name" value="{{user.firstname}}" required>
+        </div>
+
+        <div class="item-register">
+            <input name="lastname" type="text" placeholder="Last Name" value="{{user.lastname}}" required>
+        </div>
+
+        <div class="item-register">
+            <input name="phonenumber" type="tel" placeholder="Phone Number" value="{{user.phonenumber}}" required>
+        </div>
+
+        <div class="item-register">
+            <img width="150px" src="{{user.avatar}}" alt="{{user.firstname}} {{user.lastname}}">
+        </div>
+
+        <div>
+            <input class="custom-file-input" type="file" name="avatar">
+        </div>
+
+        <div class="item-register">
+            <button class="btn-register">Edit Profile</button>
+        </div>
+
     </div>
-    <div><img width="150px" src="{{user.avatar}}" alt="{{user.firstname}} {{user.lastname}}">
-        <label for="avatar">
-            <i class="icon fas fa-cloud-upload-alt fa-2x"></i>
-        </label>
-        <input type="file" name="avatar">
-    </div>
-    <button id="btn-sign-up">Edit Profile</button>
+
 </form>

@@ -20,3 +20,30 @@ table#account-table td {
   align-items: center;
   flex-direction: column;
 }
+
+/* search bar */
+.search-container {
+  display: flex;
+}
+
+.search {
+  width: 200px;
+  height: 30px;
+  padding: 0 20px;
+  border: 1px solid #D0CFCE;
+  border-right: none;
+  outline: none;
+}
+
+.btn-search {
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid #D0CFCE;
+  outline: none;
+  border-left: none;
+  background: white;
+}
+
+.fa {
+  color: var(--softgrey);
+}
