@@ -15,6 +15,17 @@
             <option value="{{this._id}}">{{this.name}}</option>
             {{/each}}
         </select>
+        <select name="role">
+            <option value="admin">
+                <p>Admin</p>
+            </option>
+            <option value="manager">
+                <p>Manager</p>
+            </option>
+            <option value="role">
+                <p>User</p>
+            </option>
+        </select>
     </div>
     <div><img width="150px" src="{{user.avatar}}" alt="{{user.firstname}} {{user.lastname}}">
         <label for="avatar">

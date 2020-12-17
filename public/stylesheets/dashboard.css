@@ -30,12 +30,37 @@
 }
 
 .container-register {
+  padding: 10vh 0 5vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+#account-add {
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  height: 100vh;
-  padding: 10vh 0;
+  flex-direction: column;
+}
+
+#prospect-add-box {
+  width: 400px;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#master-div-prospect {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#master-div-prospect h1 {
+  margin-bottom: 30px;
 }
 
 .item-register input {
@@ -53,7 +78,7 @@
   visibility: hidden;
 }
 .custom-file-input::before {
-  content: 'Select logo';
+  content: "Select logo";
   color: white;
   display: flex;
   justify-content: center;
@@ -82,6 +107,7 @@
   border-radius: 2px;
   border: 1px solid white;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  margin-bottom: 10px;
 }
 
 .btn-register:hover {
