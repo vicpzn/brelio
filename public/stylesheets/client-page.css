@@ -73,7 +73,9 @@ a {
   width: 10vw;
 }
 
-#tasks tbody {
+#tasks table {
+  height: 17vh;
+  width: 29.5vw;
   background-color: white;
 }
 
