@@ -6,19 +6,24 @@ const ClientModel = require("../models/Clients");
 const TaskModel = require("../models/Task");
 const uploader = require("./../config/cloudinary");
 const bcrypt = require("bcrypt");
+const protectAdminRoute = require("../middlewares/protectAdminRoute");
+const protectAdminManagerRoute = require("../middlewares/protectAdminManagerRoute");
+const protectLogRoute = require("../middlewares/protectLogRoute");
 
 // ROUTER DASHBOARD
 
-router.get("/", async (req, res, next) => {
+router.get("/", protectLogRoute, async (req, res, next) => {
   try {
     const currentUser = await UserModel.findById(
       req.session.currentUser._id
     ).populate("company");
-    const lastTasks = await TaskModel.find()
+    const lastTasks = await ClientModel.find({
+      creator: req.session.currentUser._id,
+    }).populate("task");
+    const lastProspects = await ClientModel.find({
+      creator: req.session.currentUser._id,
+    })
       .sort({ task_deadline: -1 })
-      .limit(5);
-    const lastProspects = await ClientModel.find()
-      .sort({ createdAt: -1 })
       .limit(5);
     res.render("dashboard", {
       lastTasks,
@@ -33,11 +38,11 @@ router.get("/", async (req, res, next) => {
 
 // REGISTER A COMPANY
 
-router.get("/register", (req, res) => {
+router.get("/register", protectLogRoute, (req, res) => {
   res.render("register_company", { title: "Register your company" });
 });
 
-router.get("/settings/", async (req, res, next) => {
+router.get("/settings/", protectAdminManagerRoute, async (req, res, next) => {
   try {
     const currentUser = await UserModel.findById(
       req.session.currentUser._id
@@ -47,21 +52,17 @@ router.get("/settings/", async (req, res, next) => {
     })
       .sort({ createdAt: -1 })
       .limit(5);
-    if (currentUser.role === "admin" || currentUser.role === "manager") {
-      res.render("settings", {
-        currentUser,
-        membersTeam,
-        title: "Settings",
-      });
-    } else {
-      res.send("You don't have access to this page.");
-    }
+    res.render("settings", {
+      currentUser,
+      membersTeam,
+      title: "Settings",
+    });
   } catch (err) {
     next(err);
   }
 });
 
-router.get("/settings/admin", async (req, res, next) => {
+router.get("/settings/admin", protectAdminRoute, async (req, res, next) => {
   try {
     const currentUser = await UserModel.findById(
       req.session.currentUser._id
@@ -69,31 +70,33 @@ router.get("/settings/admin", async (req, res, next) => {
     const companies = await CompanyModel.find()
       .sort({ createdAt: -1 })
       .limit(5);
-    if (currentUser.role === "admin") {
-      res.render("settings_admin", {
-        currentUser,
-        companies,
-        title: "Admin Settings",
-      });
-    } else {
-      res.send("You don't have access to this page.");
-    }
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.get("/register/:id", async (req, res, next) => {
-  try {
-    const company = await CompanyModel.findById(req.params.id);
-    res.render("register_company_edit", {
-      company,
-      title: "Edit your company",
+    const members = await UserModel.find().sort({ createdAt: -1 }).limit(5);
+    res.render("admin/settings_admin", {
+      members,
+      currentUser,
+      companies,
+      title: "Admin Settings",
     });
   } catch (err) {
     next(err);
   }
 });
+
+router.get(
+  "/register/:id",
+  protectAdminManagerRoute,
+  async (req, res, next) => {
+    try {
+      const company = await CompanyModel.findById(req.params.id);
+      res.render("register_company_edit", {
+        company,
+        title: "Edit your company",
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
+);
 
 router.post("/register", uploader.single("logo"), async (req, res, next) => {
   try {

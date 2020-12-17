@@ -4,6 +4,7 @@ const CompanyModel = require("../models/Company");
 var router = express.Router();
 const uploader = require("./../config/cloudinary");
 const bcrypt = require("bcrypt");
+const protectAdminRoute = require("../middlewares/protectAdminRoute");
 
 router.get("/all", async (req, res, next) => {
   try {
@@ -15,6 +16,15 @@ router.get("/all", async (req, res, next) => {
     })
       .sort({ createdAt: -1 })
       .limit(5);
+    res.render("list_users", { users, title: "List of users" });
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/admin/all", protectAdminRoute, async (req, res, next) => {
+  try {
+    const users = await UserModel.find().sort({ createdAt: -1 });
     res.render("list_users", { users, title: "List of users" });
   } catch (err) {
     next(err);

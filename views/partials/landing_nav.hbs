@@ -10,7 +10,13 @@
     <a href="/about">About us</a>
   </div>
   <div class="sign-links">
+    {{#unless isLoggedIn}}
     <a href="/signin">Log in</a>
     <a href="/signup">Sign up</a>
+    {{/unless}}
+    {{#if isLoggedIn}}
+    <a href="/dashboard">Dashboard</a>
+    <a href="/logout">Log out</a>
+    {{/if}}
   </div>
 </nav>

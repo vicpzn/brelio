@@ -7,8 +7,7 @@
         <h2>Last updated prospects</h2>
         {{#each lastProspects}}
         <p>{{this.firstname}} {{this.lastname}} {{this.company}} <a class="fas fa-envelope"
-                href="mailto:{{this.email}}">Send an
-                email</a>
+                href="mailto:{{this.email}}"></a>
         </p>
         {{/each}}
         <a href="/account-management"><i class="fas fa-address-book"></i> My prospects</a>
@@ -17,7 +16,9 @@
     <div id="company-manage">
         <h2>Upcoming tasks</h2>
         {{#each lastTasks}}
-        <p>{{this.task_associated}} {{formatDate this.task_deadline}}</p>
+        {{#each this.task}}
+        <p>{{this.task_associated}} {{formatDate this.task_deadline}} {{this.priority}}</p>
+        {{/each}}
         {{/each}}
     </div>
 

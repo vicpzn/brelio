@@ -6,12 +6,15 @@ const TaskModel = require("../models/Task");
 const CompanyModel = require("../models/Company");
 const uploader = require("./../config/cloudinary");
 const bcrypt = require("bcrypt");
+const protectLogRoute = require("../middlewares/protectLogRoute");
 
 // ACCOUNT MANAGEMENT
 
 router.get("/", async (req, res, next) => {
   try {
-    const clients = await ClientModel.find();
+    const clients = await ClientModel.find({
+      creator: req.session.currentUser._id,
+    });
     const currentUser = await UserModel.findById(
       req.session.currentUser._id
     ).populate("company");
@@ -21,6 +24,33 @@ router.get("/", async (req, res, next) => {
       clients,
       currentCompany,
       currentUser,
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/search", protectLogRoute, async (req, res, next) => {
+  try {
+    const currentUser = await UserModel.findById(
+      req.session.currentUser._id
+    ).populate("company");
+    const currentCompany = await CompanyModel.findById(currentUser.company._id);
+    const exp = new RegExp(req.query.search);
+    const matchedProspects = await ClientModel.find({
+      creator: req.session.currentUser._id,
+      $or: [
+        { firstname: { $regex: exp } },
+        { lastname: { $regex: exp } },
+        { email: { $regex: exp } },
+        { phonenumber: { $regex: exp } },
+      ],
+    });
+    res.render("account_management_search", {
+      currentCompany,
+      currentUser,
+      title: `Search results for ${req.query.search}`,
+      matchedProspects,
     });
   } catch (err) {
     next(err);

@@ -17,7 +17,6 @@ var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var authRouter = require("./routes/auth");
-var crmRouter = require("./routes/crm");
 var apiRouter = require("./routes/api");
 var dashboardRouter = require("./routes/dashboard");
 var accountManagementRouter = require("./routes/account_management");
@@ -38,7 +37,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    cookie: { maxAge: 3600000 },
+    cookie: { maxAge: 86400000 },
     store: new MongoStore({
       mongooseConnection: mongoose.connection,
       ttl: 24 * 60 * 60,
@@ -58,7 +57,6 @@ app.use(require("./middlewares/exposeFlashMessage"));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/", authRouter);
-app.use("/", crmRouter);
 app.use("/api", apiRouter);
 app.use("/dashboard", dashboardRouter);
 app.use("/account-management", accountManagementRouter);

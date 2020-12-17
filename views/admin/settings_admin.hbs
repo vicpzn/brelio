@@ -46,3 +46,49 @@
     </div>
 
 </div>
+
+<div id="team-manage">
+    <h2>Manage all the brelio members</h2>
+    <p>Last five members added to brelio</p>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Date Add</th>
+                <th>Date Update</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each members}}
+            <tr>
+                <td>
+                    <img width="50px" src="{{this.logo}}" alt="{{this.name}}">
+                </td>
+                <td>
+                    <p>{{this.firstname}} {{this.lastname}}</p>
+                </td>
+                <td>
+                    <p>{{this.phonenumber}}</p>
+                </td>
+                <td>
+                    <p>{{formatDate this.createdAt}}</p>
+                </td>
+                <td>
+                    <p>{{formatDate this.updatedAt}}</p>
+                </td>
+                <td><a class="fas fa-edit" href="/dashboard/register/{{this._id}}"></a></td>
+                <td><a class="fas fa-trash" href="/users/delete/{{this._id}}"></a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <div id="manage-btn">
+        <a href="/users/create"><i class="fas fa-plus"></i> Add a new user to brelio</a>
+        <a href="/users/admin/all"><i class="fas fa-user-cog"></i> Manage all the users</a>
+    </div>
+
+</div>
