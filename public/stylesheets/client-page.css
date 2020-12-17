@@ -9,10 +9,6 @@ button {
   cursor: pointer;
 }
 
-.fa-pencil-alt {
-  color: var(--purple);
-}
-
 .fa-check {
   color: rgb(96, 224, 171);
 }
@@ -102,6 +98,19 @@ a {
   text-align: center;
 }
 
+.task-content {
+  padding-right: 0.5vw;
+}
+
+.task-date {
+  padding-right: 0.5vw;
+  font-weight: 400;
+  color: var(--lavender);
+}
+
+.task-priority {
+  font-weight: 400;
+}
 /*file-upload*/
 
 .is-hidden {
@@ -128,7 +137,7 @@ a {
   align-self: center;
   padding: 1vh 1vw;
   border: none;
-  background-color: var(--lavender);
+  background-color: var(--purple);
   color: white;
   font-family: Source Sans Pro;
   font-size: 1.15vw;
@@ -163,7 +172,7 @@ a {
   align-self: center;
   border: none;
   padding: 0 1vw;
-  background-color: var(--lavender);
+  background-color: var(--purple);
   color: white;
   font-family: Source Sans Pro;
   font-size: 01.15vw;
