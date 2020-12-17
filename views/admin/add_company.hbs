@@ -1,0 +1,48 @@
+{{> landing_nav}}
+
+<h1 class="title-register">Add a new company</h1>
+
+<form action="/dashboard/settings/admin/companies/create" method="post" class="form" enctype="multipart/form-data">
+
+    <div class="container-register">
+
+        <div class="item-register">
+            <input name="name" id="name" type="text" placeholder="Company" required>
+        </div>
+
+        <div class="item-register">
+            <input name="streetnumber" id="streetnumber" type="text" placeholder="Street Number" required>
+        </div>
+
+        <div class="item-register">
+            <input name="street" id="street" type="text" placeholder="Street" required>
+        </div>
+
+        <div class="item-register">
+            <input name="zipcode" id="zipcode" type="text" placeholder="Zipcode" required>
+        </div>
+
+        <div class="item-register">
+            <input name="city" id="city" type="text" placeholder="City" required>
+        </div>
+
+        <div class="item-register">
+            <input name="country" id="country" type="text" placeholder="Country" required>
+        </div>
+
+        <div class="item-register">
+            <input name="phonenumber" id="phonenumber" type="text" placeholder="Phone Number" required>
+        </div>
+
+        <div>
+            <input class="custom-file-input" name="logo" type="file">
+        </div>
+
+        <div class="item-register">
+            <button class="btn-register">Save</button>
+        </div>
+
+
+</form>
+
+</div>
