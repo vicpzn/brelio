@@ -1,0 +1,51 @@
+{{> burger_menu}}
+
+<h1 class="title-register">Create a new user</h1>
+
+<form method="post" action="/dashboard/settings/admin/users/create" enctype="multipart/form-data">
+
+    <div class="container-register">
+
+        <div class="item-register">
+            <input name="firstname" type="text" placeholder="First Name" required>
+        </div>
+
+        <div class="item-register">
+            <input name="lastname" type="text" placeholder="Last Name" required>
+        </div>
+
+        <div class="item-register">
+            <input name="email" type="email" placeholder="joe@company.com" required>
+        </div>
+
+        <div class="item-register">
+            <input name="phonenumber" type="tel" placeholder="Phone Number" required>
+        </div>
+
+        <select name="company">
+            {{#each companies}}
+            <option value="{{this._id}}">{{this.name}}</option>
+            {{/each}}
+        </select>
+
+        <div class="item-register">
+            <input name="password" type="password" placeholder="Password" required>
+        </div>
+
+        <select name="role">
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+            <option value="manager">Manager</option>
+        </select>
+
+        <div>
+            <input class="custom-file-input" type="file" name="avatar">
+        </div>
+
+        <div class="item-register">
+            <button class="btn-register">Create a new user</button>
+        </div>
+
+    </div>
+
+</form>
