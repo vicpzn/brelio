@@ -6,9 +6,9 @@
 @import url("/stylesheets/client-page.css");
 @import url("/stylesheets/sign-up.css");
 @import url("/stylesheets/sign-in.css");
-@import url("/stylesheets/crm/account-management.css");
-@import url("/stylesheets/crm/settings.css");
-@import url("/stylesheets/crm/dashboard.css");
+@import url("/stylesheets/account-management.css");
+@import url("/stylesheets/settings.css");
+@import url("/stylesheets/dashboard.css");
 
 * {
   box-sizing: border-box;
