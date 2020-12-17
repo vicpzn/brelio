@@ -62,26 +62,6 @@ router.get("/settings/", protectAdminManagerRoute, async (req, res, next) => {
   }
 });
 
-router.get("/settings/admin", protectAdminRoute, async (req, res, next) => {
-  try {
-    const currentUser = await UserModel.findById(
-      req.session.currentUser._id
-    ).populate("company");
-    const companies = await CompanyModel.find()
-      .sort({ createdAt: -1 })
-      .limit(5);
-    const members = await UserModel.find().sort({ createdAt: -1 }).limit(5);
-    res.render("admin/settings_admin", {
-      members,
-      currentUser,
-      companies,
-      title: "Admin Settings",
-    });
-  } catch (err) {
-    next(err);
-  }
-});
-
 router.get(
   "/register/:id",
   protectAdminManagerRoute,
@@ -98,30 +78,36 @@ router.get(
   }
 );
 
-router.post("/register", uploader.single("logo"), async (req, res, next) => {
-  try {
-    const companyToRegister = { ...req.body };
-    companyToRegister.creator = await UserModel.findById(
-      req.session.currentUser._id
-    );
-    if (req.file) companyToRegister.logo = req.file.path;
-    await CompanyModel.create(companyToRegister);
-    if (!req.session.currentUser.company) {
-      const idCompany = await CompanyModel.find({
-        creator: req.session.currentUser._id,
-      });
-      await UserModel.findByIdAndUpdate(req.session.currentUser._id, {
-        company: idCompany[0]._id,
-      });
+router.post(
+  "/register",
+  protectLogRoute,
+  uploader.single("logo"),
+  async (req, res, next) => {
+    try {
+      const companyToRegister = { ...req.body };
+      companyToRegister.creator = await UserModel.findById(
+        req.session.currentUser._id
+      );
+      if (req.file) companyToRegister.logo = req.file.path;
+      await CompanyModel.create(companyToRegister);
+      if (!req.session.currentUser.company) {
+        const idCompany = await CompanyModel.find({
+          creator: req.session.currentUser._id,
+        });
+        await UserModel.findByIdAndUpdate(req.session.currentUser._id, {
+          company: idCompany[0]._id,
+        });
+      }
+      res.redirect("/dashboard/settings");
+    } catch (err) {
+      next(err);
     }
-    res.redirect("/dashboard/settings");
-  } catch (err) {
-    next(err);
   }
-});
+);
 
 router.post(
   "/register/:id",
+  protectLogRoute,
   uploader.single("logo"),
   async (req, res, next) => {
     try {

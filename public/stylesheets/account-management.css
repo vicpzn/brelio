@@ -26,3 +26,29 @@ th {
   background-color: #5d81ed33;
   border-collapse: collapse;
 }
+/* search bar */
+.search-container {
+  display: flex;
+}
+
+.search {
+  width: 200px;
+  height: 30px;
+  padding: 0 20px;
+  border: 1px solid #d0cfce;
+  border-right: none;
+  outline: none;
+}
+
+.btn-search {
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid #d0cfce;
+  outline: none;
+  border-left: none;
+  background: white;
+}
+
+.fa {
+  color: var(--softgrey);
+}

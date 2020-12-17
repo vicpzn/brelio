@@ -10,7 +10,7 @@ const protectLogRoute = require("../middlewares/protectLogRoute");
 
 // ACCOUNT MANAGEMENT
 
-router.get("/", async (req, res, next) => {
+router.get("/", protectLogRoute, async (req, res, next) => {
   try {
     const clients = await ClientModel.find({
       creator: req.session.currentUser._id,
@@ -60,7 +60,7 @@ router.get("/search", protectLogRoute, async (req, res, next) => {
   }
 });
 
-router.get("/add", async (req, res, next) => {
+router.get("/add", protectLogRoute, async (req, res, next) => {
   try {
     const currentUser = await UserModel.findById(
       req.session.currentUser._id
@@ -76,7 +76,7 @@ router.get("/add", async (req, res, next) => {
   }
 });
 
-router.post("/add", async (req, res, next) => {
+router.post("/add", protectLogRoute, async (req, res, next) => {
   try {
     const newProspect = { ...req.body };
     newProspect.creator = await UserModel.findById(req.session.currentUser._id);
@@ -87,7 +87,7 @@ router.post("/add", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => {
+router.get("/:id", protectLogRoute, async (req, res, next) => {
   try {
     const currentUser = await UserModel.findById(
       req.session.currentUser._id
@@ -104,7 +104,7 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.get("/delete/:id", async (req, res, next) => {
+router.get("/delete/:id", protectLogRoute, async (req, res, next) => {
   try {
     await ClientModel.findByIdAndDelete(req.params.id);
     res.redirect("/account-management");
@@ -113,15 +113,20 @@ router.get("/delete/:id", async (req, res, next) => {
   }
 });
 
-router.post("/edit/:id", uploader.single("files"), async (req, res, next) => {
-  try {
-    const clientToUpdate = { ...req.body };
-    if (req.file) clientToUpdate.files = req.file.path;
-    await ClientModel.findByIdAndUpdate(req.params.id, clientToUpdate);
-    res.redirect("/account-management/:id");
-  } catch (err) {
-    next(err);
+router.post(
+  "/edit/:id",
+  protectLogRoute,
+  uploader.single("files"),
+  async (req, res, next) => {
+    try {
+      const clientToUpdate = { ...req.body };
+      if (req.file) clientToUpdate.files = req.file.path;
+      await ClientModel.findByIdAndUpdate(req.params.id, clientToUpdate);
+      res.redirect("/account-management/:id");
+    } catch (err) {
+      next(err);
+    }
   }
-});
+);
 
 module.exports = router;
