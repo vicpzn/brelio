@@ -56,18 +56,18 @@
         <div id="task-table">
             <table>
                 <tbody>
-                 {{#each client.task}}
-                 <tr>
-                     <td class="checkbox"><input type="checkbox"></td>
-                     <td class="task-content">{{ this.task_associated }}</td>
-                     <td class="task-date">{{ formatDate this.task_deadline }}</td>
-                     <td class="task-priority">{{ this.priority }}</td>
+                    {{#each client.task}}
+                    <tr>
+                        <td class="checkbox"><input type="checkbox"></td>
+                        <td class="task-content">{{ this.task_associated }}</td>
+                        <td class="task-date">{{ formatDate this.task_deadline }}</td>
+                        <td class="task-priority">{{ this.priority }}</td>
                     </tr>
                     {{/each}}
                 </tbody>
             </table>
         </div>
-        
+
         <div id="add-task">
             <div>
                 <input name="task_associated" type="text" placeholder="Task" id="write-task">
@@ -86,14 +86,16 @@
     </div>
 
     <div id="file-upload">
-        <form method="post" action="/account-management/edit/{{client._id}}" enctype="multipart/form-data"></form>
+        <form method="post" action="/account-management/edit/{{client._id}}" enctype="multipart/form-data">
             <label for="files" class="label">
-                Upload a file
-                <i class="icon fas fa-cloud-upload-alt fa-2x"></i>
+                <i class="icon fas fa-cloud-upload-alt"></i>
             </label>
             <input class="is-hidden" type="file" id="files" name="files">
             <button class="btn" type="submit">Send</button>
         </form>
+        {{#each client.files}}
+        <a href="{{this}}"><span class="fas fa-file-word"></span></a>
+        {{/each}}
     </div>
 
     <div id="comments-table">
@@ -118,5 +120,6 @@
 
     </div>
 
-    <div id="delete"><a href="/account-management/delete/{{client._id}}"><i class="fas fa-trash" id="client-trash"></i>Delete this client page</a></div>
+    <div id="delete"><a href="/account-management/delete/{{client._id}}"><i class="fas fa-trash"
+                id="client-trash"></i>Delete this client page</a></div>
 </div>

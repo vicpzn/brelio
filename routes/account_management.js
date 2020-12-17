@@ -87,23 +87,6 @@ router.post("/add", protectLogRoute, async (req, res, next) => {
   }
 });
 
-router.get("/:id", protectLogRoute, async (req, res, next) => {
-  try {
-    const currentUser = await UserModel.findById(
-      req.session.currentUser._id
-    ).populate("company");
-    let client = await ClientModel.findById(req.params.id).populate("task");
-    res.render("client_page", {
-      currentUser,
-      client,
-      script: "client-page.js",
-      title: `${client.firstname} ${client.lastname}`,
-    });
-  } catch (err) {
-    next(err);
-  }
-});
-
 router.get("/delete/:id", protectLogRoute, async (req, res, next) => {
   try {
     await ClientModel.findByIdAndDelete(req.params.id);
@@ -113,16 +96,41 @@ router.get("/delete/:id", protectLogRoute, async (req, res, next) => {
   }
 });
 
+router.get(
+  "/:id",
+  protectLogRoute,
+  uploader.single("files"),
+  async (req, res, next) => {
+    try {
+      const currentUser = await UserModel.findById(
+        req.session.currentUser._id
+      ).populate("company");
+      const client = await (await ClientModel.findById(req.params.id)).populate(
+        "task"
+      );
+      res.render("client_page", {
+        currentUser,
+        client,
+        script: "client-page.js",
+        title: `${client.firstname} ${client.lastname}`,
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
 router.post(
   "/edit/:id",
   protectLogRoute,
   uploader.single("files"),
   async (req, res, next) => {
     try {
-      const clientToUpdate = { ...req.body };
-      if (req.file) clientToUpdate.files = req.file.path;
-      await ClientModel.findByIdAndUpdate(req.params.id, clientToUpdate);
-      res.redirect("/account-management/:id");
+      const upload = req.file.path;
+      await ClientModel.findByIdAndUpdate(req.params.id, {
+        $push: { files: `${upload}` },
+      });
+      res.redirect("/account-management/");
     } catch (err) {
       next(err);
     }
