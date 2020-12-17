@@ -11,11 +11,12 @@ const protectLogRoute = require("../middlewares/protectLogRoute");
 // ACCOUNT MANAGEMENT
 
 router.get("/", async (req, res, next) => {
-  console.log("toto");
   try {
     const clients = await ClientModel.find({
       creator: req.session.currentUser._id,
-    }).populate("task");
+    })
+      .populate("task")
+      .limit(1);
     console.log(clients);
     const currentUser = await UserModel.findById(
       req.session.currentUser._id
