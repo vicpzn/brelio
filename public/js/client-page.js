@@ -74,103 +74,87 @@ function trashComment() {
 }
 
 //Task
-// const writeTask = document.querySelector("#write-task");
-// const taskDate = document.querySelector("#date-task");
-// const taskPriority = document.querySelector("#priority");
-// const taskBtn = document.querySelector("#add-task button");
-// let tasksList = document.querySelector("#tasks tbody");
+const writeTask = document.querySelector("#write-task");
+const taskDate = document.querySelector("#date-task");
+const taskPriority = document.querySelector("#priority");
+const taskBtn = document.querySelector("#add-task button");
+let tasksList = document.querySelector("#tasks tbody");
 
-// function displayTasks(array) {
-//   tasksList.innerHTML = "";
-//   array.forEach((element) => {
-//     let tr = document.createElement("tr");
-//     tasksList.appendChild(tr);
+function displayTasks(array) {
+  tasksList.innerHTML = "";
+  array.forEach((element) => {
+    console.log(element);
+    let tr = document.createElement("tr");
+    tasksList.appendChild(tr);
 
-//     let tdCheck = document.createElement("td");
-//     tdCheck.classList.add("checkbox");
-//     tr.appendChild(tdCheck);
+    let tdCheck = document.createElement("td");
+    tdCheck.classList.add("checkbox");
+    tr.appendChild(tdCheck);
 
-//     let tdTask = document.createElement("td");
-//     tdTask.classList.add("task-content");
-//     tdTask.textContent = element;
-//     tr.appendChild(tdTask);
+    let tdTask = document.createElement("td");
+    tdTask.classList.add("task-content");
+    tdTask.textContent = element.task_associated;
+    tr.appendChild(tdTask);
 
-//     let tdPriority = document.createElement("td");
-//     tdPriority.classList.add("task-priority");
-//     tr.appendChild(tdPriority);
+    let tdDate = document.createElement("td");
+    tdDate.classList.add("task-date");
+    tdDate.textContent = element.task_deadline;
+    tr.appendChild(tdDate);
 
-//     let tdDelete = document.createElement("td");
-//     tdDelete.classList.add("erase-task");
-//     tr.appendChild(tdDelete);
+    let tdPriority = document.createElement("td");
+    tdPriority.classList.add("task-priority");
+    tdPriority.textContent = element.priority;
+    tr.appendChild(tdPriority);
 
-//     let i = document.createElement("i");
-//     i.classList.add("fas");
-//     i.classList.add("fa-times");
-//     i.classList.add("erase-task");
-//     td.appendChild(i);
-//   });
-// }
+    let checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    tdCheck.appendChild(checkbox);
+  });
+}
 
-// async function fetchTasks() {
-//   try {
-//     const client = await axios.get(`/api/clients/${id}`);
-//     const tasks = client.task;
-//     displayTasks(tasks);
-//   } catch (err) {
-//     console.error(err);
-//   }
-// }
+async function fetchTasks() {
+  try {
+    const client = await axios.get(`/api/clients/${id}`);
+    const tasks = client.data.task;
+    displayTasks(tasks);
+    checkBox();
+  } catch (err) {
+    console.error(err);
+  }
+}
 
-// async function postTaskId() {
-//   const task = await axios.get(`/api/tasks/:id`);
-//   const taskId = task.id;
-//   await axios.patch(`/api/clients/${id}`, {
-//     task: `${taskId}`,
-//   });
-// }
+function sendTask() {
+  taskBtn.addEventListener("click", async () => {
+    const taskContent = writeTask.value;
+    const deadline = taskDate.value;
+    const priority = taskPriority.value;
+    writeTask.value = "";
+    taskDate.value = "";
+    taskPriority.value = 3;
+    try {
+      await axios.post(`/api/tasks/`, {
+        client: `${id}`,
+        task_associated: `${taskContent}`,
+        task_deadline: `${deadline}`,
+        priority: `${priority}`,
+      });
+      fetchTasks();
+    } catch (err) {
+      console.error(err);
+    }
+  });
+}
 
-// function sendTask() {
-//   taskBtn.addEventListener("click", async () => {
-//     const taskContent = writeTask.value;
-//     const deadline = taskDate.value;
-//     const priority = taskPriority.value;
-//     console.log(taskContent, deadline, priority);
-//     writeTask.value = "";
-//     taskDate.value = "";
-//     taskPriority.value = 3;
-//     try {
-//       await axios.post(`/api/tasks/`, {
-//         client: `${id}`,
-//         task_associated: `${taskContent}`,
-//         task_deadline: `${deadline}`,
-//         priority: `${priority}`,
-//       });
-//       postTaskId();
-//     } catch (err) {
-//       console.error(err);
-//     }
-//   });
-// }
-
-// function trashComment() {
-//   let trashes = document.querySelectorAll(".trash-comment");
-//   console.log(trashes);
-//   trashes.forEach((trash) =>
-//     trash.addEventListener("click", async () => {
-//       let selectedComment = trash.parentNode;
-//       let commentContent = selectedComment.querySelector(".comment span");
-//       let trashedComment = commentContent.textContent;
-//       try {
-//         await axios.patch(`http://localhost:4848/api/edit/clients/${id}`, {
-//           $pull: { comments: `${trashedComment}` },
-//         });
-//         fetchComments();
-//       } catch (err) {
-//         console.error(err);
-//       }
-//     })
-//   );
-// }
+function checkBox() {
+  let checkboxes = document.querySelectorAll(".checkbox");
+  checkboxes.forEach((checkbox) =>
+    checkbox.addEventListener("change", async () => {
+      let parentTr = checkbox.parentNode;
+      console.log(parentTr);
+      parentTr.classList.toggle("done");
+    })
+  );
+}
 
 //firstname
 let firstnameArea = document.querySelector("#firstname");
@@ -706,3 +690,4 @@ sendComment();
 trashComment();
 
 sendTask();
+checkBox();

@@ -33,7 +33,11 @@ router.get("/tasks/:id", async (req, res) => {
 
 router.post("/tasks", async (req, res) => {
   try {
-    res.json(await TaskModel.create(req.body));
+    let task = await TaskModel.create(req.body);
+    await ClientModel.findByIdAndUpdate(task.client, {
+      $push: { task: `${task.id}` },
+    });
+    res.json(task);
   } catch (err) {
     res.json(err);
   }
