@@ -62,7 +62,7 @@ function trashComment() {
       let commentContent = selectedComment.querySelector(".comment span");
       let trashedComment = commentContent.textContent;
       try {
-        await axios.patch(`http://localhost:4848/api/edit/clients/${id}`, {
+        await axios.patch(`/api/edit/clients/${id}`, {
           $pull: { comments: `${trashedComment}` },
         });
         fetchComments();
@@ -195,7 +195,7 @@ function editFirstname() {
       let editedFirstname = document.querySelector("#input-firstname input");
       const firstname = editedFirstname.value;
       try {
-        await axios.patch(`http://localhost:4848/api/edit/clients/${id}`, {
+        await axios.patch(`/api/edit/clients/${id}`, {
           firstname: `${firstname}`,
         });
         fetchFirstname();
@@ -253,7 +253,7 @@ function editLastname() {
       let editedLastname = document.querySelector("#input-lastname input");
       const lastname = editedLastname.value;
       try {
-        await axios.patch(`http://localhost:4848/api/edit/clients/${id}`, {
+        await axios.patch(`/api/edit/clients/${id}`, {
           lastname: `${lastname}`,
         });
         fetchLastname();
@@ -309,7 +309,7 @@ function editEmail() {
     let editedEmail = document.querySelector("#input-email input");
     const email = editedEmail.value;
     try {
-      await axios.patch(`http://localhost:4848/api/edit/clients/${id}`, {
+      await axios.patch(`/api/edit/clients/${id}`, {
         email: `${email}`,
       });
       fetchEmail();
@@ -367,7 +367,7 @@ function editPhonenumber() {
       );
       const phonenumber = editedPhonenumber.value;
       try {
-        await axios.patch(`http://localhost:4848/api/edit/clients/${id}`, {
+        await axios.patch(`/api/edit/clients/${id}`, {
           phonenumber: `${phonenumber}`,
         });
         fetchPhonenumber();
@@ -429,7 +429,7 @@ function editStreetnumber() {
       );
       const streetnumber = editedStreetnumber.value;
       try {
-        await axios.patch(`http://localhost:4848/api/edit/clients/${id}`, {
+        await axios.patch(`/api/edit/clients/${id}`, {
           streetnumber: `${streetnumber}`,
         });
         fetchStreetnumber();
@@ -489,7 +489,7 @@ function editStreet() {
       let editedStreet = document.querySelector("#input-street input");
       const street = editedStreet.value;
       try {
-        await axios.patch(`http://localhost:4848/api/edit/clients/${id}`, {
+        await axios.patch(`/api/edit/clients/${id}`, {
           street: `${street}`,
         });
         fetchStreet();
@@ -547,7 +547,7 @@ function editZipcode() {
       let editedZipcode = document.querySelector("#input-zipcode input");
       const zipcode = editedZipcode.value;
       try {
-        await axios.patch(`http://localhost:4848/api/edit/clients/${id}`, {
+        await axios.patch(`/api/edit/clients/${id}`, {
           zipcode: `${zipcode}`,
         });
         fetchZipcode();
@@ -601,7 +601,7 @@ function editCity() {
     let editedCity = document.querySelector("#input-city input");
     const city = editedCity.value;
     try {
-      await axios.patch(`http://localhost:4848/api/edit/clients/${id}`, {
+      await axios.patch(`/api/edit/clients/${id}`, {
         city: `${city}`,
       });
       fetchCity();
@@ -657,7 +657,7 @@ function editCountry() {
       let editedCountry = document.querySelector("#input-country input");
       const country = editedCountry.value;
       try {
-        await axios.patch(`http://localhost:4848/api/edit/clients/${id}`, {
+        await axios.patch(`/api/edit/clients/${id}`, {
           country: `${country}`,
         });
         fetchCountry();
