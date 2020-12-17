@@ -1,48 +1,54 @@
 {{> burger_menu}}
 
-<h1 class="title-register">Create a new user</h1>
+<div id="master-div-prospect">
+    <h1 class="title-register">Create a new user</h1>
+    <div id="prospect-add-box">
 
-<form method="post" action="/users/create" enctype="multipart/form-data">
 
-    <div class="container-register">
+        <form id="account-add" method="post" action="/users/create" enctype="multipart/form-data">
 
-        <div class="item-register">
-            <input name="firstname" type="text" placeholder="First Name" required>
-        </div>
+            <div class="container-register">
 
-        <div class="item-register">
-            <input name="lastname" type="text" placeholder="Last Name" required>
-        </div>
+                <div class="item-register">
+                    <input name="firstname" type="text" placeholder="First Name" required>
+                </div>
 
-        <div class="item-register">
-            <input name="email" type="email" placeholder="joe@company.com" required>
-        </div>
+                <div class="item-register">
+                    <input name="lastname" type="text" placeholder="Last Name" required>
+                </div>
 
-        <div class="item-register">
-            <input name="phonenumber" type="tel" placeholder="Phone Number" required>
-        </div>
+                <div class="item-register">
+                    <input name="email" type="email" placeholder="joe@company.com" required>
+                </div>
 
-        <select name="company">
-            <option value="{{currentCompany.0._id}}">{{currentCompany.0.name}}</option>
-        </select>
+                <div class="item-register">
+                    <input name="phonenumber" type="tel" placeholder="Phone Number" required>
+                </div>
 
-        <div class="item-register">
-            <input name="password" type="password" placeholder="Password" required>
-        </div>
+                <select name="company">
+                    <option value="{{currentCompany.0._id}}">{{currentCompany.0.name}}</option>
+                </select>
 
-        <select name="role">
-            <option value="user">User</option>
-            <option value="manager">Manager</option>
-        </select>
+                <select name="role">
+                    <option value="user">User</option>
+                    <option value="manager">Manager</option>
+                </select>
 
-        <div>
-            <input class="custom-file-input" type="file" name="avatar">
-        </div>
+                <div class="item-register">
+                    <input name="password" type="password" placeholder="Password" required>
+                </div>
 
-        <div class="item-register">
-            <button class="btn-register">Create a new user</button>
-        </div>
+                <div>
+                    <div>
+                        <input class="custom-file-input" type="file" name="avatar">
+                    </div>
 
+                    <div class="item-register">
+                        <button class="btn-register">Create a new user</button>
+                    </div>
+                </div>
+
+            </div>
     </div>
-
-</form>
+    </form>
+</div>

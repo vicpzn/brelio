@@ -1,54 +1,59 @@
 {{> burger_menu}}
 
-<h1 class="title-register">Edit a company</h1>
+<div id="master-div-prospect">
+    <h1 class="title-register">Edit a company</h1>
+    <div id="prospect-add-box">
+        <form id="account-add" action="/dashboard/settings/admin/companies/edit/{{company._id}}" method="post"
+            class="form" enctype="multipart/form-data">
 
-<form action="/dashboard/settings/admin/companies/edit/{{company._id}}" method="post" class="form"
-    enctype="multipart/form-data">
+            <div class="container-company">
+                <input name="name" id="name" type="text" class="input" placeholder="Company" value="{{company.name}}">
+            </div>
 
-    <div class="container-register">
+            <div class="container-register">
 
-        <div class="item-register">
-            <input name="name" id="name" type="text" class="input" placeholder="Company" value="{{company.name}}">
-        </div>
+                <div class="item-register">
+                    <input name="streetnumber" id="streetnumber" type="text" class="input" placeholder="Street Number"
+                        value="{{company.streetnumber}}">
+                </div>
 
-        <div class="item-register">
-            <input name="streetnumber" id="streetnumber" type="text" class="input" placeholder="Street Number"
-                value="{{company.streetnumber}}">
-        </div>
+                <div class="item-register">
+                    <input name="street" id="street" type="text" class="input" placeholder="Street"
+                        value="{{company.street}}">
+                </div>
 
-        <div class="item-register">
-            <input name="street" id="street" type="text" class="input" placeholder="Street" value="{{company.street}}">
-        </div>
+                <div class="item-register">
+                    <input name="zipcode" id="zipcode" type="text" class="input" placeholder="Zipcode"
+                        value="{{company.zipcode}}">
+                </div>
 
-        <div class="item-register">
-            <input name="zipcode" id="zipcode" type="text" class="input" placeholder="Zipcode"
-                value="{{company.zipcode}}">
-        </div>
+                <div class="item-register">
+                    <input name="city" id="city" type="text" class="input" placeholder="City" value="{{company.city}}">
+                </div>
 
-        <div class="item-register">
-            <input name="city" id="city" type="text" class="input" placeholder="City" value="{{company.city}}">
-        </div>
+                <div class="item-register">
+                    <input name="country" id="country" type="text" class="input" placeholder="Country"
+                        value="{{company.country}}">
+                </div>
 
-        <div class="item-register">
-            <input name="country" id="country" type="text" class="input" placeholder="Country"
-                value="{{company.country}}">
-        </div>
+                <div class="item-register">
+                    <input name="phonenumber" id="phonenumber" type="text" class="input" placeholder="Phone Number"
+                        value="{{company.phonenumber}}">
+                </div>
 
-        <div class="item-register">
-            <input name="phonenumber" id="phonenumber" type="text" class="input" placeholder="Phone Number"
-                value="{{company.phonenumber}}">
-        </div>
+                <div>
+                    <div>
+                        <img width="150px" src="{{company.logo}}" alt="{{company.name}}">
+                    </div>
 
-        <div>
-            <img width="150px" src="{{company.logo}}" alt="{{company.name}}">
-        </div>
+                    <div>
+                        <input class="custom-file-input" name="logo" type="file">
+                    </div>
 
-        <div>
-            <input class="custom-file-input" name="logo" type="file">
-        </div>
+                    <button class="btn-register">Edit a company</button>
+                </div>
+            </div>
+        </form>
 
-        <button class="btn-register">Edit a company</button>
-
-</form>
-
+    </div>
 </div>

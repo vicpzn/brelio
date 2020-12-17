@@ -1,37 +1,51 @@
 {{> burger_menu}}
 
-<h1>Edit {{user.firstname}}'s profile</h1>
+<div id="master-div-prospect">
+    <h1>Edit {{user.firstname}}'s profile</h1>
+    <div id="prospect-add-box">
 
-<form method="post" action="/dashboard/settings/admin/users/edit/{{user._id}}" enctype="multipart/form-data">
-    <div id="wrapper-sign-up">
-        <input name="firstname" id="firstname" type="text" class="input" placeholder="First Name"
-            value="{{user.firstname}}" required>
-        <input name="lastname" id="lastname" type="text" class="input" placeholder="Last Name" value="{{user.lastname}}"
-            required>
-        <input name="phonenumber" id="phonenumber" type="tel" class="input" placeholder="Phone Number"
-            value="{{user.phonenumber}}" required>
-        <select name="company">
-            {{#each companies}}
-            <option value="{{this._id}}">{{this.name}}</option>
-            {{/each}}
-        </select>
-        <select name="role">
-            <option value="admin">
-                <p>Admin</p>
-            </option>
-            <option value="manager">
-                <p>Manager</p>
-            </option>
-            <option value="role">
-                <p>User</p>
-            </option>
-        </select>
+        <form id="account-add" method="post" action="/dashboard/settings/admin/users/edit/{{user._id}}"
+            enctype="multipart/form-data">
+            <div id="wrapper-sign-up">
+                <input name="firstname" id="firstname" type="text" class="input" placeholder="First Name"
+                    value="{{user.firstname}}" required>
+                <input name="lastname" id="lastname" type="text" class="input" placeholder="Last Name"
+                    value="{{user.lastname}}" required>
+                <input name="phonenumber" id="phonenumber" type="tel" class="input" placeholder="Phone Number"
+                    value="{{user.phonenumber}}" required>
+                <select name="company">
+                    {{#each companies}}
+                    <option value="{{this._id}}">{{this.name}}</option>
+                    {{/each}}
+                </select>
+                <select name="role">
+                    <option value="admin">
+                        <p>Admin</p>
+                    </option>
+                    <option value="manager">
+                        <p>Manager</p>
+                    </option>
+                    <option value="role">
+                        <p>User</p>
+                    </option>
+                </select>
+            </div>
+
+            <div>
+                <div>
+                    <img width="150px" src="{{user.avatar}}" alt="{{user.firstname}} {{user.lastname}}">
+                </div>
+
+                <div>
+                    <input class="custom-file-input" type="file" name="avatar">
+                </div>
+            </div>
+
+            <div>
+                <button class="btn-register">Edit Profile</button>
+            </div>
+
     </div>
-    <div><img width="150px" src="{{user.avatar}}" alt="{{user.firstname}} {{user.lastname}}">
-        <label for="avatar">
-            <i class="icon fas fa-cloud-upload-alt fa-2x"></i>
-        </label>
-        <input type="file" name="avatar">
-    </div>
-    <button id="btn-sign-up">Edit Profile</button>
-</form>
+    </form>
+
+</div>

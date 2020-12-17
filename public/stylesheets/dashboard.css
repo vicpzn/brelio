@@ -36,6 +36,15 @@
   grid-gap: 20px;
 }
 
+.container-company input {
+  width: 40vw;
+  padding: 10vh 0 5vh;
+  margin: 40px;
+  padding: 10px;
+  border: 1px solid var(--purple);
+  border-radius: 5px;
+}
+
 #account-add {
   display: flex;
   justify-content: center;
@@ -78,7 +87,7 @@
   visibility: hidden;
 }
 .custom-file-input::before {
-  content: "Select logo";
+  content: "Select file";
   color: white;
   display: flex;
   justify-content: center;
