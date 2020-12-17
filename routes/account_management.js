@@ -46,9 +46,8 @@ router.post("/add", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   try {
-    let client = await (await ClientModel.findById(req.params.id)).populate(
-      "task"
-    );
+    let client = await ClientModel.findById(req.params.id).populate("task");
+    console.log(client);
     res.render("client_page", {
       client,
       script: "client-page.js",
