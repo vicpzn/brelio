@@ -1,5 +1,6 @@
 {{> burger_menu}}
 {{> current_user}}
+{{> searchbar}}
 <div id="client-page">
     <div id="client-infos">
         <table>
@@ -86,16 +87,24 @@
     </div>
 
     <div id="file-upload">
-        <form method="post" action="/account-management/edit/{{client._id}}" enctype="multipart/form-data">
-            <label for="files" class="label">
-                <i class="icon fas fa-cloud-upload-alt"></i>
-            </label>
-            <input class="is-hidden" type="file" id="files" name="files">
-            <button class="btn" type="submit">Send</button>
-        </form>
-        {{#each client.files}}
-        <a href="{{this}}"><span class="fas fa-file-word"></span></a>
-        {{/each}}
+        <div id="form-uploader">
+            <form method="post" action="/account-management/edit/{{client._id}}" enctype="multipart/form-data">
+                <label for="files" class="label">
+                    <i class="icon fas fa-cloud-upload-alt fa-4x" id="cloud-uploader"></i>
+                </label>
+                <input class="is-hidden" type="file" id="files" name="files">
+                <button type="submit">Send</button>
+            </form>
+        </div>
+
+        <div id="uploaded-file-display">
+            <h3>Documents :</h3>
+            <ul>
+                {{#each client.files}}
+                <a href="{{this}}"><li><i class="fas fa-file-word"></i></i></li></a>
+                {{/each}}
+            </ul>
+        </div>
     </div>
 
     <div id="comments-table">

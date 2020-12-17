@@ -105,9 +105,7 @@ router.get(
       const currentUser = await UserModel.findById(
         req.session.currentUser._id
       ).populate("company");
-      const client = await (await ClientModel.findById(req.params.id)).populate(
-        "task"
-      );
+      const client = await ClientModel.findById(req.params.id).populate("task");
       res.render("client_page", {
         currentUser,
         client,

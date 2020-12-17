@@ -1,7 +1,10 @@
 #client-page {
-  padding-top: 40px;
+  padding-top: 20px;
   font-family: Source Sans Pro;
   font-weight: 200;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
 }
 
 .fas,
@@ -18,13 +21,6 @@ button {
   color: rgb(240, 113, 124);
 }
 
-#client-page {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: flex-end;
-}
-
 a {
   color: inherit;
   text-decoration: inherit;
@@ -34,23 +30,24 @@ a {
 #tasks,
 #file-upload,
 #comments-table {
-  width: 35vw;
   background-color: #5d81ed33;
-  padding: 5vh;
+  padding: 4vh;
   border-radius: 15px;
+  margin-left: 3vw;
+  margin-right: 3vw;
 }
 
 #client-infos,
 #tasks {
-  margin-top: 10vh;
-  margin-bottom: 5vh;
-  height: 35vh;
+  margin-top: 7vh;
+  margin-bottom: 3vh;
+  height: auto;
 }
 
 #client-infos tr td:first-child {
   font-weight: 400;
   padding-right: 2vw;
-  padding-left: 5vw;
+  padding-left: 7vw;
   text-align: right;
 }
 
@@ -76,8 +73,8 @@ a {
 }
 
 #task-table {
-  height: 10vh;
-  width: 29.5vw;
+  height: 12vh;
+  width: 35vw;
   border-radius: 5px;
   background-color: white;
   margin: 2vh 0 2vh 0;
@@ -85,7 +82,7 @@ a {
 }
 
 #write-task {
-  width: 11.6vw;
+  width: 16vw;
 }
 
 #priority {
@@ -119,29 +116,45 @@ a {
 
 /* file upload */
 #file-upload {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-#file-upload .label {
-  font-size: 2.5vw;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
 }
 
 #file-upload button {
+  position: absolute;
+  top: 65%;
+  left: 37%;
+  color: var(--softgrey);
   border-radius: 7px;
+}
+
+#cloud-uploader {
+  position: absolute;
+  top: 20%;
+  left: 37%;
 }
 
 #file-upload button,
 #tasks button {
   display: block;
   align-self: center;
-  padding: 1vh 1vw;
+  padding: 0.5vh 1vw;
   border: none;
   background-color: var(--purple);
   color: white;
   font-family: Source Sans Pro;
   font-size: 1.15vw;
+}
+
+#form-uploader {
+  background-color: white;
+  border-radius: 7px;
+  position: relative;
+}
+
+#uploaded-file-display ul {
+  padding-left: 0.5vw;
 }
 
 /*comments*/
@@ -151,7 +164,7 @@ a {
 
 #comments-display {
   height: 10vh;
-  width: 29.5vw;
+  width: 35vw;
   border-radius: 5px;
   background-color: white;
   margin: 2vh 0 2vh 0;
@@ -164,7 +177,7 @@ a {
 }
 
 #send-comment input {
-  width: 25.5vw;
+  width: 30.5vw;
 }
 
 #comments-btn {
@@ -181,6 +194,9 @@ a {
 
 /*delete*/
 #delete {
+  position: absolute;
+  bottom: 6%;
+  left: 34%;
   width: 35vw;
   text-align: center;
   padding-top: 5vh;
