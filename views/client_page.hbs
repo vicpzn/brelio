@@ -52,12 +52,8 @@
     </div>
 
     <div id="tasks">
+        <h3>Tasks</h3>
         <table>
-            <thead>
-                <tr>
-                    <th colspan ="3">Tasks</th>
-                </tr>
-            </thead>
             <tbody>
                 {{#each client.task}}
                 <tr>
@@ -83,14 +79,14 @@
     </div>
 
     <div id="file-upload">
-        <div>
+        <form method="post" action="/account-management/edit/{{client._id}}" enctype="multipart/form-data"></form>
             <label for="files" class="label">
-            Upload a file
-            <i class="icon fas fa-cloud-upload-alt fa-2x"></i>
-        </label>
-        <input class="is-hidden" type="file" id="files" name="files">
-        </div>
-        <button class="btn">Send</button>
+                Upload a file
+                <i class="icon fas fa-cloud-upload-alt fa-2x"></i>
+            </label>
+            <input class="is-hidden" type="file" id="files" name="files">
+            <button class="btn" type="submit">Send</button>
+        </form>
     </div>
 
     <div id="comments-table">

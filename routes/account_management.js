@@ -80,4 +80,15 @@ router.get("/delete/:id", async (req, res, next) => {
   }
 });
 
+router.post("/edit/:id", uploader.single("files"), async (req, res, next) => {
+  try {
+    const clientToUpdate = { ...req.body };
+    if (req.file) clientToUpdate.files = req.file.path;
+    await ClientModel.findByIdAndUpdate(req.params.id, clientToUpdate);
+    res.redirect("/account-management/:id");
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;

@@ -16,6 +16,7 @@ const clientSchema = new Schema(
     task: [{ type: Schema.Types.ObjectId, ref: "task" }],
     comments: [String],
     creator: { type: Schema.Types.ObjectId, ref: "user" },
+    files: [String],
   },
   { timestamps: true }
 );

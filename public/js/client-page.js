@@ -98,7 +98,7 @@ function displayTasks(array) {
 
     let tdDate = document.createElement("td");
     tdDate.classList.add("task-date");
-    tdDate.textContent = element.task_deadline;
+    tdDate.textContent = dayjs(element.task_deadline).format("DD/MM/YYYY");
     tr.appendChild(tdDate);
 
     let tdPriority = document.createElement("td");
@@ -691,3 +691,5 @@ trashComment();
 
 sendTask();
 checkBox();
+
+sendFile();
