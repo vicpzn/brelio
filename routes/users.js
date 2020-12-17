@@ -17,7 +17,7 @@ router.get("/all", protectAdminManagerRoute, async (req, res, next) => {
     })
       .sort({ createdAt: -1 })
       .limit(5);
-    res.render("list_users", { users, title: "List of users" });
+    res.render("list_users", { currentUser, users, title: "List of users" });
   } catch (err) {
     next(err);
   }
