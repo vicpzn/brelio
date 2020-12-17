@@ -45,7 +45,9 @@ router.get("/add", async (req, res, next) => {
 
 router.post("/add", async (req, res, next) => {
   try {
-    await ClientModel.create(req.body);
+    const newProspect = { ...req.body };
+    newProspect.creator = await UserModel.findById(req.session.currentUser._id);
+    await ClientModel.create(newProspect);
     res.redirect("/account-management");
   } catch (err) {
     next(err);

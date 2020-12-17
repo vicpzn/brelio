@@ -11,6 +11,7 @@ const companySchema = new Schema(
     country: String,
     phonenumber: String,
     logo: { type: String, default: "/media/images/default_logo.png" },
+    creator: { type: Schema.Types.ObjectId, ref: "user" },
   },
   { timestamps: true }
 );

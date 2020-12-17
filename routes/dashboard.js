@@ -98,9 +98,20 @@ router.get("/register/:id", async (req, res, next) => {
 router.post("/register", uploader.single("logo"), async (req, res, next) => {
   try {
     const companyToRegister = { ...req.body };
+    companyToRegister.creator = await UserModel.findById(
+      req.session.currentUser._id
+    );
     if (req.file) companyToRegister.logo = req.file.path;
     await CompanyModel.create(companyToRegister);
-    res.redirect("/dashboard");
+    if (!req.session.currentUser.company) {
+      const idCompany = await CompanyModel.find({
+        creator: req.session.currentUser._id,
+      });
+      await UserModel.findByIdAndUpdate(req.session.currentUser._id, {
+        company: idCompany[0]._id,
+      });
+    }
+    res.redirect("/dashboard/settings");
   } catch (err) {
     next(err);
   }
