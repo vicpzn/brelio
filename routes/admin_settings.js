@@ -75,6 +75,7 @@ router.post(
 router.get("/companies/edit/:id", protectAdminRoute, async (req, res, next) => {
   try {
     const currentUser = await UserModel.findById(req.session.currentUser._id);
+    console.log(currentUser);
     const company = await CompanyModel.findById(req.params.id);
     res.render("admin/edit_company", {
       title: "Edit a company",
