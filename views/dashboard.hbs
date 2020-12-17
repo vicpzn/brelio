@@ -5,12 +5,31 @@
 <div id="wrapper-dashboard">
     <div id="company-manage">
         <h2>Last updated prospects</h2>
-        {{#each lastProspects}}
-        <p>{{this.firstname}} {{this.lastname}} {{this.company}} <a class="fas fa-envelope"
-                href="mailto:{{this.email}}"></a>
-        </p>
-        {{/each}}
-        <a href="/account-management"><i class="fas fa-address-book"></i> My prospects</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Company</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each lastProspects}}
+                <tr>
+                    <td>
+                        <p>{{this.firstname}} {{this.lastname}}</p>
+                    </td>
+                    <td>
+                        <p> {{this.company}} </p>
+                    </td>
+                    <td>
+                        <a class="fas fa-envelope" href="mailto:{{this.email}}"></a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <a href="/account-management"><span class="fas fa-address-book"></span> My prospects</a>
     </div>
 
     <div id="company-manage">

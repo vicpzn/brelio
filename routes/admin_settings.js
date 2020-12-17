@@ -74,10 +74,12 @@ router.post(
 
 router.get("/companies/edit/:id", protectAdminRoute, async (req, res, next) => {
   try {
+    const currentUser = await UserModel.findById(req.session.currentUser._id);
     const company = await CompanyModel.findById(req.params.id);
     res.render("admin/edit_company", {
       title: "Edit a company",
       company,
+      currentUser,
     });
   } catch (err) {
     next(err);
