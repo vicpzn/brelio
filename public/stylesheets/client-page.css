@@ -1,5 +1,5 @@
 #client-page {
-  padding-top: 70px;
+  padding-top: 40px;
   font-family: Source Sans Pro;
   font-weight: 200;
 }
@@ -59,6 +59,12 @@ a {
 }
 
 /*tasks*/
+#add-task {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #tasks table th {
   text-align: center;
 }
@@ -73,12 +79,27 @@ a {
   width: 10vw;
 }
 
-#tasks table {
-  height: 14vh;
+#task-table {
+  height: 10vh;
   width: 29.5vw;
   border-radius: 5px;
   background-color: white;
   margin: 2vh 0 2vh 0;
+  overflow: auto;
+}
+
+#write-task {
+  width: 11.6vw;
+}
+
+#priority {
+  width: 4vw;
+}
+
+#add-task button {
+  margin-top: 2vh;
+  display: inline;
+  text-align: center;
 }
 
 /*file-upload*/
@@ -97,14 +118,16 @@ a {
   font-size: 2.5vw;
 }
 
+#file-upload button {
+  border-radius: 7px;
+}
+
 #file-upload button,
-#comments-table button,
 #tasks button {
   display: block;
   align-self: center;
   padding: 1vh 1vw;
   border: none;
-  border-radius: 7px;
   background-color: var(--lavender);
   color: white;
   font-family: Source Sans Pro;
@@ -114,6 +137,36 @@ a {
 /*comments*/
 .trash-comment {
   padding-left: 1vw;
+}
+
+#comments-display {
+  height: 10vh;
+  width: 29.5vw;
+  border-radius: 5px;
+  background-color: white;
+  margin: 2vh 0 2vh 0;
+  overflow-y: scroll;
+}
+
+#send-comment {
+  display: flex;
+  height: 3vh;
+}
+
+#send-comment input {
+  width: 25.5vw;
+}
+
+#comments-btn {
+  height: 3vh;
+  display: block;
+  align-self: center;
+  border: none;
+  padding: 0 1vw;
+  background-color: var(--lavender);
+  color: white;
+  font-family: Source Sans Pro;
+  font-size: 01.15vw;
 }
 
 /*delete*/
