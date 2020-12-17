@@ -74,9 +74,11 @@ a {
 }
 
 #tasks table {
-  height: 17vh;
+  height: 14vh;
   width: 29.5vw;
+  border-radius: 5px;
   background-color: white;
+  margin: 2vh 0 2vh 0;
 }
 
 /*file-upload*/
