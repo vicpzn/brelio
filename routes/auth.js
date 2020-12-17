@@ -21,14 +21,20 @@ router.post("/signin", async (req, res, next) => {
   const { email, password } = req.body;
   const foundUser = await UserModel.findOne({ email: email });
   if (!foundUser) {
-    // req.flash("error", "invalid credentials");
+    req.flash("error", "Email not found");
     res.redirect("/signin");
   } else {
-    const userObject = foundUser.toObject();
-    delete userObject.password;
-    req.session.currentUser = userObject;
-    // req.flash("success", "successfully logged in");
-    res.redirect("/dashboard");
+    const isSamePassword = bcrypt.compareSync(password, foundUser.password);
+    if (!isSamePassword) {
+      req.flash("error", "Wrong password");
+      res.redirect("/signin");
+    } else {
+      const userObject = foundUser.toObject();
+      delete userObject.password;
+      req.session.currentUser = userObject;
+      req.flash("success", "Successfully logged in");
+      res.redirect("/dashboard");
+    }
   }
 });
 
@@ -36,7 +42,6 @@ router.post("/signup", async (req, res, next) => {
   try {
     const newUser = { ...req.body };
     const foundUser = await UserModel.findOne({ email: newUser.email });
-
     if (foundUser) {
       req.flash(
         "warning",
@@ -48,7 +53,7 @@ router.post("/signup", async (req, res, next) => {
       newUser.password = hashedPassword;
       await UserModel.create(newUser);
       req.flash("success", "Successfully registered.");
-      res.redirect("/signin");
+      res.redirect("/dashboard/register");
     }
   } catch (error) {
     next(error);

@@ -1,0 +1,44 @@
+{{> burger_menu}}
+
+<div id="team-manage">
+    <h2>Manage all the companies</h2>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Date Add</th>
+                <th>Date Update</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each companies}}
+            <tr>
+                <td>
+                    <img width="50px" src="{{this.logo}}" alt="{{this.name}}">
+                </td>
+                <td>
+                    <p>{{this.name}}</p>
+                </td>
+                <td>
+                    <p>{{this.phonenumber}}</p>
+                </td>
+                <td>
+                    <p>{{formatDate this.createdAt}}</p>
+                </td>
+                <td>
+                    <p>{{formatDate this.updatedAt}}</p>
+                </td>
+                <td><a class="fas fa-edit" href="/dashboard/register/{{this._id}}"></a></td>
+                <td><a class="fas fa-trash" href="/companies/delete/{{this._id}}"></a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+<div id="manage-btn">
+    <a href="/companies/create"><i class="fas fa-plus"></i> Add a new company to brelio</a>
+</div>

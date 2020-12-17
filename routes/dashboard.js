@@ -11,10 +11,9 @@ const bcrypt = require("bcrypt");
 
 router.get("/", async (req, res, next) => {
   try {
-    const currentUser = await UserModel.findById("5fd77c662cb143287e9b194d");
-    const currentCompany = await CompanyModel.find({
-      _id: currentUser.company,
-    });
+    const currentUser = await UserModel.findById(
+      req.session.currentUser._id
+    ).populate("company");
     const lastTasks = await TaskModel.find()
       .sort({ task_deadline: -1 })
       .limit(5);
@@ -25,7 +24,6 @@ router.get("/", async (req, res, next) => {
       lastTasks,
       lastProspects,
       currentUser,
-      currentCompany,
       title: "Dashboard",
     });
   } catch (err) {
@@ -36,26 +34,50 @@ router.get("/", async (req, res, next) => {
 // REGISTER A COMPANY
 
 router.get("/register", (req, res) => {
-  res.render("register_company", { title: "New company" });
+  res.render("register_company", { title: "Register your company" });
 });
 
 router.get("/settings/", async (req, res, next) => {
   try {
-    const currentUser = await UserModel.findById("5fd77c662cb143287e9b194d");
+    const currentUser = await UserModel.findById(
+      req.session.currentUser._id
+    ).populate("company");
     const membersTeam = await UserModel.find({
       company: currentUser.company,
     })
       .sort({ createdAt: -1 })
       .limit(5);
-    const currentCompany = await CompanyModel.find({
-      _id: currentUser.company,
-    });
-    res.render("settings", {
-      currentCompany,
-      currentUser,
-      membersTeam,
-      title: "Settings",
-    });
+    if (currentUser.role === "admin" || currentUser.role === "manager") {
+      res.render("settings", {
+        currentUser,
+        membersTeam,
+        title: "Settings",
+      });
+    } else {
+      res.send("You don't have access to this page.");
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/settings/admin", async (req, res, next) => {
+  try {
+    const currentUser = await UserModel.findById(
+      req.session.currentUser._id
+    ).populate("company");
+    const companies = await CompanyModel.find()
+      .sort({ createdAt: -1 })
+      .limit(5);
+    if (currentUser.role === "admin") {
+      res.render("settings_admin", {
+        currentUser,
+        companies,
+        title: "Admin Settings",
+      });
+    } else {
+      res.send("You don't have access to this page.");
+    }
   } catch (err) {
     next(err);
   }

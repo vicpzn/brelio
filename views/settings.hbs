@@ -3,21 +3,22 @@
 
 <div id="company-manage">
     <h2>Your company</h2>
-    <div id="your-company"><img width="150px" src="{{currentCompany.0.logo}}" alt="{{currentCompany.0.name}}">
+    <div id="your-company"><img width="150px" src="{{currentUser.company.logo}}" alt="{{currentUser.company.name}}">
         <div>
-            <h3>{{currentCompany.0.name}}</h3>
-            <address>{{currentCompany.0.streetnumber}} {{currentCompany.0.street}}, {{currentCompany.0.zipcode}},
-                {{currentCompany.0.city}}, {{currentCompany.0.country}}</address>
-            <p>{{currentCompany.0.phonenumber}}</p>
+            <h3>{{currentUser.company.name}}</h3>
+            <address>{{currentUser.company.streetnumber}} {{currentUser.company.street}},
+                {{currentUser.company.zipcode}},
+                {{currentUser.company.city}}, {{currentUser.company.country}}</address>
+            <p>{{currentUser.company.phonenumber}}</p>
         </div>
     </div>
 
-    <a href="/dashboard/register/{{currentCompany.0._id}}"><i class="fas fa-building"></i> Edit company</a>
+    <a href="/dashboard/register/{{currentUser.company._id}}"><i class="fas fa-building"></i> Edit company</a>
 </div>
 
 <div id="team-manage">
     <h2>Manage your team</h2>
-    <p>Last five users added</p>
+    <p>Last five users added for the company {{currentUser.company.name}}</p>
     <table>
         <thead>
             <tr>

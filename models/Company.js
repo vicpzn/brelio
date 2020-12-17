@@ -10,7 +10,6 @@ const companySchema = new Schema(
     city: String,
     country: String,
     phonenumber: String,
-    users_id: [String], // team members ids added by the manager
     logo: { type: String, default: "/media/images/default_logo.png" },
   },
   { timestamps: true }

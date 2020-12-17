@@ -1,0 +1,9 @@
+{{> landing_nav}}
+
+<p>Choose your company</p>
+
+<select name="company">
+    {{#each companies}}
+    <option value="{{this._id}}">{{this.name}}</option>
+    {{/each}}
+</select>
