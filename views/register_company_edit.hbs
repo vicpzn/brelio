@@ -1,58 +1,53 @@
 {{> burger_menu}}
 
-<div class="container">
-    <form action="/dashboard/register/{{company._id}}" method="post" class="form" enctype="multipart/form-data">
+<h1 class="title-register">Edit your company</h1>
 
-        <h3 class="title">Edit your company</h3>
+<form action="/dashboard/register/{{company._id}}" method="post" class="form" enctype="multipart/form-data">
 
-        <div class="item">
-            <label for="name" class="label">Company</label>
+    <div class="container-register">
+
+        <div class="item-register">
             <input name="name" id="name" type="text" class="input" placeholder="Company" value="{{company.name}}">
         </div>
 
-
-        <div class="item">
-            <label for="streetnumber" class="label">Street Number</label>
+        <div class="item-register">
             <input name="streetnumber" id="streetnumber" type="text" class="input" placeholder="Street Number"
                 value="{{company.streetnumber}}">
         </div>
 
-        <div class="item">
-            <label for="street" class="label">Street</label>
+        <div class="item-register">
             <input name="street" id="street" type="text" class="input" placeholder="Street" value="{{company.street}}">
         </div>
 
-        <div class="item">
-            <label for="zipcode" class="label">Zipcode</label>
+        <div class="item-register">
             <input name="zipcode" id="zipcode" type="text" class="input" placeholder="Zipcode"
                 value="{{company.zipcode}}">
         </div>
 
-        <div class="item">
-            <label for="city" class="label">City</label>
+        <div class="item-register">
             <input name="city" id="city" type="text" class="input" placeholder="City" value="{{company.city}}">
         </div>
 
-        <div class="item">
-            <label for="country" class="label">Country</label>
+        <div class="item-register">
             <input name="country" id="country" type="text" class="input" placeholder="Country"
                 value="{{company.country}}">
         </div>
 
-        <div class="item">
-            <label for="phonenumber" class="label">Phone Number</label>
+        <div class="item-register">
             <input name="phonenumber" id="phonenumber" type="text" class="input" placeholder="Phone Number"
                 value="{{company.phonenumber}}">
         </div>
 
-        <div class="item">
-            <img width="150px" src="{{company.logo}}" alt="{{company.name}}>
-            <label for=" logo" class="label">Logo</label>
-            <input name="logo" id="logo" type="file" class="input">
+        <div>
+            <img width="150px" src="{{company.logo}}" alt="{{company.name}}">
         </div>
 
-        <button class="btn">Edit your company</button>
+        <div>
+            <input class="custom-file-input" name="logo" type="file">
+        </div>
 
-    </form>
+        <button class="btn-register">Edit your company</button>
+
+</form>
 
 </div>

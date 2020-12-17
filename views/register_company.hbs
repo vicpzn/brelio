@@ -1,52 +1,48 @@
 {{> landing_nav}}
 
-<div class="container">
-    <form action="/dashboard/register" method="post" class="form" enctype="multipart/form-data">
+<h1 class="title-register">Register your company</h1>
 
-        <h3 class="title">Register your company</h3>
+<form action="/dashboard/register" method="post" class="form" enctype="multipart/form-data">
 
-        <div class="item">
-            <label for="name" class="label">Company</label>
-            <input name="name" id="name" type="text" class="input" placeholder="Company" required>
+    <div class="container-register">
+
+        <div class="item-register">
+            <input name="name" id="name" type="text" placeholder="Company" required>
         </div>
 
-        <div class="item">
-            <label for="streetnumber" class="label">Street Number</label>
-            <input name="streetnumber" id="streetnumber" type="text" class="input" placeholder="Street Number" required>
+        <div class="item-register">
+            <input name="streetnumber" id="streetnumber" type="text" placeholder="Street Number" required>
         </div>
 
-        <div class="item">
-            <label for="street" class="label">Street</label>
-            <input name="street" id="street" type="text" class="input" placeholder="Street" required>
+        <div class="item-register">
+            <input name="street" id="street" type="text" placeholder="Street" required>
         </div>
 
-        <div class="item">
-            <label for="zipcode" class="label">Zipcode</label>
-            <input name="zipcode" id="zipcode" type="text" class="input" placeholder="Zipcode" required>
+        <div class="item-register">
+            <input name="zipcode" id="zipcode" type="text" placeholder="Zipcode" required>
         </div>
 
-        <div class="item">
-            <label for="city" class="label">City</label>
-            <input name="city" id="city" type="text" class="input" placeholder="City" required>
+        <div class="item-register">
+            <input name="city" id="city" type="text" placeholder="City" required>
         </div>
 
-        <div class="item">
-            <label for="country" class="label">Country</label>
-            <input name="country" id="country" type="text" class="input" placeholder="Country" required>
+        <div class="item-register">
+            <input name="country" id="country" type="text" placeholder="Country" required>
         </div>
 
-        <div class="item">
-            <label for="phonenumber" class="label">Phone Number</label>
-            <input name="phonenumber" id="phonenumber" type="text" class="input" placeholder="Phone Number" required>
+        <div class="item-register">
+            <input name="phonenumber" id="phonenumber" type="text" placeholder="Phone Number" required>
         </div>
 
-        <div class="item">
-            <label for="logo" class="label">Logo</label>
-            <input name="logo" id="logo" type="file" class="input">
+        <div>
+            <input class="custom-file-input" name="logo" type="file">
         </div>
 
-        <button class="btn">Save</button>
+        <div class="item-register">
+            <button class="btn-register">Save</button>
+        </div>
 
-    </form>
+
+</form>
 
 </div>
