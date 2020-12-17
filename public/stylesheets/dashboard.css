@@ -1,0 +1,94 @@
+/* Dashboard page style */
+#wrapper-dashboard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+#avatar {
+  width: 50px;
+  border-radius: 50%;
+  margin: 0 20px;
+}
+
+#div-user-dashboard {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#div-user-dashboard h1 {
+  font-size: 20px;
+}
+
+/* Register company style */
+.title-register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
+  margin-top: 30px;
+}
+
+.container-register {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 10vh 0;
+}
+
+.item-register input {
+  padding: 10px;
+  border: 1px solid var(--purple);
+  border-radius: 5px;
+}
+
+/* upload button */
+.custom-file-input {
+  color: transparent;
+  width: 100px;
+}
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: 'Select logo';
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--softgrey);
+  border: 1px solid var(--purple);
+  border-radius: 5px;
+  padding: 5px 8px;
+  cursor: pointer;
+}
+.custom-file-input:hover::before {
+  border-color: var(--puple);
+}
+
+.custom-file-input:active::before {
+  background: var(--softgrey);
+}
+
+/* save button */
+.btn-register {
+  width: 250px;
+  height: 45px;
+  background: var(--purple);
+  color: white;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: 1px solid white;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}
+
+.btn-register:hover {
+  background: white;
+  color: var(--purple);
+  border: 1px solid var(--purple);
+  cursor: pointer;
+}

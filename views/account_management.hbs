@@ -1,5 +1,6 @@
 {{> burger_menu}}
 {{> searchbar}}
+{{> current_user}}
 
 <div id="container-account-management">
     <h1>Account Management</h1>
@@ -20,6 +21,7 @@
                 <td>
                     <p>{{this.firstname}} {{this.lastname}}</p>
                 </td>
+                {{#each this.task}}
                 <td>
                     <p>{{this.task_associated}}</p>
                 </td>
@@ -29,6 +31,7 @@
                 <td>
                     <p>{{this.priority}}</p>
                 </td>
+                {{/each}}
                 <td>
                     <a class="fas fa-eye" href="/account-management/{{this._id}}"></a>
                     <a class="fas fa-trash" href="/account-management/delete/{{this._id}}"></a>

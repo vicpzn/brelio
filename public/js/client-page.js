@@ -691,5 +691,3 @@ trashComment();
 
 sendTask();
 checkBox();
-
-sendFile();

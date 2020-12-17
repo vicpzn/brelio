@@ -8,6 +8,7 @@ const taskSchema = new Schema(
     task_deadline: { type: Date, default: Date.now },
     priority: Number,
     creator: { type: Schema.Types.ObjectId, ref: "user" },
+    priority: String,
   },
   { timestamps: true }
 );

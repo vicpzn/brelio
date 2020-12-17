@@ -1,5 +1,5 @@
 table#account-table {
-  border: 1px solid black;
+  border: 1px solid var(--softgrey);
 }
 
 table#account-table th,
