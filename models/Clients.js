@@ -15,6 +15,7 @@ const clientSchema = new Schema(
     country: String,
     task: [{ type: Schema.Types.ObjectId, ref: "task" }],
     comments: [String],
+    files: [String],
   },
   { timestamps: true }
 );

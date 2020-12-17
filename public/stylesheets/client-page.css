@@ -73,6 +73,10 @@ a {
   width: 10vw;
 }
 
+#tasks tbody {
+  background-color: white;
+}
+
 /*file-upload*/
 
 .is-hidden {
