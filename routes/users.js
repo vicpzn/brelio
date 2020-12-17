@@ -7,7 +7,9 @@ const bcrypt = require("bcrypt");
 
 router.get("/all", async (req, res, next) => {
   try {
-    const currentUser = await UserModel.findById("5fd77c662cb143287e9b194d");
+    const currentUser = await UserModel.findById(
+      req.session.currentUser._id
+    ).populate("company");
     const users = await UserModel.find({
       company: currentUser.company,
     })
@@ -21,7 +23,9 @@ router.get("/all", async (req, res, next) => {
 
 router.get("/create", async (req, res, next) => {
   try {
-    const currentUser = await UserModel.findById("5fd77c662cb143287e9b194d");
+    const currentUser = await UserModel.findById(
+      req.session.currentUser._id
+    ).populate("company");
     const currentCompany = await CompanyModel.find({
       _id: currentUser.company,
     });

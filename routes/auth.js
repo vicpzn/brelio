@@ -52,6 +52,10 @@ router.post("/signup", async (req, res, next) => {
       const hashedPassword = bcrypt.hashSync(newUser.password, 10);
       newUser.password = hashedPassword;
       await UserModel.create(newUser);
+      const foundUser = await UserModel.findOne({ email: newUser.email });
+      const userObject = foundUser.toObject();
+      delete userObject.password;
+      req.session.currentUser = userObject;
       req.flash("success", "Successfully registered.");
       res.redirect("/dashboard/register");
     }

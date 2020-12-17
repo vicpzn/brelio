@@ -15,6 +15,7 @@ const clientSchema = new Schema(
     country: String,
     task: [{ type: Schema.Types.ObjectId, ref: "task" }],
     comments: [String],
+    creator: { type: Schema.Types.ObjectId, ref: "user" },
   },
   { timestamps: true }
 );
