@@ -5,6 +5,7 @@ var router = express.Router();
 const uploader = require("./../config/cloudinary");
 const bcrypt = require("bcrypt");
 const protectAdminManagerRoute = require("../middlewares/protectAdminManagerRoute");
+const protectLogRoute = require("../middlewares/protectLogRoute");
 
 router.get("/all", protectAdminManagerRoute, async (req, res, next) => {
   try {
@@ -16,7 +17,7 @@ router.get("/all", protectAdminManagerRoute, async (req, res, next) => {
     })
       .sort({ createdAt: -1 })
       .limit(5);
-    res.render("list_users", { users, title: "List of users" });
+    res.render("list_users", { currentUser, users, title: "List of users" });
   } catch (err) {
     next(err);
   }
@@ -64,7 +65,7 @@ router.post(
   }
 );
 
-router.get("/edit/:id", protectAdminManagerRoute, async (req, res, next) => {
+router.get("/edit/:id", protectLogRoute, async (req, res, next) => {
   try {
     const user = await UserModel.findById(req.params.id);
     const currentUser = await UserModel.findById(
@@ -87,14 +88,14 @@ router.get("/delete/:id", protectAdminManagerRoute, async (req, res, next) => {
 
 router.post(
   "/edit/:id",
-  protectAdminManagerRoute,
+  protectLogRoute,
   uploader.single("avatar"),
   async (req, res, next) => {
     try {
       const profileToUpdate = { ...req.body };
       if (req.file) profileToUpdate.avatar = req.file.path;
       await UserModel.findByIdAndUpdate(req.params.id, profileToUpdate);
-      res.redirect("/users/all");
+      res.redirect(`/users/edit/${req.session.currentUser._id}`);
     } catch (err) {
       next(err);
     }

@@ -15,7 +15,7 @@ router.get("/prices", function (req, res, next) {
 });
 
 router.get("/about", function (req, res, next) {
-  res.render("about", { title: "About" });
+  res.render("about", { title: "About us" });
 });
 
 module.exports = router;

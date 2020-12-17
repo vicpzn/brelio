@@ -28,9 +28,13 @@ router.get("/", protectAdminRoute, async (req, res, next) => {
 
 router.get("/companies/all", protectAdminRoute, async (req, res, next) => {
   try {
+    const currentUser = await UserModel.findById(
+      req.session.currentUser._id
+    ).populate("company");
     const companies = await CompanyModel.find();
     res.render("admin/list_companies", {
       companies,
+      currentUser,
       title: "List of companies",
     });
   } catch (err) {
@@ -40,12 +44,15 @@ router.get("/companies/all", protectAdminRoute, async (req, res, next) => {
 
 router.get("/companies/create", protectAdminRoute, async (req, res, next) => {
   try {
-    const currentUser = await UserModel.findById(req.session.currentUser._id);
+    const currentUser = await UserModel.findById(
+      req.session.currentUser._id
+    ).populate("company");
     const currentCompany = await CompanyModel.find({
       _id: currentUser.company,
     });
     res.render("admin/add_company", {
       currentCompany,
+      currentUser,
       title: "Add a company",
     });
   } catch (err) {
@@ -74,7 +81,9 @@ router.post(
 
 router.get("/companies/edit/:id", protectAdminRoute, async (req, res, next) => {
   try {
-    const currentUser = await UserModel.findById(req.session.currentUser._id);
+    const currentUser = await UserModel.findById(
+      req.session.currentUser._id
+    ).populate("company");
     const company = await CompanyModel.findById(req.params.id);
     res.render("admin/edit_company", {
       title: "Edit a company",
@@ -117,8 +126,15 @@ router.post(
 
 router.get("/users/all", protectAdminRoute, async (req, res, next) => {
   try {
+    const currentUser = await UserModel.findById(
+      req.session.currentUser._id
+    ).populate("company");
     const users = await UserModel.find().sort({ createdAt: -1 });
-    res.render("admin/list_users_admin", { users, title: "List of users" });
+    res.render("admin/list_users_admin", {
+      currentUser,
+      users,
+      title: "List of users",
+    });
   } catch (err) {
     next(err);
   }
@@ -126,12 +142,13 @@ router.get("/users/all", protectAdminRoute, async (req, res, next) => {
 
 router.get("/users/create", protectAdminRoute, async (req, res, next) => {
   try {
-    const currentUser = await UserModel.findById(req.session.currentUser._id);
-    const currentCompany = await CompanyModel.find({
-      _id: currentUser.company,
-    });
-    res.render("register_company", {
-      currentCompany,
+    const currentUser = await UserModel.findById(
+      req.session.currentUser._id
+    ).populate("company");
+    const companies = await CompanyModel.find();
+    res.render("admin/create_user_admin", {
+      companies,
+      currentUser,
       title: "Add a company",
     });
   } catch (err) {
@@ -153,13 +170,13 @@ router.post(
           "warning",
           "Email already registered. Please try with another address."
         );
-        res.redirect("/users/create");
+        res.redirect("/dashboard/settings/admin/users/create");
       } else {
         const hashedPassword = bcrypt.hashSync(newUser.password, 10);
         newUser.password = hashedPassword;
         await UserModel.create(newUser);
         req.flash("success", "Successfully registered.");
-        res.redirect("/users/all");
+        res.redirect("/dashboard/settings/admin");
       }
     } catch (error) {
       next(error);
@@ -170,7 +187,9 @@ router.post(
 router.get("/users/edit/:id", protectAdminRoute, async (req, res, next) => {
   try {
     const user = await UserModel.findById(req.params.id);
-    const currentUser = await UserModel.findById(req.session.currentUser._id);
+    const currentUser = await UserModel.findById(
+      req.session.currentUser._id
+    ).populate("company");
     const companies = await CompanyModel.find();
     res.render("admin/edit_user_admin", {
       title: "Edit a profile",

@@ -22,7 +22,7 @@ table#account-table td {
 }
 
 #account-table tbody tr:nth-child(even),
-th {
+#account-table th {
   background-color: #5d81ed33;
   border-collapse: collapse;
 }
