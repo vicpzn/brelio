@@ -31,7 +31,11 @@ router.get("/create", protectAdminManagerRoute, async (req, res, next) => {
     const currentCompany = await CompanyModel.find({
       _id: currentUser.company,
     });
-    res.render("create_user", { currentCompany, title: "Create a new user" });
+    res.render("create_user", {
+      currentUser,
+      currentCompany,
+      title: "Create a new user",
+    });
   } catch (err) {
     next(err);
   }

@@ -61,6 +61,20 @@
   grid-gap: 20px;
 }
 
+#wrapper-edit-admin {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+#wrapper-edit-admin input,
+#wrapper-edit-admin select {
+  padding: 10px;
+  border: 1px solid var(--purple);
+  border-radius: 5px;
+}
+
 #logo-div-box,
 #avatar-div-box {
   display: flex;
@@ -71,7 +85,7 @@
 }
 
 .container-edit {
-  padding: 10vh 0 5vh;
+  padding: 5vh 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -99,6 +113,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.center-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #prospect-add-box {
@@ -207,7 +227,7 @@
   border-radius: 2px;
   border: 1px solid white;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 .btn-register:hover {
