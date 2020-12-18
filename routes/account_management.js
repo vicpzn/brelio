@@ -127,7 +127,7 @@ router.post(
       await ClientModel.findByIdAndUpdate(req.params.id, {
         $push: { files: `${upload}` },
       });
-      res.redirect("/account-management/");
+      res.redirect(`/account-management/${req.params.id}`);
     } catch (err) {
       next(err);
     }
