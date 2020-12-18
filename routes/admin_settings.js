@@ -14,7 +14,10 @@ router.get("/", protectAdminRoute, async (req, res, next) => {
     const companies = await CompanyModel.find()
       .sort({ createdAt: -1 })
       .limit(5);
-    const members = await UserModel.find().sort({ createdAt: -1 }).limit(5);
+    const members = await UserModel.find()
+      .sort({ createdAt: -1 })
+      .populate("company")
+      .limit(5);
     res.render("admin/settings_admin", {
       members,
       currentUser,
