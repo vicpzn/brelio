@@ -1,36 +1,39 @@
 {{> burger_menu}}
 {{> current_user}}
 
-<h1 class="title-register">Edit your profile</h1>
+<div id="master-div-prospect">
+    <h1 class="title-register">Edit your profile</h1>
+    <div id="prospect-add-box">
+        <form method="post" action="/users/edit/{{user._id}}" enctype="multipart/form-data">
+            <div class="container-edit edit">
 
-<form method="post" action="/users/edit/{{user._id}}" enctype="multipart/form-data">
+                <div class="item-register">
+                    <input name="firstname" type="text" placeholder="First Name" value="{{user.firstname}}" required>
+                </div>
 
-    <div class="container-edit">
+                <div class="item-register">
+                    <input name="lastname" type="text" placeholder="Last Name" value="{{user.lastname}}" required>
+                </div>
 
-        <div class="item-register">
-            <input name="firstname" type="text" placeholder="First Name" value="{{user.firstname}}" required>
-        </div>
+                <div class="item-register">
+                    <input name="phonenumber" type="tel" placeholder="Phone Number" value="{{user.phonenumber}}"
+                        required>
+                </div>
 
-        <div class="item-register">
-            <input name="lastname" type="text" placeholder="Last Name" value="{{user.lastname}}" required>
-        </div>
+                <div class="item-register">
+                    <img width="150px" src="{{user.avatar}}" alt="{{user.firstname}} {{user.lastname}}">
+                </div>
 
-        <div class="item-register">
-            <input name="phonenumber" type="tel" placeholder="Phone Number" value="{{user.phonenumber}}" required>
-        </div>
+                <div>
+                    <input class="custom-file-input-avatar" type="file" name="avatar">
+                </div>
 
-        <div class="item-register">
-            <img width="150px" src="{{user.avatar}}" alt="{{user.firstname}} {{user.lastname}}">
-        </div>
+                <div class="item-register">
+                    <button class="btn-register">Edit Profile</button>
+                </div>
 
-        <div>
-            <input class="custom-file-input-avatar" type="file" name="avatar">
-        </div>
+            </div>
 
-        <div class="item-register">
-            <button class="btn-register">Edit Profile</button>
-        </div>
-
+        </form>
     </div>
-
-</form>
+</div>
