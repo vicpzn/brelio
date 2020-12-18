@@ -123,6 +123,7 @@ function displayTasks(array) {
 
     let checkbox = document.createElement("input");
     checkbox.type = "checkbox";
+    if (element.status === "done") checkbox.checked = true;
     tdCheck.appendChild(checkbox);
   });
   checkBox();
