@@ -36,6 +36,18 @@
   grid-gap: 20px;
 }
 
+.container-edit {
+  padding: 10vh 0 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container-edit div {
+  margin-bottom: 10px;
+}
+
 #quick-add .fa-plus {
   color: white;
 }
@@ -128,4 +140,8 @@
   color: var(--purple);
   border: 1px solid var(--purple);
   cursor: pointer;
+}
+
+#table-dashboard {
+  text-align: center;
 }

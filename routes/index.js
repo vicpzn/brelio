@@ -3,19 +3,19 @@ var router = express.Router();
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("landing_page", { title: "Efficiency at its finest" });
+  res.render("landing/landing_page", { title: "Efficiency at its finest" });
 });
 
 router.get("/products", function (req, res, next) {
-  res.render("products", { title: "Products" });
+  res.render("landing/products", { title: "Products" });
 });
 
 router.get("/prices", function (req, res, next) {
-  res.render("prices", { title: "Prices" });
+  res.render("landing/prices", { title: "Prices" });
 });
 
 router.get("/about", function (req, res, next) {
-  res.render("about", { title: "About us" });
+  res.render("landing/about", { title: "About us" });
 });
 
 module.exports = router;

@@ -2,7 +2,7 @@
   margin-top: 3vh;
   padding: 2vh;
   width: 100%;
-  border: 5px solid var(--lavender);
+  border: 2px solid var(--lavender);
   border-radius: 3px;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
   display: flex;
