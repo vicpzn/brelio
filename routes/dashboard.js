@@ -19,7 +19,8 @@ router.get("/", protectLogRoute, async (req, res, next) => {
     ).populate("company");
     const lastTasks = await ClientModel.find({
       creator: req.session.currentUser._id,
-    }).populate("task");
+    })
+      .populate("task");
     const lastProspects = await ClientModel.find({
       creator: req.session.currentUser._id,
     })

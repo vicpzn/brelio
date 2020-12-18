@@ -34,7 +34,9 @@ router.get("/companies/all", protectAdminRoute, async (req, res, next) => {
     const currentUser = await UserModel.findById(
       req.session.currentUser._id
     ).populate("company");
-    const companies = await CompanyModel.find().populate("creator");
+    const companies = await CompanyModel.find()
+      .sort({ name: 1 })
+      .populate("creator");
     res.render("admin/list_companies", {
       companies,
       currentUser,
@@ -195,7 +197,7 @@ router.get("/users/edit/:id", protectAdminRoute, async (req, res, next) => {
     const currentUser = await UserModel.findById(
       req.session.currentUser._id
     ).populate("company");
-    const companies = await CompanyModel.find();
+    const companies = await CompanyModel.find().sort({ name: 1 });
     res.render("admin/edit_user_admin", {
       title: "Edit a profile",
       user,

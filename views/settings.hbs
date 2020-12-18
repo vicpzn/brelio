@@ -23,8 +23,9 @@
     <table>
         <thead>
             <tr>
+                <th></th>
                 <th>Name</th>
-                <th>Phone Number</th>
+                <th>Email</th>
                 <th>Role</th>
                 <th>Date Add</th>
                 <th>Date Update</th>
@@ -36,10 +37,13 @@
             {{#each membersTeam}}
             <tr>
                 <td>
+                    <img width="50px" src="{{this.avatar}}" alt="{{this.firstname}}">
+                </td>
+                <td>
                     <p>{{this.firstname}} {{this.lastname}}</p>
                 </td>
                 <td>
-                    <p>{{this.phonenumber}}</p>
+                    <p>{{this.email}}</p>
                 </td>
                 <td>
                     <p>{{this.role}}</p>
