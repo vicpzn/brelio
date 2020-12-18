@@ -60,4 +60,13 @@ router.patch("/edit/clients/:id", protectLogRoute, async (req, res) => {
   }
 });
 
+router.patch("/edit/tasks/:id", protectLogRoute, async (req, res) => {
+  try {
+    res.json(await TaskModel.findByIdAndUpdate(req.params.id, req.body));
+    console.log(req.params.id);
+  } catch (error) {
+    res.json(error);
+  }
+});
+
 module.exports = router;

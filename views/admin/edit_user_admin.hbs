@@ -1,20 +1,19 @@
 {{> burger_menu}}
+{{> current_user}}
 
 <div id="master-div-prospect">
     <h1>Edit {{user.firstname}}'s profile</h1>
     <div id="prospect-add-box">
 
-        <form id="account-add" method="post" action="/dashboard/settings/admin/users/edit/{{user._id}}"
-            enctype="multipart/form-data">
-            <div id="wrapper-sign-up">
-                <input name="firstname" id="firstname" type="text" class="input" placeholder="First Name"
-                    value="{{user.firstname}}" required>
-                <input name="lastname" id="lastname" type="text" class="input" placeholder="Last Name"
-                    value="{{user.lastname}}" required>
-                <input name="phonenumber" id="phonenumber" type="tel" class="input" placeholder="Phone Number"
+        <form method="post" action="/dashboard/settings/admin/users/edit/{{user._id}}" enctype="multipart/form-data">
+            <div class="container-register edit">
+                <input name="firstname" id="firstname" type="text" placeholder="First Name" value="{{user.firstname}}"
+                    required>
+                <input name="lastname" id="lastname" type="text" placeholder="Last Name" value="{{user.lastname}}"
+                    required>
+                <input name="phonenumber" id="phonenumber" type="tel" placeholder="Phone Number"
                     value="{{user.phonenumber}}" required>
-                <input name="email" id="phonenumber" type="email" class="input" placeholder="Email"
-                    value="{{user.email}}" required>
+                <input name="email" id="phonenumber" type="email" placeholder="Email" value="{{user.email}}" required>
                 <select name="company">
                     {{#each companies}}
                     <option value="{{this._id}}">{{this.name}}</option>
@@ -33,17 +32,17 @@
                 </select>
             </div>
 
-            <div>
+            <div id="avatar-div-box">
                 <div>
                     <img width="150px" src="{{user.avatar}}" alt="{{user.firstname}} {{user.lastname}}">
                 </div>
 
                 <div>
-                    <input class="custom-file-input" type="file" name="avatar">
+                    <input class="custom-file-input-avatar" type="file" name="avatar">
                 </div>
             </div>
 
-            <div>
+            <div class="center-btn">
                 <button class="btn-register">Edit Profile</button>
             </div>
 

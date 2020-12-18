@@ -34,7 +34,7 @@ router.get("/companies/all", protectAdminRoute, async (req, res, next) => {
     const currentUser = await UserModel.findById(
       req.session.currentUser._id
     ).populate("company");
-    const companies = await CompanyModel.find();
+    const companies = await CompanyModel.find().populate("creator");
     res.render("admin/list_companies", {
       companies,
       currentUser,
@@ -118,7 +118,7 @@ router.post(
   async (req, res, next) => {
     try {
       const companyToUpdate = { ...req.body };
-      if (req.file) companyToUpdate.avatar = req.file.path;
+      if (req.file) companyToUpdate.logo = req.file.path;
       await CompanyModel.findByIdAndUpdate(req.params.id, companyToUpdate);
       res.redirect("/dashboard/settings/admin");
     } catch (err) {
