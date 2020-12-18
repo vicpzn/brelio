@@ -6,15 +6,14 @@
     <div id="prospect-add-box">
 
         <form method="post" action="/dashboard/settings/admin/users/edit/{{user._id}}" enctype="multipart/form-data">
-            <div class="container-register">
-                <input name="firstname" id="firstname" type="text" class="input" placeholder="First Name"
-                    value="{{user.firstname}}" required>
-                <input name="lastname" id="lastname" type="text" class="input" placeholder="Last Name"
-                    value="{{user.lastname}}" required>
-                <input name="phonenumber" id="phonenumber" type="tel" class="input" placeholder="Phone Number"
+            <div class="container-register edit">
+                <input name="firstname" id="firstname" type="text" placeholder="First Name" value="{{user.firstname}}"
+                    required>
+                <input name="lastname" id="lastname" type="text" placeholder="Last Name" value="{{user.lastname}}"
+                    required>
+                <input name="phonenumber" id="phonenumber" type="tel" placeholder="Phone Number"
                     value="{{user.phonenumber}}" required>
-                <input name="email" id="phonenumber" type="email" class="input" placeholder="Email"
-                    value="{{user.email}}" required>
+                <input name="email" id="phonenumber" type="email" placeholder="Email" value="{{user.email}}" required>
                 <select name="company">
                     {{#each companies}}
                     <option value="{{this._id}}">{{this.name}}</option>

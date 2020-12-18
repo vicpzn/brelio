@@ -69,7 +69,10 @@
 }
 
 #wrapper-edit-admin input,
-#wrapper-edit-admin select {
+#wrapper-edit-admin select,
+.container-register.edit input,
+.container-register.edit select,
+select {
   padding: 10px;
   border: 1px solid var(--purple);
   border-radius: 5px;
