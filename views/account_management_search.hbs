@@ -20,6 +20,8 @@
                 <td>
                     <p>{{this.firstname}} {{this.lastname}}</p>
                 </td>
+                {{#if this.task}}
+                {{#each this.task}}
                 <td>
                     <p>{{this.task_associated}}</p>
                 </td>
@@ -29,6 +31,18 @@
                 <td>
                     <p>{{this.priority}}</p>
                 </td>
+                {{/each}}
+                {{else}}
+                <td>
+                    <p>&nbsp;</p>
+                </td>
+                <td>
+                    <p>&nbsp;</p>
+                </td>
+                <td>
+                    <p>&nbsp;</p>
+                </td>
+                {{/if}}
                 <td>
                     <a class="fas fa-eye" href="/account-management/{{this._id}}"></a>
                     <a class="fas fa-trash" href="/account-management/delete/{{this._id}}"></a>

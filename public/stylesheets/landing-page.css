@@ -358,8 +358,9 @@ footer a {
 }
 
 /* PRODUCTS page styling */
+
 #intro p {
-  padding-top: 20px;
+  padding-top: 40px;
 }
 
 .prod-container {
@@ -367,25 +368,16 @@ footer a {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  height: 45vh;
 }
 
 .prod {
   width: 400px;
-<<<<<<< HEAD
-  height: 200px;
-	border-radius: 5px;
-	overflow: hidden;
-	margin: 10px;
-	display: flex;
-	flex-direction: column;
-=======
-  height: auto;
   border-radius: 5px;
   overflow: hidden;
   margin: 10px;
   display: flex;
   flex-direction: column;
->>>>>>> 02123dd5da169b4b1ec48e2262c8638d89f1d889
 }
 
 .prod-header-one {

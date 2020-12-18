@@ -81,3 +81,12 @@ hbs.registerHelper("userStatus", function (role) {
 </a>`;
   }
 });
+
+hbs.registerHelper("each_upto", function (array, max, options) {
+  if (!array || array.length == 0) return options.inverse(this);
+
+  var result = [];
+  for (var i = 0; i < max && i < array.length; ++i)
+    result.push(options.fn(array[i]));
+  return result.join("");
+});

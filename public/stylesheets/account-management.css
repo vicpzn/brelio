@@ -17,6 +17,10 @@ table#account-table td {
   flex-direction: column;
 }
 
+#container-account-management h1 {
+  margin-bottom: 5vh;
+}
+
 #account-table {
   width: 65vw;
 }
@@ -51,4 +55,8 @@ table#account-table td {
 
 .fa {
   color: var(--softgrey);
+}
+
+table {
+  margin-bottom: 10px;
 }

@@ -1,34 +1,38 @@
 {{> burger_menu}}
 {{> current_user}}
 {{> searchbar}}
+
+<div id="client-bar">
+    <span class="separator">Client ID: <span id="client-id">{{client.id}}</span></span> <span class="separator">Created
+        on {{formatDate client.createdAt}}
+        by {{currentUser.firstname}} {{currentUser.lastname}}</span> <a href="/account-management/delete/{{client._id}}"
+        id="delete">
+        <i class="fas fa-trash" id="client-trash"></i>Delete this client page</a></span>
+</div>
 <div id="client-page">
     <div id="client-infos">
         <table>
             <tbody>
-                <tr>
-                    <td>Client id</td>
-                    <td id="client-id">{{client.id}}</td>
-                </tr>
                 <tr id="firstname">
-                    <td>Firstname</td>
+                    <td>First Name</td>
                     <td id="client-firstname">{{client.firstname}} <i class="fas fa-pencil-alt" id="edit-firstname"></i>
                     </td>
                 </tr>
                 <tr id="lastname">
-                    <td>Lastname</td>
+                    <td>Last Name</td>
                     <td id="client-lastname">{{client.lastname}} <i class="fas fa-pencil-alt" id="edit-lastname"></i>
                     </td>
                 </tr>
                 <tr id="email">
-                    <td>Email address</td>
+                    <td>Email Address</td>
                     <td id="client-email">{{client.email}} <i class="fas fa-pencil-alt" id="edit-email"></i></td>
                 <tr id="phonenumber">
-                    <td>Phone number</td>
+                    <td>Phone Number</td>
                     <td id="client-phonenumber">{{client.phonenumber}} <i class="fas fa-pencil-alt"
                             id="edit-phonenumber"></i></td>
                 </tr>
                 <tr id="streetnumber">
-                    <td>Street number</td>
+                    <td>Street Number</td>
                     <td id="client-streetnumber">{{client.streetnumber}} <i class="fas fa-pencil-alt"
                             id="edit-streetnumber"></i></td>
                 </tr>
@@ -101,7 +105,9 @@
             <h3>Documents :</h3>
             <ul>
                 {{#each client.files}}
-                <a href="{{this}}"><li><i class="fas fa-file-word"></i></i></li></a>
+                <a href="{{this}}">
+                    <li><i class="fas fa-file-word"></i></i></li>
+                </a>
                 {{/each}}
             </ul>
         </div>
@@ -128,7 +134,4 @@
         </div>
 
     </div>
-
-    <div id="delete"><a href="/account-management/delete/{{client._id}}"><i class="fas fa-trash"
-                id="client-trash"></i>Delete this client page</a></div>
 </div>

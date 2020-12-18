@@ -47,7 +47,9 @@ router.get("/search", protectLogRoute, async (req, res, next) => {
         { email: { $regex: exp } },
         { phonenumber: { $regex: exp } },
       ],
-    });
+    })
+      .populate("task")
+      .slice("task", -1);
     res.render("account_management_search", {
       currentCompany,
       currentUser,
@@ -127,7 +129,7 @@ router.post(
       await ClientModel.findByIdAndUpdate(req.params.id, {
         $push: { files: `${upload}` },
       });
-      res.redirect("/account-management/");
+      res.redirect(`/account-management/${req.params.id}`);
     } catch (err) {
       next(err);
     }

@@ -7,14 +7,14 @@ const CompanyModel = require("../models/Company");
 router.get("/signup", async (req, res, next) => {
   try {
     const companies = await CompanyModel.find();
-    res.render("signup", { companies, title: "Sign up" });
+    res.render("landing/signup", { companies, title: "Sign up" });
   } catch (err) {
     next(err);
   }
 });
 
 router.get("/signin", (req, res) => {
-  res.render("signin", { title: "Log in" });
+  res.render("landing/signin", { title: "Log in" });
 });
 
 router.post("/signin", async (req, res, next) => {
