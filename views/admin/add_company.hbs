@@ -1,17 +1,16 @@
 {{> burger_menu}}
+{{> current_user}}
 
-<div id="master-div-prospect">
+<div id="master-div-register">
     <h1 class="title-register">Add a new company</h1>
-    <div id="prospect-add-box">
-        <form id="account-add" action="/dashboard/settings/admin/companies/create" method="post" class="form"
+    <div id="company-add-box">
+        <form id="form-register" action="/dashboard/settings/admin/companies/create" method="post" class="form"
             enctype="multipart/form-data">
-
-            <div class="container-company">
-                <input name="name" id="name" type="text" placeholder="Company" required>
-            </div>
-
             <div class="container-register">
 
+                <div class="item-register">
+                    <input name="name" id="name" type="text" placeholder="Company" required>
+                </div>
 
                 <div class="item-register">
                     <input name="streetnumber" id="streetnumber" type="text" placeholder="Street Number" required>
@@ -37,17 +36,12 @@
                     <input name="phonenumber" id="phonenumber" type="text" placeholder="Phone Number" required>
                 </div>
 
-                <div>
-                    <div>
-                        <input class="custom-file-input" name="logo" type="file">
-                    </div>
-
-                    <div class="item-register">
-                        <button class="btn-register">Save</button>
-                    </div>
-                </div>
-
+                <input class="custom-file-input" name="logo" type="file">
             </div>
-        </form>
+            <div class="item-register">
+                <button class="btn-register">Save</button>
+            </div>
     </div>
+    </form>
+</div>
 </div>

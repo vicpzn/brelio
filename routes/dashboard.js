@@ -67,8 +67,12 @@ router.get(
   protectAdminManagerRoute,
   async (req, res, next) => {
     try {
+      const currentUser = await UserModel.findById(
+        req.session.currentUser._id
+      ).populate("company");
       const company = await CompanyModel.findById(req.params.id);
       res.render("register_company_edit", {
+        currentUser,
         company,
         title: "Edit your company",
       });

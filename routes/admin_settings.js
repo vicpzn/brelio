@@ -34,7 +34,8 @@ router.get("/companies/all", protectAdminRoute, async (req, res, next) => {
     const currentUser = await UserModel.findById(
       req.session.currentUser._id
     ).populate("company");
-    const companies = await CompanyModel.find();
+    const companies = await CompanyModel.find().populate("creator");
+    console.log(companies);
     res.render("admin/list_companies", {
       companies,
       currentUser,
