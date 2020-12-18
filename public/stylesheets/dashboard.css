@@ -36,6 +36,10 @@
   grid-gap: 20px;
 }
 
+#quick-add .fa-plus {
+  color: white;
+}
+
 .container-company input {
   width: 40vw;
   padding: 10vh 0 5vh;

@@ -56,3 +56,7 @@ table#account-table td {
 .fa {
   color: var(--softgrey);
 }
+
+table {
+  margin-bottom: 10px;
+}

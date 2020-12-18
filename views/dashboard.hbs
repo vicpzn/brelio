@@ -34,16 +34,35 @@
 
     <div id="company-manage">
         <h2>Upcoming tasks</h2>
-        {{#each lastTasks}}
-        {{#each this.task}}
-        <p>{{this.task_associated}} {{formatDate this.task_deadline}} {{this.priority}}</p>
-        {{/each}}
-        {{/each}}
+        <table>
+            <thead>
+                <th>Task</th>
+                <th>Deadline</th>
+                <th>Priority</th>
+            </thead>
+            <tbody>
+                {{#each lastTasks}}
+                {{#each this.task}}
+                <tr>
+                    <td>
+                        <p>{{this.task_associated}}</p>
+                    </td>
+                    <td>
+                        <p>{{formatDate this.task_deadline}}</p>
+                    </td>
+                    <td>
+                        <p>{{this.priority}}</p>
+                    </td>
+                </tr>
+                {{/each}}
+                {{/each}}
+            </tbody>
+        </table>
     </div>
 
     <div id="company-manage">
         <h2>Quick add</h2>
-        <a class="fas fa-plus" href="/account-management/add">Add a new prospect</a>
+        <a id="quick-add" href="/account-management/add"><i class="fas fa-plus"></i> Add a new prospect</a>
     </div>
 
     <div id="company-manage">
