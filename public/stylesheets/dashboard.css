@@ -39,6 +39,7 @@
 #company-add-box {
   width: 400px;
   border-radius: 5px;
+  padding-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,7 +61,8 @@
   grid-gap: 20px;
 }
 
-#logo-div-box {
+#logo-div-box,
+#avatar-div-box {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -159,6 +161,39 @@
 }
 
 .custom-file-input:active::before {
+  background: var(--softgrey);
+}
+
+.custom-file-input-avatar {
+  color: transparent;
+  width: 167px;
+}
+
+.custom-file-input-avatar::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.custom-file-input-avatar::before {
+  width: 165px;
+  height: 35px;
+  content: "Select a picture";
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  background: var(--purple);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.custom-file-input-avatar:hover::before {
+  background: white;
+  color: var(--purple);
+  border: 1px solid var(--purple);
+}
+
+.custom-file-input-avatar:active::before {
   background: var(--softgrey);
 }
 
