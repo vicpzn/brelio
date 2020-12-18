@@ -93,6 +93,7 @@ function displayTasks(array) {
   array.forEach((element) => {
     console.log(element);
     let tr = document.createElement("tr");
+    if (element.status === "done") tr.classList.add("done");
     tasksList.appendChild(tr);
 
     let tdCheck = document.createElement("td");
@@ -114,10 +115,17 @@ function displayTasks(array) {
     tdPriority.textContent = element.priority;
     tr.appendChild(tdPriority);
 
+    let tdId = document.createElement("td");
+    tdId.classList.add("task-id");
+    tdId.classList.add("is-hidden");
+    tdId.textContent = element._id;
+    tr.appendChild(tdId);
+
     let checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     tdCheck.appendChild(checkbox);
   });
+  checkBox();
 }
 
 async function fetchTasks() {
@@ -125,7 +133,6 @@ async function fetchTasks() {
     const client = await axios.get(`/api/clients/${id}`);
     const tasks = client.data.task;
     displayTasks(tasks);
-    checkBox();
     taskTable.scrollTop = taskTable.scrollHeight - taskTable.clientHeight;
   } catch (err) {
     console.error(err);
@@ -148,25 +155,25 @@ function sendTask() {
         priority: `${priority}`,
       });
       fetchTasks();
+      checkBox();
     } catch (err) {
       console.error(err);
     }
   });
 }
 
-const taskId = document.querySelector(".task-id");
-
 function checkBox() {
   let checkboxes = document.querySelectorAll(".checkbox");
   checkboxes.forEach((checkbox) =>
     checkbox.addEventListener("change", async () => {
+      let parentTr = checkbox.parentNode;
+      const taskId = parentTr.querySelector(".task-id");
+      parentTr.classList.toggle("done");
+      let targetTask = taskId.textContent;
       try {
-        await axios.patch(`/api/edit/tasks/${{ taskId }}`, {
+        await axios.patch(`/api/edit/tasks/${targetTask}`, {
           status: "done",
         });
-        let parentTr = checkbox.parentNode;
-        console.log(parentTr);
-        parentTr.classList.toggle("done");
       } catch (err) {
         console.error(err);
       }

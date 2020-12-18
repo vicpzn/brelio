@@ -62,6 +62,15 @@
             <table>
                 <tbody>
                     {{#each client.task}}
+                    {{#if this.status}}
+                    <tr class="done">
+                        <td class="checkbox"><input type="checkbox"></td>
+                        <td class="task-content">{{ this.task_associated }}</td>
+                        <td class="task-date">{{ formatDate this.task_deadline }}</td>
+                        <td class="task-priority">{{ this.priority }}</td>
+                        <td class="task-id is-hidden">{{this._id}}</td>
+                    </tr>
+                    {{else}}
                     <tr>
                         <td class="checkbox"><input type="checkbox"></td>
                         <td class="task-content">{{ this.task_associated }}</td>
@@ -69,6 +78,7 @@
                         <td class="task-priority">{{ this.priority }}</td>
                         <td class="task-id is-hidden">{{this._id}}</td>
                     </tr>
+                    {{/if}}
                     {{/each}}
                 </tbody>
             </table>
