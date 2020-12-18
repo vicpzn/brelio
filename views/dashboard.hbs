@@ -62,8 +62,27 @@
     </div>
 
     <div id="company-manage">
-        <h2>Quick add</h2>
-        <a id="quick-add" href="/account-management/add"><i class="fas fa-plus"></i> Add a new prospect</a>
+        <canvas id="line-chart" width="400" height="400"></canvas>
+        <script>
+            new Chart(document.getElementById("line-chart"), {
+                type: 'line',
+                data: {
+                    labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                    datasets: [{
+                        label: "Prospects",
+                        backgroundColor: "#3396FF",
+                        hoverBackgroundColor: "#83BFFF",
+                        data: [10, 13, 20, 17, 24, 30, 31]
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Evolution of prospects'
+                    }
+                }
+            });
+        </script>
     </div>
 
     <div id="company-manage">
