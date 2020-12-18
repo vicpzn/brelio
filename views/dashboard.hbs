@@ -42,7 +42,6 @@
             <tbody>
                 {{#each lastTasks}}
                 {{#each_upto this.task 5}}
-                {{#each }}
                 <tr>
                     <td>
                         <p>{{this.task_associated}}</p>
@@ -54,7 +53,6 @@
                         <p>{{this.priority}}</p>
                     </td>
                 </tr>
-                {{/each}}
                 {{/each_upto}}
                 {{/each}}
             </tbody>
