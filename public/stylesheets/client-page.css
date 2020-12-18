@@ -80,7 +80,7 @@ a {
 #add-task input,
 #add-task select {
   height: 3vh;
-  color: var(--softgrey);
+  color: var(--grey);
 }
 
 #date-task {

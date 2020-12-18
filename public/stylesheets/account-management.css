@@ -30,6 +30,10 @@ table#account-table td {
   background-color: #5d81ed33;
   border-collapse: collapse;
 }
+
+#account-table th {
+  height: 5vh;
+}
 /* search bar */
 .search-container {
   display: flex;

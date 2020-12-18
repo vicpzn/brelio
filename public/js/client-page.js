@@ -1,3 +1,9 @@
+var taskTable = document.querySelector("#task-table");
+taskTable.scrollTop = taskTable.scrollHeight - taskTable.clientHeight;
+
+var commentTable = document.querySelector("#comments-display");
+commentTable.scrollTop = commentTable.scrollHeight - commentTable.clientHeight;
+
 //comments
 const writeComment = document.querySelector("#write-comment");
 const commentBtn = document.querySelector("#comments-btn");
@@ -33,6 +39,8 @@ async function fetchComments() {
     const comments = client.data.comments;
     displayComments(comments);
     trashComment();
+    commentTable.scrollTop =
+      commentTable.scrollHeight - commentTable.clientHeight;
   } catch (err) {
     console.error(err);
   }
@@ -118,6 +126,7 @@ async function fetchTasks() {
     const tasks = client.data.task;
     displayTasks(tasks);
     checkBox();
+    taskTable.scrollTop = taskTable.scrollHeight - taskTable.clientHeight;
   } catch (err) {
     console.error(err);
   }
@@ -130,7 +139,7 @@ function sendTask() {
     const priority = taskPriority.value;
     writeTask.value = "";
     taskDate.value = "";
-    taskPriority.value = 3;
+    taskPriority.value = "low";
     try {
       await axios.post(`/api/tasks/`, {
         client: `${id}`,
