@@ -127,6 +127,7 @@ a {
 
 .is-hidden {
   visibility: hidden;
+  font-size: 0;
 }
 
 /* file upload */
