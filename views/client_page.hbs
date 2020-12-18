@@ -64,7 +64,7 @@
                     {{#each client.task}}
                     {{#if this.status}}
                     <tr class="done">
-                        <td class="checkbox"><input type="checkbox"></td>
+                        <td class="checkbox"><input type="checkbox" checked></td>
                         <td class="task-content">{{ this.task_associated }}</td>
                         <td class="task-date">{{ formatDate this.task_deadline }}</td>
                         <td class="task-priority">{{ this.priority }}</td>

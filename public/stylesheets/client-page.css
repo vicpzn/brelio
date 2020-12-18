@@ -101,7 +101,9 @@ a {
 }
 
 #priority {
-  width: 4vw;
+  padding: 0;
+  width: 5vw;
+  color: var(--grey);
 }
 
 #add-task button {
