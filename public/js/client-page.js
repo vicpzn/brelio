@@ -154,13 +154,22 @@ function sendTask() {
   });
 }
 
+const taskId = document.querySelector(".task-id");
+
 function checkBox() {
   let checkboxes = document.querySelectorAll(".checkbox");
   checkboxes.forEach((checkbox) =>
     checkbox.addEventListener("change", async () => {
-      let parentTr = checkbox.parentNode;
-      console.log(parentTr);
-      parentTr.classList.toggle("done");
+      try {
+        await axios.patch(`/api/edit/tasks/${{ taskId }}`, {
+          status: "done",
+        });
+        let parentTr = checkbox.parentNode;
+        console.log(parentTr);
+        parentTr.classList.toggle("done");
+      } catch (err) {
+        console.error(err);
+      }
     })
   );
 }

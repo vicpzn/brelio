@@ -67,6 +67,7 @@
                         <td class="task-content">{{ this.task_associated }}</td>
                         <td class="task-date">{{ formatDate this.task_deadline }}</td>
                         <td class="task-priority">{{ this.priority }}</td>
+                        <td class="task-id is-hidden">{{this._id}}</td>
                     </tr>
                     {{/each}}
                 </tbody>
