@@ -1,15 +1,14 @@
 {{> landing_nav}}
 
-<div id="master-div-prospect">
+<div id="master-div-register">
     <h1 class="title-register">Register your company</h1>
-    <div id="prospect-add-box">
-        <form id="account-add" action="/dashboard/register" method="post" enctype="multipart/form-data">
-
-            <div class="container-company">
-                <input name="name" id="name" type="text" placeholder="Company" required>
-            </div>
-
+    <div id="company-add-box">
+        <form id="form-register" action="/dashboard/register" method="post" enctype="multipart/form-data">
             <div class="container-register">
+
+                <div class="item-register">
+                    <input name="name" id="name" type="text" placeholder="Company" required>
+                </div>
 
                 <div class="item-register">
                     <input name="streetnumber" id="streetnumber" type="text" placeholder="Street Number" required>
@@ -35,17 +34,13 @@
                     <input name="phonenumber" id="phonenumber" type="text" placeholder="Phone Number" required>
                 </div>
 
-                <div>
-                    <div>
-                        <input class="custom-file-input" name="logo" type="file">
-                    </div>
+                <input class="custom-file-input" name="logo" type="file">
 
-                    <div class="item-register">
-                        <button class="btn-register">Save</button>
-                    </div>
-                </div>
+
             </div>
-
+            <div class="item-register">
+                <button class="btn-register">Save</button>
+            </div>
         </form>
     </div>
 </div>

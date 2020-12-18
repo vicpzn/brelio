@@ -1,4 +1,5 @@
 {{> burger_menu}}
+{{> current_user}}
 
 <div id="master-div-prospect">
     <h1>Edit {{user.firstname}}'s profile</h1>
@@ -33,13 +34,13 @@
                 </select>
             </div>
 
-            <div>
+            <div id="avatar-div-box">
                 <div>
                     <img width="150px" src="{{user.avatar}}" alt="{{user.firstname}} {{user.lastname}}">
                 </div>
 
                 <div>
-                    <input class="custom-file-input" type="file" name="avatar">
+                    <input class="custom-file-input-avatar" type="file" name="avatar">
                 </div>
             </div>
 
