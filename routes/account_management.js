@@ -47,7 +47,9 @@ router.get("/search", protectLogRoute, async (req, res, next) => {
         { email: { $regex: exp } },
         { phonenumber: { $regex: exp } },
       ],
-    });
+    })
+      .populate("task")
+      .slice("task", -1);
     res.render("account_management_search", {
       currentCompany,
       currentUser,

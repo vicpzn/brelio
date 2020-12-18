@@ -41,6 +41,7 @@
             </thead>
             <tbody>
                 {{#each lastTasks}}
+                {{#each_upto this 5}}
                 {{#each this.task}}
                 <tr>
                     <td>
@@ -54,6 +55,7 @@
                     </td>
                 </tr>
                 {{/each}}
+                {{/each_upto}}
                 {{/each}}
             </tbody>
         </table>
