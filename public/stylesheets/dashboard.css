@@ -129,3 +129,7 @@
   border: 1px solid var(--purple);
   cursor: pointer;
 }
+
+#table-dashboard {
+  text-align: center;
+}
