@@ -21,7 +21,7 @@ https://brelio.herokuapp.com/
 - Upload files.<br />
 - Send emails.<br />
 
-#### `Administrator`
+#### `Manager`
 
 - Update a manager account.<br />
 - Manage a user account: create, update, delete.<br />
@@ -34,7 +34,7 @@ https://brelio.herokuapp.com/
 - Manage team users: create, update, delete.<br />
 - Update the company.<br />
 
-#### `Administrator`
+#### `User`
 
 - Update a user account.<br />
 - Access a dashboard.<br />
